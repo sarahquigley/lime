@@ -5,3 +5,39 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+users = User.create([
+  { fullname: 'Darth Vader', email: 'lordvader@galacticmail.com', password: 'deathstar101', password_confirmation: 'deathstar101' },
+  { fullname: 'Cosmo Palpatine', email: 'emperorpalpatine@galacticmail.com', password: 's1thLord', password_confirmation: 's1thLord' }
+])
+
+vaders_lists = List.create([
+  { user: User.first, title: 'Executions' },
+  { user: User.first, title: 'Death Star' },
+  { user: User.first, title: 'Hobbies' }
+])
+
+vaders_executions_tasks = Task.create([
+  { list: List.find(1), title: 'Luke Skywalker', description: 'May require lightsaber combat.', list_position: 1 },
+  { list: List.find(1), title: 'Petty Officer Crum', list_position: 2},
+  { list: List.find(1), title: 'Emperor Palpatine', description: 'Every Sith must slay his master.', list_position: 3 }
+])
+
+vaders_death_star_tasks = Task.create([
+  { list: List.find(2), title: 'Address major core structural vulnerability', description: 'Could be exploited by rebels.', list_position: 1 },
+  { list: List.find(2), title: 'Purchase additional construction droids.', list_position: 2}
+])
+
+palpatines_lists = List.create([
+  { user: User.last, title: 'Dark Path' }
+])
+
+palpatines_dark_path_tasks = Task.create([
+  { list: List.find(4), title: 'Learn to double lightning bolts', description: 'Useful should vader get ideas.', list_position: 1 },
+  { list: List.find(4), title: 'Double strangulation distance', list_position: 2 }
+])
+
+
+
+
