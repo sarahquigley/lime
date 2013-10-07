@@ -7,6 +7,8 @@ gem 'rails', '3.2.14'
 
 gem 'pg'
 
+# Authorisation / Authentication with devise
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.
