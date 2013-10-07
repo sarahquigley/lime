@@ -28,7 +28,9 @@ group :development do
   gem 'better_errors'
 end
 
+# Javascript libraries
 gem 'jquery-rails'
+gem 'backbone-on-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
