@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
   end
 
   def app
-
+    render :app
   end
 
 end
