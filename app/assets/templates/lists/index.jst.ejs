@@ -1,0 +1,5 @@
+<ul id="lists">
+  <% lists.each(function(list){ %>
+    <li><a href="#lists/<%= list.get('id') %>"><%= list.get('title') %></a></li>
+  <% }) %>
+</ul>

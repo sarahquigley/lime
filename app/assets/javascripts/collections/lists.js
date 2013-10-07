@@ -1,5 +1,6 @@
 Lime.Collections.Lists = Backbone.Collection.extend({
 
-  model: Lime.Models.List
+  model: Lime.Models.List,
+  url: "/lists"
 
 });

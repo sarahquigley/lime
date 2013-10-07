@@ -9,6 +9,7 @@ class StaticPagesController < ApplicationController
   end
 
   def app
+    @lists = current_user.lists
     render :app
   end
 
