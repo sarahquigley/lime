@@ -1,0 +1,23 @@
+/****************************************************
+              BASIC APP LAYOUT
+*****************************************************/
+
+#site-content{
+  width: 900px;
+  margin: auto;
+}
+#app-header{
+  padding: 50px 0;
+  color: LimeGreen;
+}
+
+#app-sidebar{
+  float: left;
+  width: 225px;
+}
+
+#app-content{
+  float: left;
+  width: 625px;
+  padding-left: 50px;
+}
