@@ -4,8 +4,8 @@ class ListsController < ApplicationController
   respond_to :json
 
   def index
-    @lists = current_user.lists.include
-    render json: @list
+    @lists = current_user.lists
+    render json: @lists
   end
 
   def create
