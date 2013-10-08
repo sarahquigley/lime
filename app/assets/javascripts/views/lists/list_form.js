@@ -25,6 +25,7 @@ Lime.Views.ListForm = Backbone.View.extend({
         console.log('List saved.');
         // There must be a better way to do this (in model)
         model.set('tasks', new Lime.Collections.Lists());
+        event.target.reset();
       }
     });
   }
