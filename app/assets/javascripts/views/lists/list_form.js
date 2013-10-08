@@ -18,17 +18,11 @@ Lime.Views.ListForm = Backbone.View.extend({
 
   submit: function(event){
     event.preventDefault();
-
     var attrs = $(event.target).serializeJSON();
-
     this.model.set(attrs);
-
-
-    console.log('In Form')
-    console.log(this.model);
     this.collection.create(this.model, {
       success: function(model){
-        console.log('List saved');
+        console.log('List saved.');
         // There must be a better way to do this (in model)
         model.set('tasks', new Lime.Collections.Lists());
       }

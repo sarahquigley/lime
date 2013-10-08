@@ -4,7 +4,8 @@ class TasksController < ApplicationController
   respond_to :json
 
   def create
-    @task = Task.new(params[:task])
+    @list = List.find(params[:list_id])
+    @task = @list.tasks.build(params[:task])
     if @task.save
       render json: @task
     else

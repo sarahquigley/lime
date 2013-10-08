@@ -8,9 +8,11 @@ Lime::Application.routes.draw do
   end
 
   # List routes
-  resources :lists, except: [:show, :new, :edit]
+  resources :lists, except: [:show, :new, :edit] do
+    resources :tasks, only: [:create]
+  end
 
   # Task routes
-  resources :tasks, only: [:create, :update, :destroy]
+  resources :tasks, only: [:update, :destroy]
 
 end
