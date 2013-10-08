@@ -1,9 +1,9 @@
 Lime.Routers.Lists = Backbone.Router.extend({
 
-  initialize: function(rootEl, collection){
-    this.$rootEl = $(rootEl);
+  initialize: function(sidebarEl, contentEl, collection){
+    this.$sidebarEl = $(sidebarEl);
+    this.$contentEl = $(contentEl);
     this.collection = collection;
-    this.model = this.collection.model;
   },
 
   routes: {
@@ -13,11 +13,13 @@ Lime.Routers.Lists = Backbone.Router.extend({
 
   index: function(){
     var listsIndexView = new Lime.Views.ListsIndex({ collection: this.collection });
-    this.$rootEl.html(listsIndexView.render().$el);
+    this.$sidebarEl.html(listsIndexView.render().$el);
   },
 
-  show: function(){
-
+  show: function(id){
+    this.index();
+    var listShowView = new Lime.Views.ListShow({ model: this.collection.get(id) });
+    this.$contentEl.html(listShowView.render().$el);
   }
 
 });

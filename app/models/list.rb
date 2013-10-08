@@ -8,4 +8,9 @@ class List < ActiveRecord::Base
   # Validations
   validates :title, :user, presence: true
 
+  # Customise as_json
+  def as_json(options = nil)
+    super(include: :tasks).merge(options || {})
+  end
+
 end
