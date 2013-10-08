@@ -9,6 +9,7 @@ class Task < ActiveRecord::Base
 
   # Validations
   validates :list, :list_position, :title, presence: true
+  validates :list_position, uniqueness: { scope: :list_id, message: "must be unique within list" }
 
   # Increment list_position before save
   def increment_list_position
