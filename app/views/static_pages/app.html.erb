@@ -17,7 +17,8 @@
 <!-- Bootstrap Data -->
 <script>
 $(document).ready(function(){
-  var listsData = <%= @lists.to_json.html_safe %>
+  var currentUserData = <%= current_user.to_json.html_safe %>;
+  var listsData = <%= @lists.to_json.html_safe %>;
   Lime.initialize(listsData);
 });
 </script>

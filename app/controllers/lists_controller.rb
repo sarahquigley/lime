@@ -9,8 +9,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(params[:list])
-    @task.user = current_user
+    @list = current_user.lists.build(params[:list])
 
     if @list.save
       render json: @list

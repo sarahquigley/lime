@@ -13,13 +13,15 @@ Lime.Routers.Lists = Backbone.Router.extend({
 
   index: function(){
     var listsIndexView = new Lime.Views.ListsIndex({ collection: this.collection });
+    var listFormView = new Lime.Views.ListForm({collection: this.collection});
     this.$sidebarEl.html(listsIndexView.render().$el);
+    this.$sidebarEl.append(listFormView.render().$el)
   },
 
   show: function(id){
     this.index();
     var listShowView = new Lime.Views.ListShow({ model: this.collection.get(id) });
     this.$contentEl.html(listShowView.render().$el);
-  }
+  },
 
 });
