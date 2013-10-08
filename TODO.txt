@@ -1,0 +1,10 @@
+Rails:
+
+Task Model / DB Table
+- figure out how to autoincrement list-position field at DB level
+  -  look into rails auto-increment
+
+
+Backbone:
+- nicer url:
+  - create url should be set in Task Model / collection, not in a view
