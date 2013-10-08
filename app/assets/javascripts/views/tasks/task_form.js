@@ -3,6 +3,7 @@ Lime.Views.TaskForm = Backbone.View.extend({
   initialize: function(list){
     this.list = list;
     this.collection = list.get('tasks');
+    // Not a fan of the necessity for this - there must be a way to set this in the collection
     this.collection.url = '/lists/' + list.get('id') + '/tasks';
     this.model = new Lime.Models.Task();
   },
