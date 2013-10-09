@@ -23,28 +23,25 @@ Lime.Views.ListForm = Backbone.View.extend({
   },
 
   submit: function(event){
+
     event.preventDefault();
     var attrs = $(event.target).serializeJSON();
     this.model.set(attrs);
 
-    var success = function(){
-      console.log('List saved.');
-      event.target.reset();
-    }
-
     if(this.model.isNew()){
       this.collection.create(this.model, {
         success: function(model){
+          console.log('List created.');
           // There must be a better way to do this (in model)
           model.set('tasks', new Lime.Collections.Lists());
           Backbone.history.navigate(model.url(), {trigger: true})
-          success(model);
+          console.log(model);
         }
       });
     } else {
       this.model.save({}, {
         success: function(){
-          success();
+          console.log('List updated');
         }
       });
     }
