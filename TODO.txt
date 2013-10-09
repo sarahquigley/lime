@@ -8,3 +8,4 @@ Task Model / DB Table
 Backbone:
 - nicer url:
   - create url should be set in Task Model / collection, not in a view
+- Bugfix: cannot properly archive / complete newly created models.
