@@ -10,6 +10,7 @@ Lime.Views.TasksIndex = Backbone.View.extend({
 
   events: {
     "click .task > input.toggle-task-completed" : "toggleCompleted",
+    "click .task button.edit-task" : "edit",
     "click .task button.complete-task" : "toggleCompleted",
     "click .task button.archive-task" : "toggleArchived",
     "click .task button.do-it-today-task" : "doItToday",
@@ -26,6 +27,12 @@ Lime.Views.TasksIndex = Backbone.View.extend({
       menuTemplate: this.menuTemplate
     }));
     return this;
+  },
+
+  edit: function(){
+    event.preventDefault();
+    var taskFormView = new Lime.Views.TaskForm({model: this.eventModel(event)});
+    $(event.target).parents('.task').html(taskFormView.render().$el);
   },
 
   toggleCompleted: function(event){
