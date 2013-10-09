@@ -28,7 +28,7 @@ Lime.Views.TaskForm = Backbone.View.extend({
     this.collection.create(this.model, {
       success: function(){
         console.log('Task saved.');
-        that.collection.url = '/tasks'
+        that.collection.url = '/tasks';
         event.target.reset();
       }
     });
