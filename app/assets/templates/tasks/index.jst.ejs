@@ -9,6 +9,7 @@
         checked
       <% } %>>
     <%= task.get('title') %>
+    <p><%= task.get('description') %></p>
     <%= menuTemplate({ task: task }) %>
   </li>
   <% });%>
