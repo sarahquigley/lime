@@ -3,7 +3,7 @@ class List < ActiveRecord::Base
 
   # Relationships
   belongs_to :user
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 
   # Validations
   validates :title, :user, presence: true
