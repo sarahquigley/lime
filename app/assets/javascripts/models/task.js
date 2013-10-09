@@ -1,5 +1,7 @@
 Lime.Models.Task = Backbone.Model.extend({
 
+  urlRoot: '/tasks',
+
   initialize: function(){
 
   },
