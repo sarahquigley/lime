@@ -1,0 +1,31 @@
+<menu class="list-menu">
+
+  <ul>
+
+    <li>
+      <button class="complete-list">
+        <% if(list.get('completed')){ %>
+          Mark as uncompleted
+        <% } else { %>
+          Mark as completed
+        <% }; %>
+      </button>
+    </li>
+
+    <li>
+      <button class="archive-list">
+        <% if(list.get('archived')){ %>
+          Unarchive list
+        <% } else { %>
+          Archive list
+        <% }; %>
+      </button>
+    </li>
+
+    <li>
+      <button class="delete-list">Delete list</button>
+    </li>
+
+  </ul>
+
+</menu>

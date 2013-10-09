@@ -1,19 +1,31 @@
 <ul>
+
   <% tasks.each(function(task){ %>
-  <li id="task-<%= task.get('id') %>" class="task" data-task-id="<%= task.get('id') %>">
-    <input
-      type="checkbox"
-      class="toggle-task-completed"
-      name="toggle-task-completed"
-      <% if(task.get('completed')){ %>
-        checked
-      <% } %>>
-    <%= task.get('title') %>
-    <% if(task.get('due')){ %>
-    <p>Due: <%= task.get('due') %></p>
-    <% } %>
-    <p><%= task.get('description') %></p>
-    <%= menuTemplate({ task: task }) %>
-  </li>
+
+    <% var id = task.get('id') %>
+
+    <li id="task-<%= id %>" class="task" data-task-id="<%= id %>">
+
+      <input
+        type="checkbox"
+        class="toggle-task-completed"
+        name="toggle-task-completed"
+        <% if(task.get('completed')){ %>
+          checked
+        <% } %>>
+
+      <%= task.get('title') %>
+
+      <% if(task.get('due')){ %>
+        <p>Due: <%= task.get('due') %></p>
+      <% } %>
+
+      <p><%= task.get('description') %></p>
+
+      <%= menuTemplate({ task: task }) %>
+
+    </li>
+
   <% });%>
+
 </ul>

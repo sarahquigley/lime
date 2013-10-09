@@ -1,9 +1,19 @@
 <ul id="lists">
+
   <% lists.each(function(list){ %>
-    <li>
+
+    <% var id= list.get('id'); %>
+
+    <li id="list-<%= id %>" class="list" data-list-id="<%= id %>">
+
       <a href="#lists/<%= list.get('id') %>">
         <%= list.get('title') %> (<%= list.get('tasks').length %>)
       </a>
+
+      <%= menuTemplate({ list: list }) %>
+
     </li>
+
   <% }) %>
+
 </ul>
