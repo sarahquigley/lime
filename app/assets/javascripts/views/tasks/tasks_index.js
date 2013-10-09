@@ -8,6 +8,10 @@ Lime.Views.TasksIndex = Backbone.View.extend({
     });
   },
 
+  events: {
+    "click .task > input[type=checkbox]" : "toggleCompleted"
+  },
+
   template: JST['tasks/index'],
 
   render: function(){
@@ -15,6 +19,18 @@ Lime.Views.TasksIndex = Backbone.View.extend({
       tasks: this.collection
     }));
     return this;
+  },
+
+  toggleCompleted: function(event){
+    var that = this;
+    event.preventDefault();
+    var eventModel = this.eventModel(event);
+    eventModel.toggleCompleted();
+  },
+
+  eventModel: function(event){
+    var eventModelId = $(event.target).parents('.task').attr('data-task-id');
+    return this.collection.get(eventModelId);
   }
 
 });

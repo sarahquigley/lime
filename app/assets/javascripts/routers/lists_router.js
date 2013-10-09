@@ -24,6 +24,6 @@ Lime.Routers.Lists = Backbone.Router.extend({
     var taskFormView = new Lime.Views.TaskForm(this.collection.get(id));
     this.$contentEl.html(listShowView.render().$el);
     this.$contentEl.append(taskFormView.render().$el)
-  },
+  }
 
 });
