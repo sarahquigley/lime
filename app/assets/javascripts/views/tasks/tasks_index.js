@@ -10,7 +10,10 @@ Lime.Views.TasksIndex = Backbone.View.extend({
 
   events: {
     "click .task > input.toggle-task-completed" : "toggleCompleted",
+    "click .task button.complete-task" : "toggleCompleted",
     "click .task button.archive-task" : "toggleArchived",
+    "click .task button.do-it-today-task" : "doItToday",
+    "click .task button.postpone-task" : "postpone",
     "click .task button.delete-task" : "delete"
   },
 
@@ -27,15 +30,22 @@ Lime.Views.TasksIndex = Backbone.View.extend({
 
   toggleCompleted: function(event){
     event.preventDefault();
-    var eventModel = this.eventModel(event);
-    eventModel.toggleCompleted();
+    this.eventModel(event).toggleCompleted();
   },
 
   toggleArchived: function(event){
-    var that = this;
     event.preventDefault();
-    var eventModel = this.eventModel(event);
-    eventModel.toggleArchived();
+    this.eventModel(event).toggleArchived();
+  },
+
+  doItToday: function(event){
+    event.preventDefault();
+    this.eventModel(event).doItToday();
+  },
+
+  postpone: function(event){
+    event.preventDefault();
+    this.eventModel(event).postpone();
   },
 
   delete: function(event){

@@ -1,5 +1,17 @@
 <menu class="task-menu">
+
   <ul>
+
+    <li>
+      <button class="complete-task">
+        <% if(task.get('completed')){ %>
+          Mark as uncompleted
+        <% } else { %>
+          Mark as completed
+        <% }; %>
+      </button>
+    </li>
+
     <li>
       <button class="archive-task">
         <% if(task.get('archived')){ %>
@@ -9,8 +21,19 @@
         <% }; %>
       </button>
     </li>
+
+    <li>
+      <button class="do-it-today-task">Do it today</button>
+    </li>
+
+    <li>
+      <button class="postpone-task">Postpone</button>
+    </li>
+
     <li>
       <button class="delete-task">Delete task</button>
     </li>
+
   </ul>
+
 </menu>
