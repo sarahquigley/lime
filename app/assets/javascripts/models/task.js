@@ -17,6 +17,10 @@ Lime.Models.Task = Backbone.Model.extend({
   toggleArchived: function(){
     this.save({
       archived: !this.get('archived')
+    }, {
+      success: function(){
+        console.log('Toggled task archived.');
+      }
     })
   }
 

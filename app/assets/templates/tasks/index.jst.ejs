@@ -3,11 +3,13 @@
   <li id="task-<%= task.get('id') %>" class="task" data-task-id="<%= task.get('id') %>">
     <input
       type="checkbox"
-      name="task-completed"
+      class="toggle-task-completed"
+      name="toggle-task-completed"
       <% if(task.get('completed')){ %>
         checked
       <% } %>>
     <%= task.get('title') %>
+    <%= menuTemplate({ task: task }) %>
   </li>
   <% });%>
 </ul>

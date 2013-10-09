@@ -1,0 +1,16 @@
+<menu class="task-menu">
+  <ul>
+    <li>
+      <button class="archive-task">
+        <% if(task.get('archived')){ %>
+          Unarchive task
+        <% } else { %>
+          Archive task
+        <% }; %>
+      </button>
+    </li>
+    <li>
+      <button class="delete-task">Delete task</button>
+    </li>
+  </ul>
+</menu>

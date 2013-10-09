@@ -9,23 +9,43 @@ Lime.Views.TasksIndex = Backbone.View.extend({
   },
 
   events: {
-    "click .task > input[type=checkbox]" : "toggleCompleted"
+    "click .task > input.toggle-task-completed" : "toggleCompleted",
+    "click .task button.archive-task" : "toggleArchived",
+    "click .task button.delete-task" : "delete"
   },
 
   template: JST['tasks/index'],
+  menuTemplate: JST['tasks/menu'],
 
   render: function(){
     this.$el.html(this.template({
-      tasks: this.collection
+      tasks: this.collection,
+      menuTemplate: this.menuTemplate
     }));
     return this;
   },
 
   toggleCompleted: function(event){
-    var that = this;
     event.preventDefault();
     var eventModel = this.eventModel(event);
     eventModel.toggleCompleted();
+  },
+
+  toggleArchived: function(event){
+    var that = this;
+    event.preventDefault();
+    var eventModel = this.eventModel(event);
+    eventModel.toggleArchived();
+  },
+
+  delete: function(event){
+    event.preventDefault();
+    var eventModel = this.eventModel(event);
+    eventModel.destroy({
+      success: function(){
+        console.log('Task deleted.')
+      }
+    })
   },
 
   eventModel: function(event){
