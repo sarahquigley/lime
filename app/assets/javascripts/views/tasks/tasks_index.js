@@ -18,7 +18,10 @@ Lime.Views.TasksIndex = Backbone.View.extend({
     "click .task button.delete-task" : "delete"
   },
 
+  el: '<div id="tasks-container">',
+
   template: JST['tasks/index'],
+
   menuTemplate: JST['tasks/menu'],
 
   render: function(){

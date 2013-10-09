@@ -4,6 +4,8 @@ Lime.Views.ListShow = Backbone.View.extend({
     var that = this;
   },
 
+  el: '<section id="featured-list">',
+
   template: JST['lists/show'],
 
   render: function(){

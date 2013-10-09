@@ -13,6 +13,8 @@ Lime.Views.TaskForm = Backbone.View.extend({
     "submit #task-form": "submit"
   },
 
+  el: '<div id="task-form-container" >',
+
   template: JST['tasks/form'],
 
   render: function(){

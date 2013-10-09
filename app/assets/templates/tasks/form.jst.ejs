@@ -1,10 +1,10 @@
-<form id="task-form">
+<form id="task-form" class="app-form">
 
   <div id="task-title-field" class="field">
     <input type="text" name="task[title]" value="<%= task.get("title") %>">
   </div>
 
-  <div id="task-due-date" class="field">
+  <div id="task-due-date-field" class="field">
     <input type="date" name="task[due]" value="<%= task.get("due") %>">
   </div>
 
@@ -12,7 +12,7 @@
     <textarea name="task[description]"><%= task.get("desription") %></textarea>
   </div>
 
-  <div id="task-submit-button" class="field">
+  <div id="task-submit-button" class="submit button">
     <input type="submit" value="Add task">
   </div>
 
