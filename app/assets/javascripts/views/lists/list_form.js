@@ -1,7 +1,12 @@
 Lime.Views.ListForm = Backbone.View.extend({
 
-  initialize: function(){
-    this.model = new Lime.Models.List();
+  options: function(){
+    return {
+      model: new Lime.Models.List()
+    };
+  },
+
+  initialize: function(options){
   },
 
   events: {
@@ -12,6 +17,7 @@ Lime.Views.ListForm = Backbone.View.extend({
 
   render: function(){
     this.$el.html(this.template({
+      list: this.model
     }));
     return this;
   },
@@ -20,14 +26,29 @@ Lime.Views.ListForm = Backbone.View.extend({
     event.preventDefault();
     var attrs = $(event.target).serializeJSON();
     this.model.set(attrs);
-    this.collection.create(this.model, {
-      success: function(model){
-        console.log('List saved.');
-        // There must be a better way to do this (in model)
-        model.set('tasks', new Lime.Collections.Lists());
-        event.target.reset();
-      }
-    });
+
+    var success = function(){
+      console.log('List saved.');
+      event.target.reset();
+    }
+
+    if(this.model.isNew()){
+      this.collection.create(this.model, {
+        success: function(model){
+          // There must be a better way to do this (in model)
+          model.set('tasks', new Lime.Collections.Lists());
+          Backbone.history.navigate(model.url(), {trigger: true})
+          success(model);
+        }
+      });
+    } else {
+      this.model.save({}, {
+        success: function(){
+          success();
+        }
+      });
+    }
+
   }
 
 });

@@ -9,6 +9,7 @@ Lime.Views.ListsIndex = Backbone.View.extend({
   },
 
   events: {
+    "click .list button.edit-list" : "edit",
     "click .list button.complete-list" : "toggleCompleted",
     "click .list button.archive-list" : "toggleArchived",
     "click .list button.delete-list" : "delete"
@@ -26,6 +27,12 @@ Lime.Views.ListsIndex = Backbone.View.extend({
     return this;
   },
 
+  edit: function(){
+    event.preventDefault();
+    var listFormView = new Lime.Views.ListForm({model: this.eventModel(event)});
+    $(event.target).parents('.list').html(listFormView.render().$el);
+  },
+
   toggleCompleted: function(event){
     event.preventDefault();
     this.eventModel(event).toggleCompleted();
@@ -41,7 +48,8 @@ Lime.Views.ListsIndex = Backbone.View.extend({
     var eventModel = this.eventModel(event);
     eventModel.destroy({
       success: function(){
-        console.log('List deleted.')
+        console.log('List deleted.');
+        Backbone.history.navigate('', {trigger: true})
       }
     })
   },

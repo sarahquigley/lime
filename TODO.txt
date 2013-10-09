@@ -8,4 +8,11 @@ Task Model / DB Table
 Backbone:
 - nicer url:
   - create url should be set in Task Model / collection, not in a view
-- Bugfix: cannot properly archive / complete newly created models.
+
+- Bugfix:
+  - cannot properly archive / complete etc. newly created models.
+  - When a list is edited, if you are viewing the list - the list view is not updated
+      - need list to update if viewing list
+      - otherwise nothing to happen
+
+
