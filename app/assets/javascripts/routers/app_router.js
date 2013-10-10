@@ -10,7 +10,7 @@ Lime.Routers.App = Backbone.Router.extend({
   routes: {
     '': 'index',
     'lists/:id' : 'featuredList',
-    'today': 'today'
+    'agenda/:agenda': 'agenda',
   },
 
   index: function(){
@@ -27,13 +27,13 @@ Lime.Routers.App = Backbone.Router.extend({
     this.$contentEl.html(appFeaturedListView.render().$el);
   },
 
-  today: function(){
+  agenda: function(agenda){
     this.addSidebar();
-    taskCollection = this.tasksCollection;
-    var tasksTodayView = new Lime.Views.TasksToday({
-      collection: this.tasksCollection.today()
+    var tasksAgendaView = new Lime.Views.TasksAgenda({
+      collection: this.tasksCollection.collectionWhere({due_to_s: agenda}),
+      agenda: agenda
     });
-    this.$contentEl.html(tasksTodayView.render().$el);
+    this.$contentEl.html(tasksAgendaView.render().$el);
   },
 
   addSidebar: function(){
