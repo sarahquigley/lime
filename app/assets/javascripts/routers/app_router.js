@@ -13,7 +13,7 @@ Lime.Routers.App = Backbone.Router.extend({
 
   index: function(){
     this.addSidebar();
-    this.$contentEl.html('Loading content...');
+    this.$contentEl.html();
   },
 
   featuredList: function(id){
