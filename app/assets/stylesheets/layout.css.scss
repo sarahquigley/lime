@@ -59,25 +59,6 @@
     background: $accent-color-light;
   }
 
-  #list-form > .field > input{
-    width: 100%;
-    font-size: 15px;
-    padding: 3px;
-  }
-
-  #list-form .submit > input{
-    background: $accent-color-lmid;
-    margin: 5px auto;
-    padding: 10px 15px;
-    border-radius: 5px;
-  }
-
-  #list-form .submit > input:hover{
-    background: $accent-color-dmid;
-  }
-}
-
-
 /****************************************************
               APP CONTENT
 *****************************************************/
