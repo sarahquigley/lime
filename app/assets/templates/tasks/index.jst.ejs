@@ -16,14 +16,16 @@
 
       <%= task.get('title') %>
 
+      <%= menuTemplate({ task: task }) %>
+
+    </li>
+
+    <li class"task">
       <% if(task.get('due')){ %>
         <p>Due: <%= task.get('due') %></p>
       <% } %>
 
       <p><%= task.get('description') %></p>
-
-      <%= menuTemplate({ task: task }) %>
-
     </li>
 
   <% });%>

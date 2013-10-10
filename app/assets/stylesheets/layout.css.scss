@@ -79,7 +79,7 @@
 
 
 /****************************************************
-              APP SIDEBAR
+              APP CONTENT
 *****************************************************/
 
 
@@ -87,4 +87,14 @@
   float: left;
   width: 625px;
   padding-left: 50px;
+}
+
+.task{
+  width: 100%;
+  padding: 5px;
+  font-size: 15px;
+}
+
+.task:hover{
+  background: $accent-color-light;
 }
