@@ -21,6 +21,8 @@
 $(document).ready(function(){
   var currentUserData = <%= current_user.to_json.html_safe %>;
   var listsData = <%= @lists.to_json.html_safe %>;
-  Lime.initialize(listsData);
+  var tasksData = <%= @tasks.to_json.html_safe %>;
+
+  Lime.initialize(listsData, tasksData);
 });
 </script>

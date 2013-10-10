@@ -12,6 +12,7 @@ class StaticPagesController < ApplicationController
 
   def app
     @lists = current_user.lists
+    @tasks = current_user.tasks
     render :app
   end
 
