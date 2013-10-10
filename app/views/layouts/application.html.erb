@@ -11,18 +11,25 @@
 
 <body>
 
-  <header id="site-header">
-    <ul>
-      <% unless user_signed_in? %>
-        <li><%= link_to 'Sign Up', new_user_registration_url %></li>
-        <li><%= link_to 'Sign In', user_session_url %></li>
-      <% else %>
-        <li><%= link_to 'Sign Out', destroy_user_session_url, method: :delete%></li>
-      <% end %>
-    </ul>
-  </header>
-
   <div id='site-content'>
+
+    <header id="app-header" class="clearfix">
+
+      <h1 id="app-logo">Lime</h1>
+
+      <nav id="app-header-nav">
+        <ul>
+          <% unless user_signed_in? %>
+            <li><%= link_to 'Sign Up', new_user_registration_url %></li>
+            <li><%= link_to 'Sign In', user_session_url %></li>
+          <% else %>
+            <!-- <li><%= link_to 'Settings', edit_user_password_url %></li> -->
+            <li><%= link_to 'Sign Out', destroy_user_session_url, method: :delete %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+
     <%= yield %>
   </div>
 

@@ -7,6 +7,8 @@
   margin: auto;
 }
 
+
+
 /****************************************************
               APP HEADER
 *****************************************************/
@@ -16,6 +18,7 @@
 }
 
 #app-logo{
+  float:left;
   width: 76px;
   height: 76px;
   padding-left: 40px;
@@ -24,6 +27,34 @@
   font: 40px $logo-font;
   color: $accent-color-dark;
   line-height: 90px;
+}
+
+#app-header-nav{
+  float: right;
+
+  li{
+    font-size: 12px;
+    float: left;
+    padding-left: 20px;
+  }
+}
+
+#screenshot{
+  border: solid grey 20px;
+  border-radius: 20px;
+  width: 860px;
+}
+
+#tag-line{
+  background: $accent-color-lmid;
+  text-align: center;
+  font-size: 60px;
+  font-family: $logo-font;
+  padding: 20px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 700px;
 }
 
 /****************************************************
