@@ -8,9 +8,10 @@ Lime.Routers.App = Backbone.Router.extend({
   },
 
   routes: {
-    '': 'index',
-    'lists/:id' : 'featuredList',
+    '': 'agenda',
+    'agenda': 'agenda',
     'agenda/:agenda': 'agenda',
+    'lists/:id' : 'featuredList'
   },
 
   index: function(){
@@ -30,7 +31,7 @@ Lime.Routers.App = Backbone.Router.extend({
   agenda: function(agenda){
     this.addSidebar();
     var tasksAgendaView = new Lime.Views.TasksAgenda({
-      collection: this.tasksCollection.collectionWhere({due_to_s: agenda}),
+      collection: this.tasksCollection,
       agenda: agenda
     });
     this.$contentEl.html(tasksAgendaView.render().$el);

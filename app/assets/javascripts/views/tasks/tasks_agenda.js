@@ -1,11 +1,19 @@
 Lime.Views.TasksAgenda = Backbone.View.extend({
 
-  initialize: function(){
+  options: function(){
+    return {
+      agenda: "Today"
+    };
+  },
+
+  initialize: function(options){
+    console.log(this.options.agenda);
+    this.collection = this.collection.collectionWhere({due_to_s: this.options.agenda});
   },
 
   el: '<section id="app-content"><section id="featured-list></section><section"',
 
-  template: JST['tasks/agenda'],
+  template: JST['agenda/show'],
 
   render: function(){
     this.$el.html(this.template({

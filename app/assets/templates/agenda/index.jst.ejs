@@ -1,0 +1,17 @@
+<% var agendas = ["Overdue", "Today", "Tomorrow"]%>
+
+<ul id="lists">
+
+  <% _.each(agendas, function(agenda){ %>
+
+    <li class="list">
+
+      <a href="#agenda/<%= agenda %>">
+        <%= agenda %>
+      </a>
+
+    </li>
+
+  <% }) %>
+
+</ul>

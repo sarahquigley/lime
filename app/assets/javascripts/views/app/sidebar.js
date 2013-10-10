@@ -6,10 +6,14 @@ Lime.Views.AppSidebar = Backbone.View.extend({
 
   el: '<nav id="app-sidebar">',
 
+  template: JST['agenda/index'],
+
   render: function(){
+    this.$el.html(this.template({
+    }));
     var listsIndexView = new Lime.Views.ListsIndex({ collection: this.collection });
     var listFormView = new Lime.Views.ListForm({ collection: this.collection });
-    this.$el.html(listsIndexView.render().$el);
+    this.$el.append(listsIndexView.render().$el);
     this.$el.append(listFormView.render().$el);
     return this;
   }
