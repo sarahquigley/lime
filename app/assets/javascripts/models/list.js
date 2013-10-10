@@ -1,8 +1,6 @@
 Lime.Models.List = Backbone.Model.extend({
 
-  urlRoot: '/lists',
-
-  defaults: function(){
+   defaults: function(){
     return {
       tasks: new Lime.Collections.Tasks()
     }

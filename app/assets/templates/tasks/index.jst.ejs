@@ -20,7 +20,7 @@
           <h3>
             <%= task.get('title') %>
             <% if(task.get('due')){ %>
-            <span class="task-due">Due: <%= task.get('due') %></span>
+            <span class="task-due"><%= task.get('due_to_s') %></span>
             <% }; %>
           </h3>
 

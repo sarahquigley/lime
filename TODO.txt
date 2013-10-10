@@ -15,6 +15,9 @@ Backbone:
   - When a list is edited, if you are viewing the list - the list view is not updated
       - need list to update if viewing list
       - otherwise nothing to happen
+  - fix blank form submission problem
+  - fix due date in edit form
+  - fix annoying dropdown menus
 
 
 {"archived"=>false, "completed"=>true, "created_at"=>"2013-10-08T18:49:22Z", "id"=>"1", "label"=>nil, "title"=>"Executions", "updated_at"=>"2013-10-09T15:08:21Z", "user_id"=>1, "tasks"=>[{"archived"=>false, "completed"=>false, "created_at"=>"2013-10-08T18:49:22Z", "description"=>"Every Sith must slay his master.", "due"=>nil, "id"=>3, "list_id"=>1, "list_position"=>3, "priority"=>nil, "title"=>"Emperor Palpatine", "updated_at"=>"2013-10-08T18:49:22Z"}, {"archived"=>false, "completed"=>false, "created_at"=>"2013-10-08T18:49:22Z", "description"=>nil, "due"=>"2013-10-10T15:21:30Z", "id"=>2, "list_id"=>1, "list_position"=>2, "priority"=>nil, "title"=>"Petty Officer Crum", "updated_at"=>"2013-10-09T15:21:31Z"}, {"archived"=>false, "completed"=>false, "created_at"=>"2013-10-08T18:49:22Z", "description"=>"May require lightsaber combat.", "due"=>"2013-10-11T15:21:22Z", "id"=>1, "list_id"=>1, "list_position"=>1, "priority"=>nil, "title"=>"Luke Skywalker", "updated_at"=>"2013-10-09T15:21:44Z"}], "list"=>{"archived"=>false, "completed"=>true, "label"=>nil, "title"=>"Executions"}}

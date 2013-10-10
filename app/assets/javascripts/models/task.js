@@ -1,9 +1,9 @@
 Lime.Models.Task = Backbone.Model.extend({
 
-  urlRoot: '/tasks',
-
   initialize: function(){
-
+    // if(this.get('due')){
+    //   this.dueDisplay();
+    // }
   },
 
   toggleCompleted: function(){

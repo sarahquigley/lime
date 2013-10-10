@@ -29,7 +29,6 @@ Lime.Views.TaskForm = Backbone.View.extend({
     event.preventDefault();
     var attrs = $(event.target).serializeJSON();
     this.model.set(attrs);
-    // I want a smarter method of changing the collection url for this...
 
     if (this.model.isNew()){
       this.collection = this.options.list.get('tasks');
