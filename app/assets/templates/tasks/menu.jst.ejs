@@ -1,12 +1,9 @@
-<menu class="task-menu">
+<div class="task-menu app-drop-menu">
+  <div class="app-drop-button"></div>
 
-  <ul>
-
-    <li>
+    <menu>
       <button class="edit-task">Edit task</button>
-    </li>
 
-    <li>
       <button class="complete-task">
         <% if(task.get('completed')){ %>
           Mark as uncompleted
@@ -14,9 +11,7 @@
           Mark as completed
         <% }; %>
       </button>
-    </li>
 
-    <li>
       <button class="archive-task">
         <% if(task.get('archived')){ %>
           Unarchive task
@@ -24,20 +19,14 @@
           Archive task
         <% }; %>
       </button>
-    </li>
 
-    <li>
       <button class="do-it-today-task">Do it today</button>
-    </li>
 
-    <li>
       <button class="postpone-task">Postpone</button>
-    </li>
 
-    <li>
       <button class="delete-task">Delete task</button>
-    </li>
 
-  </ul>
+    </menu>
 
-</menu>
+  </div>
+</div>

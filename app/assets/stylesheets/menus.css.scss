@@ -1,0 +1,48 @@
+/****************************************************
+              BASIC-DROPDOWN
+*****************************************************/
+
+/* Basic menu styles */
+
+.app-drop-menu{
+  width: 20px;
+  float: right;
+
+  menu{
+    display: none;
+    position: absolute;
+    margin-top: 3px;
+    background: $accent-color-light;
+    width: 175px;
+
+    button{
+      padding: 10px;
+      width: 100%;
+    }
+
+    button:hover{
+      background: $accent-color-lmid;
+    }
+  }
+}
+
+.app-drop-button{
+  width: 20px;
+  height: 20px;
+}
+
+/* Hover effects */
+
+.app-drop-parent:hover .app-drop-button{
+  background: $accent-color-lmid;
+}
+
+.app-drop-menu:hover{
+  .app-drop-button{
+    background: $accent-color-dmid;
+  }
+
+  menu{
+    display: block;
+  }
+}

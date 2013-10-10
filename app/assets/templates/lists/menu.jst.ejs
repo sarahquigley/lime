@@ -1,35 +1,26 @@
-<menu class="list-menu">
+<div class="list-menu app-drop-menu">
+  <div class="app-drop-button"></div>
+  <menu>
 
-  <ul>
+    <button class="edit-list">Edit list</button>
 
-    <li>
-      <button class="edit-list">Edit list</button>
-    </li>
+    <button class="complete-list">
+      <% if(list.get('completed')){ %>
+        Mark as uncompleted
+      <% } else { %>
+        Mark as completed
+      <% }; %>
+    </button>
 
-    <li>
-      <button class="complete-list">
-        <% if(list.get('completed')){ %>
-          Mark as uncompleted
-        <% } else { %>
-          Mark as completed
-        <% }; %>
-      </button>
-    </li>
+    <button class="archive-list">
+      <% if(list.get('archived')){ %>
+        Unarchive list
+      <% } else { %>
+        Archive list
+      <% }; %>
+    </button>
 
-    <li>
-      <button class="archive-list">
-        <% if(list.get('archived')){ %>
-          Unarchive list
-        <% } else { %>
-          Archive list
-        <% }; %>
-      </button>
-    </li>
+    <button class="delete-list">Delete list</button>
 
-    <li>
-      <button class="delete-list">Delete list</button>
-    </li>
-
-  </ul>
-
-</menu>
+  </menu>
+</div>

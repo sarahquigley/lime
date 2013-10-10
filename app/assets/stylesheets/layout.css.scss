@@ -57,50 +57,7 @@
 
   .list:hover{
     background: $accent-color-light;
-
-    .list-menu-button{
-      background: $accent-color-lmid;
-    }
   }
-
-  /* Basic list menu styles */
-
-  .list-menu{
-    display: none;
-    position: absolute;
-    margin-top: 3px;
-    background: $accent-color-light;
-
-    button{
-      padding: 10px;
-      width: 100%;
-    }
-
-    button:hover{
-      background: $accent-color-lmid;
-    }
-  }
-
-  .list-menu-container{
-    width: 20px;
-    float: right;
-  }
-
-  .list-menu-button{
-    width: 20px;
-    height: 20px;
-  }
-
-  .list-menu-container:hover{
-    .list-menu-button{
-      background: $accent-color-dmid;
-    }
-
-    .list-menu{
-      display: block;
-    }
-  }
-  /* Basic list form styles */
 
   #list-form > .field > input{
     width: 100%;
