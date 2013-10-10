@@ -76,6 +76,8 @@
               FEATURED LIST
 *****************************************************/
 
+/* Header */
+
 #featured-list-header{
   padding-bottom: 10px;
 
@@ -84,25 +86,23 @@
   }
 }
 
+/* Tasks */
+
 .task-body {
-  width: 600px;
+  width: 595px;
   padding-left: 30px;
   margin-bottom: 10px;
   border-bottom: $border-light;
 }
 
-.toggle-task-completed{
+.toggle-task-completed, .toggle-task-completed:focus{
   width: 14px;
   margin: 10px 5px;
   float: left;
 }
 
-.toggle-task-completed:focus{
-  margin: 10px 5px;
-}
-
 .task-title{
-  width: 594px;
+  width: 589px;
   line-height: 15px;
   font-size: 15px;
   padding: 10px 5px 10px 3px;
@@ -110,7 +110,7 @@
 }
 
 .task-title h3{
-  width: 570px;
+  width: 565px;
   display: inline-block;
 }
 
@@ -119,6 +119,17 @@
   padding: 10px 3px;
 }
 
+.task-due{
+  font-size: 10px;
+  padding: 2px 4px;
+  border-radius: 5px;
+  background: $accent-color-light;
+}
+
 .task-title:hover{
   background: $accent-color-light;
+}
+
+.task-title:hover .task-due{
+  background: $accent-color-lmid;
 }
