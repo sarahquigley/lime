@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20131007153010) do
     t.string   "title",                            :null => false
     t.text     "description"
     t.integer  "priority"
-    t.datetime "due"
+    t.date     "due"
     t.boolean  "completed",     :default => false, :null => false
     t.boolean  "archived",      :default => false, :null => false
     t.integer  "list_position",                    :null => false

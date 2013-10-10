@@ -5,7 +5,7 @@ class CreateTasks < ActiveRecord::Migration
       t.string :title, null: false
       t.text :description
       t.integer :priority
-      t.datetime :due
+      t.date :due
       t.boolean :completed, null: false, default: false
       t.boolean :archived, null: false, default: false
       t.integer :list_position, null: false
