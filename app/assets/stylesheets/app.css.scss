@@ -30,17 +30,33 @@
               APP SIDEBAR
 *****************************************************/
 
+
+/* General Styles */
+
 #app-sidebar{
   float: left;
   width: 225px;
 
-  /* Basic list style */
+  .app-sidebar-section{
+    border-bottom: $border-light;
+    margin-bottom: 10px;
+  }
 
-  .list{
-    width: 100%;
+  .app-sidebar-item{
+    width: 215px;
     padding: 5px;
     font-size: 15px;
   }
+
+  .app-sidebar-item:hover{
+    background: $accent-color-light;
+  }
+
+}
+
+/* Lists only */
+
+#app-sidebar{
 
   .list > a{
     display: inline-block;
@@ -53,13 +69,8 @@
     color: $accent-color-dmid;
   }
 
-  /* List hover effects */
-
-  .list:hover{
-    background: $accent-color-light;
-  }
-
 }
+
 
 /****************************************************
               APP CONTENT

@@ -1,10 +1,10 @@
 <% var agendas = ["Overdue", "Today", "Tomorrow"]%>
 
-<ul id="lists">
+<ul id="agendas" class="app-sidebar-section">
 
   <% _.each(agendas, function(agenda){ %>
 
-    <li class="list">
+    <li class="agenda app-sidebar-item">
 
       <a href="#agenda/<%= agenda %>">
         <%= agenda %>

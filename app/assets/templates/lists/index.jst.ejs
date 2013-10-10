@@ -1,10 +1,10 @@
-<ul id="lists">
+<ul id="lists" class="app-sidebar-section">
 
   <% lists.each(function(list){ %>
 
     <% var id= list.get('id'); %>
 
-    <li id="list-<%= id %>" class="list app-drop-parent" data-list-id="<%= id %>">
+    <li id="list-<%= id %>" class="list app-sidebar-item app-drop-parent" data-list-id="<%= id %>">
 
       <a href="#lists/<%= list.get('id') %>">
         <%= list.get('title') %>
