@@ -4,28 +4,34 @@
 
     <% var id = task.get('id') %>
 
-    <li id="task-<%= id %>" class="task app-drop-parent" data-task-id="<%= id %>">
+    <li id="task-<%= id %>" class="task clearfix" data-task-id="<%= id %>">
 
       <input
-        type="checkbox"
         class="toggle-task-completed"
+        type="checkbox"
         name="toggle-task-completed"
         <% if(task.get('completed')){ %>
           checked
         <% } %>>
 
-      <%= task.get('title') %>
+      <article class="task-body" class="clearfix" >
 
-      <%= menuTemplate({ task: task }) %>
+        <header class="task-title app-drop-parent">
+          <h3>
+            <%= task.get('title') %>
+            <% if(task.get('due')){ %>
+            <span class="task-due">Due: <%= task.get('due') %></span>
+            <% }; %>
+          </h3>
 
-    </li>
+          <%= menuTemplate({ task: task }) %>
+        </header>
 
-    <li class"task">
-      <% if(task.get('due')){ %>
-        <p>Due: <%= task.get('due') %></p>
-      <% } %>
+        <p class="task-description"><%= task.get('description') %></p>
 
-      <p><%= task.get('description') %></p>
+      </article>
+
+
     </li>
 
   <% });%>

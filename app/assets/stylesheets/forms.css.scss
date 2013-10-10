@@ -1,18 +1,30 @@
 .app-form{
-  .field > input{
+
+  .field > input, .field > textarea{
     width: 100%;
     font-size: 15px;
-    padding: 3px;
+    padding: 4px;
+    border: $border-light;
+    margin: 1px 0;
   }
 
   .submit > input{
     background: $accent-color-lmid;
     margin: 5px auto;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 5px;
+    font-size: 12px;
   }
 
   .submit > input:hover{
     background: $accent-color-dmid;
   }
+}
+
+#task-form{
+
+  .field > input, .field > textarea{
+    width: 615px;
+  }
+
 }

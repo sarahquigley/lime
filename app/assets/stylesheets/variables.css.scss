@@ -11,6 +11,7 @@ $body-font: 'Open Sans', sans-serif;
 *****************************************************/
 
 $body-text-color: black;
+$border-color-light: #E8EBEA;
 $accent-color-light: rgb(232, 242, 216);
 $accent-color-lmid: rgb(200, 221, 152);
 $accent-color-dmid: rgb(176, 212, 83);
@@ -18,3 +19,8 @@ $accent-color-dark: rgb(109, 135, 39);
 $feature-color-mid: rgb(104, 26, 135);
 $feature-color-dark: rgb(68, 17, 89);
 
+/****************************************************
+              BORDERS
+*****************************************************/
+
+$border-light: 1px solid $border-color-light;

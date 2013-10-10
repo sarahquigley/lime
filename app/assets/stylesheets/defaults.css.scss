@@ -2,10 +2,12 @@
               RESET STYLES
 *****************************************************/
 
-header, section, nav, menu, h1, h2, div, ul, li, a, button {
+header, section, article, nav, menu, h1, h2, h3, h4, div, ul, li, a, button, p,
+input, input:focus, textarea, textarea:focus {
   margin: 0;
   border: 0;
   padding: 0;
+  outline: 0;
   font-size: 100%;
   font-family: 'Open Sans', sans-serif;
   font-weight: normal;
@@ -22,12 +24,8 @@ a{
   text-decoration: none;
 }
 
-input, input:focus, textarea, textarea:focus {
-  margin: 0;
-  outline: 0;
-}
-
-input[type="submit"]{
-  border: 0;
-  background: none;
+.clearfix:after{
+  clear: both;
+  display: table;
+  content: "";
 }
