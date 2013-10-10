@@ -22,18 +22,109 @@
   background: url(logo_med.png) no-repeat 0 0;
   background-size: 75px;
   font: 40px $logo-font;
-  color: #669966;
+  color: $accent-color-dark;
   line-height: 90px;
 }
 
 /****************************************************
-              BASIC APP LAYOUT
+              APP SIDEBAR
 *****************************************************/
 
 #app-sidebar{
   float: left;
   width: 225px;
+
+  /* Basic list style */
+
+  .list{
+    width: 100%;
+    padding: 5px;
+    font-size: 15px;
+  }
+
+  .list > a{
+    display: inline-block;
+    width: 88%;
+  }
+
+  .list-task-count{
+    font-size: 12px;
+    vertical-align: center;
+    color: $accent-color-dmid;
+  }
+
+  /* List hover effects */
+
+  .list:hover{
+    background: $accent-color-light;
+
+    .list-menu-button{
+      background: $accent-color-lmid;
+    }
+  }
+
+  /* Basic list menu styles */
+
+  .list-menu{
+    display: none;
+    position: absolute;
+    margin-top: 3px;
+    background: $accent-color-light;
+
+    button{
+      padding: 10px;
+      width: 100%;
+    }
+
+    button:hover{
+      background: $accent-color-lmid;
+    }
+  }
+
+  .list-menu-container{
+    width: 20px;
+    float: right;
+  }
+
+  .list-menu-button{
+    width: 20px;
+    height: 20px;
+  }
+
+  .list-menu-container:hover{
+    .list-menu-button{
+      background: $accent-color-dmid;
+    }
+
+    .list-menu{
+      display: block;
+    }
+  }
+  /* Basic list form styles */
+
+  #list-form > .field > input{
+    width: 100%;
+    font-size: 15px;
+    padding: 3px;
+  }
+
+  #list-form .submit > input{
+    background: $accent-color-lmid;
+    margin: 5px auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+
+  #list-form .submit > input:hover{
+    background: $accent-color-dmid;
+  }
 }
+
+
+/****************************************************
+              APP SIDEBAR
+*****************************************************/
+
 
 #app-content{
   float: left;

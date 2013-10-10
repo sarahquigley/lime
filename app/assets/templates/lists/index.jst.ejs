@@ -7,10 +7,14 @@
     <li id="list-<%= id %>" class="list" data-list-id="<%= id %>">
 
       <a href="#lists/<%= list.get('id') %>">
-        <%= list.get('title') %> (<%= list.get('tasks').length %>)
+        <%= list.get('title') %>
+        <span class="list-task-count"><%= list.get('tasks').length %></span>
       </a>
 
+      <div class="list-menu-container">
+        <div class="list-menu-button"></div>
       <%= menuTemplate({ list: list }) %>
+      </div>
 
     </li>
 
