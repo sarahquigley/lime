@@ -1,14 +1,12 @@
 Lime.Models.Task = Backbone.Model.extend({
 
   initialize: function(){
-    // if(this.get('due')){
-    //   this.dueDisplay();
-    // }
   },
 
   toggleCompleted: function(){
     this.save({
-      completed: !this.get('completed')
+      completed: !this.get('completed'),
+      task: { completed: !this.get('completed') }
     }, {
       success: function(){
         console.log('Toggled task completed.');
@@ -18,7 +16,8 @@ Lime.Models.Task = Backbone.Model.extend({
 
   toggleArchived: function(){
     this.save({
-      archived: !this.get('archived')
+      archived: !this.get('archived'),
+      task: { archived: !this.get('archived') }
     }, {
       success: function(){
         console.log('Toggled task archived.');
@@ -28,7 +27,8 @@ Lime.Models.Task = Backbone.Model.extend({
 
   doItToday: function(){
     this.save({
-      due: new Date()
+      due: new Date(),
+      task: { due: new Date() }
     } , {
       success: function(){
         console.log('Due date set for today.')
@@ -40,7 +40,8 @@ Lime.Models.Task = Backbone.Model.extend({
     var currentDate = this.get('due') ? new Date(this.get('due')) : new Date();
     var newDueDate = new Date(currentDate.getTime() + 86400000);
     this.save({
-      due: newDueDate
+      due: newDueDate,
+      task: { due: newDueDate }
     } , {
       success: function(){
         console.log('Task postponed.')
