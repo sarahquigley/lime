@@ -4,14 +4,15 @@
 
     <% var id= list.get('id'); %>
 
-    <li id="list-<%= id %>" class="list app-sidebar-item app-drop-parent" data-list-id="<%= id %>">
+    <li id="list-<%= id %>" class="list" data-list-id="<%= id %>">
+      <div class="app-sidebar-item app-drop-parent">
+        <a href="#lists/<%= list.get('id') %>">
+          <%= list.get('title') %>
+          <span class="list-task-count"><%= list.get('tasks').length %></span>
+        </a>
 
-      <a href="#lists/<%= list.get('id') %>">
-        <%= list.get('title') %>
-        <span class="list-task-count"><%= list.get('tasks').length %></span>
-      </a>
-
-      <%= menuTemplate({ list: list }) %>
+        <%= menuTemplate({ list: list }) %>
+    </div>
 
     </li>
 
