@@ -10,13 +10,12 @@ Lime.Views.TasksIndex = Backbone.View.extend({
 
   events: {
     "click .app-drop-button": "dropMenu",
-    "click .task > input.toggle-task-completed" : "toggleCompleted",
-    "click .task button.edit-task" : "edit",
-    "click .task button.complete-task" : "toggleCompleted",
-    "click .task button.archive-task" : "toggleArchived",
-    "click .task button.do-it-today-task" : "doItToday",
-    "click .task button.postpone-task" : "postpone",
-    "click .task button.delete-task" : "delete"
+    "click .task > input.toggle" : "toggle",
+    "click .task-menu button.edit-task" : "edit",
+    "click .task-menu button.toggle" : "toggle",
+    "click .task-menu button.do-it-today-task" : "doItToday",
+    "click .task-menu button.postpone-task" : "postpone",
+    "click .task-menu button.delete-task" : "delete"
   },
 
   el: '<div id="tasks-container">',
@@ -36,6 +35,8 @@ Lime.Views.TasksIndex = Backbone.View.extend({
   // Drop Menu (needs click outside collapse)
 
   dropMenu: function(event){
+    // Need to sort out this bug!!!
+    console.log( $(event.target).closest('.app-drop-parent').id());
     $(event.target).closest('.app-drop-parent').toggleClass('dropped');
   },
 
@@ -49,14 +50,10 @@ Lime.Views.TasksIndex = Backbone.View.extend({
 
   // Toggles
 
-  toggleCompleted: function(event){
+  toggle: function(event){
     event.preventDefault();
-    this.eventModel(event).toggleCompleted();
-  },
-
-  toggleArchived: function(event){
-    event.preventDefault();
-    this.eventModel(event).toggleArchived();
+    var attribute = $(event.target).attr('data-toggle');
+    this.eventModel(event).toggleAttribute(attribute);
   },
 
   // Due date

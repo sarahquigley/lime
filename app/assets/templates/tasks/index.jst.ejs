@@ -7,9 +7,10 @@
     <li id="task-<%= id %>" class="task clearfix" data-task-id="<%= id %>">
 
       <input
-        class="toggle-task-completed"
+        class="toggle-task-completed toggle"
         type="checkbox"
         name="toggle-task-completed"
+        data-toggle="completed"
         <% if(task.get('completed')){ %>
           checked
         <% } %>>

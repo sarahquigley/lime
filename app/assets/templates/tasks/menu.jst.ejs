@@ -4,7 +4,7 @@
     <menu>
       <button class="edit-task">Edit task</button>
 
-      <button class="complete-task">
+      <button class="toggle" data-toggle="completed">
         <% if(task.get('completed')){ %>
           Mark as uncompleted
         <% } else { %>
@@ -12,7 +12,7 @@
         <% }; %>
       </button>
 
-      <button class="archive-task">
+      <button class="toggle" data-toggle="archived">
         <% if(task.get('archived')){ %>
           Unarchive task
         <% } else { %>

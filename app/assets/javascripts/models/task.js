@@ -4,23 +4,20 @@ Lime.Models.Task = Backbone.Model.extend({
   },
 
   toggleCompleted: function(){
-    this.save({
-      completed: !this.get('completed'),
-      task: { completed: !this.get('completed') }
-    }, {
-      success: function(){
-        console.log('Toggled task completed.');
-      }
-    });
+    this.toggleAttribute('completed');
   },
 
   toggleArchived: function(){
-    this.save({
-      archived: !this.get('archived'),
-      task: { archived: !this.get('archived') }
-    }, {
+    this.toggleAttribute('archived');
+  },
+
+  toggleAttribute: function(attribute){
+    var options = {task:{}};
+    options[attribute] = !this.get(attribute);
+    options["task"][attribute] = !this.get(attribute);
+    this.save(options, {
       success: function(){
-        console.log('Toggled task archived.');
+        console.log('Toggled task ' + attribute + '.');
       }
     });
   },
