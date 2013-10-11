@@ -9,6 +9,7 @@ Lime.Views.TasksIndex = Backbone.View.extend({
   },
 
   events: {
+    "click .app-drop-button": "dropMenu",
     "click .task > input.toggle-task-completed" : "toggleCompleted",
     "click .task button.edit-task" : "edit",
     "click .task button.complete-task" : "toggleCompleted",
@@ -30,6 +31,10 @@ Lime.Views.TasksIndex = Backbone.View.extend({
       menuTemplate: this.menuTemplate
     }));
     return this;
+  },
+
+  dropMenu: function(event){
+    $(event.target).closest('.app-drop-parent').toggleClass('dropped');
   },
 
   edit: function(){

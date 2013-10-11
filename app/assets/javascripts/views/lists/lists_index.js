@@ -9,6 +9,7 @@ Lime.Views.ListsIndex = Backbone.View.extend({
   },
 
   events: {
+    "click .app-drop-button": "dropMenu",
     "click .list button.edit-list" : "edit",
     "click .list button.complete-list" : "toggleCompleted",
     "click .list button.archive-list" : "toggleArchived",
@@ -27,6 +28,10 @@ Lime.Views.ListsIndex = Backbone.View.extend({
       menuTemplate: this.menuTemplate
     }));
     return this;
+  },
+
+  dropMenu: function(event){
+    $(event.target).closest('.app-drop-parent').toggleClass('dropped');
   },
 
   edit: function(){
