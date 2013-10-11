@@ -2,6 +2,8 @@ Lime.Collections.Tasks = Backbone.Collection.extend({
 
   model: Lime.Models.Task,
   url: '/tasks',
+
+  comparator: 'title',
   //
   // remaining: function(){
   //   return this.collectionWhere({completed: false});

@@ -33,15 +33,21 @@ Lime.Views.TasksIndex = Backbone.View.extend({
     return this;
   },
 
+  // Drop Menu (needs click outside collapse)
+
   dropMenu: function(event){
     $(event.target).closest('.app-drop-parent').toggleClass('dropped');
   },
+
+  // Edit
 
   edit: function(){
     event.preventDefault();
     var taskFormView = new Lime.Views.TaskForm({model: this.eventModel(event)});
     $(event.target).parents('.task').html(taskFormView.render().$el);
   },
+
+  // Toggles
 
   toggleCompleted: function(event){
     event.preventDefault();
@@ -53,6 +59,8 @@ Lime.Views.TasksIndex = Backbone.View.extend({
     this.eventModel(event).toggleArchived();
   },
 
+  // Due date
+
   doItToday: function(event){
     event.preventDefault();
     this.eventModel(event).doItToday();
@@ -63,6 +71,8 @@ Lime.Views.TasksIndex = Backbone.View.extend({
     this.eventModel(event).postpone();
   },
 
+  // Delete
+
   delete: function(event){
     event.preventDefault();
     var eventModel = this.eventModel(event);
@@ -72,6 +82,8 @@ Lime.Views.TasksIndex = Backbone.View.extend({
       }
     })
   },
+
+  // Helper
 
   eventModel: function(event){
     var eventModelId = $(event.target).parents('.task').attr('data-task-id');
