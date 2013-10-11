@@ -15,6 +15,7 @@
 //= require jquery.serializeJSON.min
 //= require underscore
 //= require backbone
+//= require my_backbone
 //= require lime
 //= require_tree ../templates
 //= require_tree ./models

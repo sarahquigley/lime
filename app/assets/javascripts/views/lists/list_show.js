@@ -1,7 +1,7 @@
 Lime.Views.ListShow = Backbone.View.extend({
 
   initialize: function(){
-    var that = this;
+    this.nestedViews = [];
   },
 
   el: '<section id="featured-list">',
@@ -15,6 +15,7 @@ Lime.Views.ListShow = Backbone.View.extend({
     var tasksIndexView = new Lime.Views.TasksIndex({
       collection: this.model.get('tasks')
     });
+    this.nestedViews = [tasksIndexView];
     this.$el.append(tasksIndexView.render().$el);
     return this;
   }

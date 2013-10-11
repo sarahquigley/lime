@@ -8,6 +8,7 @@ Lime.Views.TasksAgenda = Backbone.View.extend({
 
   initialize: function(options){
     this.collection = this.collection.collectionWhere({due_to_s: this.options.agenda});
+    this.nestedViews = [];
   },
 
   el: '<section id="app-content"><section id="featured-list></section><section"',
@@ -21,6 +22,7 @@ Lime.Views.TasksAgenda = Backbone.View.extend({
     var tasksIndexView = new Lime.Views.TasksIndex({
       collection: this.collection
     });
+    this.nestedViews = [tasksIndexView];
     this.$el.append(tasksIndexView.render().$el);
     return this;
   }

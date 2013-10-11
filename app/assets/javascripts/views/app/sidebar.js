@@ -1,7 +1,7 @@
 Lime.Views.AppSidebar = Backbone.View.extend({
 
   initialize: function(){
-
+    this.nestedViews = [];
   },
 
   el: '<nav id="app-sidebar">',
@@ -13,6 +13,7 @@ Lime.Views.AppSidebar = Backbone.View.extend({
     }));
     var listsIndexView = new Lime.Views.ListsIndex({ collection: this.collection });
     var listFormView = new Lime.Views.ListForm({ collection: this.collection });
+    this.nestedViews = [listsIndexView, listFormView];
     this.$el.append(listsIndexView.render().$el);
     this.$el.append(listFormView.render().$el);
     return this;
