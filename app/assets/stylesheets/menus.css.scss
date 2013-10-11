@@ -8,6 +8,7 @@
   width: 20px;
   float: right;
   position: relative;
+  font-size: 15px;
 
   menu{
     display: none;
@@ -45,6 +46,8 @@
 
 }
 
+/* Dropped Styles */
+
 .dropped{
   background: $accent-color-light;
 
@@ -57,3 +60,26 @@
   }
 }
 
+/****************************************************
+          BASIC DROPDOWN, STYLED IN CONTEXT
+*****************************************************/
+
+#featured-list-header {
+  h2{
+    display: inline-block;
+    width: 580px;
+  }
+
+  .app-drop-button{
+    background: $accent-color-lmid;
+  }
+
+  .app-drop-button:hover{
+    background: $accent-color-dmid;
+  }
+
+}
+
+#featured-list-header.dropped{
+  background: white;
+}
