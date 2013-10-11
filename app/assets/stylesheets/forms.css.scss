@@ -35,3 +35,27 @@
   }
 
 }
+
+.auth-form-container{
+  width: 259px;
+  margin: auto;
+
+  h2{
+    font-size: 26px;
+    font-family: $logo-font;
+    color: $accent-color-dark;
+  }
+}
+
+.button{
+  display: inline-block;
+  background: $accent-color-lmid;
+  margin: 5px auto;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.button:hover{
+  background: $accent-color-dmid;
+}
