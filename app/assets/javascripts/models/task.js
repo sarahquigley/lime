@@ -3,14 +3,6 @@ Lime.Models.Task = Backbone.Model.extend({
   initialize: function(){
   },
 
-  toggleCompleted: function(){
-    this.toggleAttribute('completed');
-  },
-
-  toggleArchived: function(){
-    this.toggleAttribute('archived');
-  },
-
   toggleAttribute: function(attribute){
     var options = {task:{}};
     options[attribute] = !this.get(attribute);
