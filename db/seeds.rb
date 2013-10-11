@@ -19,14 +19,14 @@ vaders_lists = List.create([
 ])
 
 vaders_executions_tasks = Task.create([
-  { list: List.find(1), title: 'Luke Skywalker', description: 'May require lightsaber combat.', list_position: 1 },
-  { list: List.find(1), title: 'Petty Officer Crum', list_position: 2},
-  { list: List.find(1), title: 'Emperor Palpatine', description: 'Every Sith must slay his master.', list_position: 3 }
+  { list: List.find(1), title: 'Luke Skywalker', description: 'May require lightsaber combat.', due: '2014/1/1', list_position: 1 },
+  { list: List.find(1), title: 'Petty Officer Crum', description: 'Has become an irritation.', due: '2013/10/10', list_position: 2},
+  { list: List.find(1), title: 'Emperor Palpatine', description: 'Every Sith must slay his master.', due: '2013/10/11', list_position: 3 }
 ])
 
 vaders_death_star_tasks = Task.create([
-  { list: List.find(2), title: 'Address major core structural vulnerability', description: 'Could be exploited by rebels.', list_position: 1 },
-  { list: List.find(2), title: 'Purchase additional construction droids.', list_position: 2}
+  { list: List.find(2), title: 'Address major core structural vulnerability', description: 'Could be exploited by rebels.', due: '2013/10/16', list_position: 1 },
+  { list: List.find(2), title: 'Purchase additional construction droids.', due: '2013/10/15', list_position: 2}
 ])
 
 palpatines_lists = List.create([
