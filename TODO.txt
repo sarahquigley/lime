@@ -17,3 +17,4 @@ Backbone:
   - fix blank form submission problem
   - fix annoying dropdown menus
   - when delete list, don't navigate away
+  - had to add the weirdest fix to fix broken task drop down menus (broke after adding sorting feature...)
