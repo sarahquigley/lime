@@ -14,7 +14,8 @@ Lime.Models.List = Backbone.Model.extend({
 
   toggleCompleted: function(){
     this.save({
-      completed: !this.get('completed')
+      completed: !this.get('completed'),
+      list: { completed: !this.get('completed') }
     }, {
       success: function(){
         console.log('Toggled list completed.');
@@ -24,7 +25,8 @@ Lime.Models.List = Backbone.Model.extend({
 
   toggleArchived: function(){
     this.save({
-      archived: !this.get('archived')
+      archived: !this.get('archived'),
+      list: { archived: !this.get('archived') }
     }, {
       success: function(){
         console.log('Toggled list archived.');
