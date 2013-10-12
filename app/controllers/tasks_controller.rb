@@ -9,7 +9,7 @@ class TasksController < ApplicationController
     if @task.save
       render json: @task
     else
-      render json: @task.errors.full_messages, status: 422
+      render json: { errors: @task.errors.full_messages }, status: 422
     end
   end
 
@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     if @task.update_attributes(params[:task])
       render json: @task
     else
-      render json: @task.errors.full_messages, status: 422
+      render json: { errors: @task.errors.full_messages }, status: 422
     end
   end
 
