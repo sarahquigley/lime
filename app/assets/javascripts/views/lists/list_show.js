@@ -13,7 +13,7 @@ Lime.Views.ListShow = Backbone.View.extend({
   },
 
   events: {
-    "click .app-drop-button": "dropMenu",
+    "click .sort-menu .app-drop-button": "dropMenu",
     "click .sort-menu button.sort-tasks": "sort"
   },
 
@@ -45,6 +45,7 @@ Lime.Views.ListShow = Backbone.View.extend({
 
   // Sort
   sort: function(event){
+    console.log('moo')
     sortAttribute = $(event.target).attr("data-sort");
     this.collection.sortCollection(sortAttribute);
   }

@@ -9,8 +9,8 @@ Lime.Views.TasksIndex = Backbone.View.extend({
   },
 
   events: {
-    "click .app-drop-button": "dropMenu",
     "click .task > input.toggle" : "toggle",
+    "click .task-menu .app-drop-button": "dropMenu",
     "click .task-menu button.edit-task" : "edit",
     "click .task-menu button.toggle" : "toggle",
     "click .task-menu button.do-it-today-task" : "doItToday",
@@ -35,8 +35,6 @@ Lime.Views.TasksIndex = Backbone.View.extend({
   // Drop Menu (needs click outside collapse)
 
   dropMenu: function(event){
-    // Need to sort out this bug!!!
-    console.log( $(event.target).closest('.app-drop-parent').id());
     $(event.target).closest('.app-drop-parent').toggleClass('dropped');
   },
 

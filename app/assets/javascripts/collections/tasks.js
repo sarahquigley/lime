@@ -5,10 +5,6 @@ Lime.Collections.Tasks = Backbone.Collection.extend({
   },
 
   model: Lime.Models.Task,
-  url: '/tasks',
-
-  collectionWhere: function(options){
-    return new Lime.Collections.Tasks(this.where(options));
-  }
+  url: '/tasks'
 
 });

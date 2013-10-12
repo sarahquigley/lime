@@ -4,7 +4,7 @@
 
     <button class="edit-list">Edit list</button>
 
-    <button class="complete-list">
+    <button class="toggle" data-toggle="completed">
       <% if(list.get('completed')){ %>
         Mark as uncompleted
       <% } else { %>
@@ -12,7 +12,7 @@
       <% }; %>
     </button>
 
-    <button class="archive-list">
+    <button class="toggle" data-toggle="archived">
       <% if(list.get('archived')){ %>
         Unarchive list
       <% } else { %>

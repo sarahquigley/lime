@@ -30,6 +30,11 @@ _.extend(Backbone.Collection.prototype, {
   sortCollection: function(attribute){
     this.sortAttribute = attribute;
     this.sort();
+  },
+
+  collectionWhere: function(options){
+    var newCollection = this.clone();
+    return newCollection.set(this.where(options));
   }
 
 });
@@ -38,6 +43,16 @@ _.extend(Backbone.Collection.prototype, {
 
 _.extend(Backbone.Model.prototype, {
 
-
+  toggleAttribute: function(attribute){
+    var options = {};
+    options[attribute] = !this.get(attribute);
+    options[this.modelName] = {};
+    options[this.modelName][attribute] = !this.get(attribute);
+    this.save(options, {
+      success: function(){
+        console.log('Toggled task ' + attribute + '.');
+      }
+    });
+  },
 
 });

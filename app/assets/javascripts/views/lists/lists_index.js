@@ -10,10 +10,9 @@ Lime.Views.ListsIndex = Backbone.View.extend({
 
   events: {
     "click .app-drop-button": "dropMenu",
-    "click .list button.edit-list" : "edit",
-    "click .list button.complete-list" : "toggleCompleted",
-    "click .list button.archive-list" : "toggleArchived",
-    "click .list button.delete-list" : "delete"
+    "click .list-menu button.edit-list" : "edit",
+    "click .list-menu button.toggle" : "toggle",
+    "click .list-menu button.delete-list" : "delete"
   },
 
   el: '<div id="lists-container" class="sidebar-section">',
@@ -40,15 +39,14 @@ Lime.Views.ListsIndex = Backbone.View.extend({
     $(event.target).parents('.list').html(listFormView.render().$el);
   },
 
-  toggleCompleted: function(event){
+  // Toggles
+
+  toggle: function(event){
     event.preventDefault();
-    this.eventModel(event).toggleCompleted();
+    var attribute = $(event.target).attr('data-toggle');
+    this.eventModel(event).toggleAttribute(attribute);
   },
 
-  toggleArchived: function(event){
-    event.preventDefault();
-    this.eventModel(event).toggleArchived();
-  },
 
   delete: function(event){
     event.preventDefault();
