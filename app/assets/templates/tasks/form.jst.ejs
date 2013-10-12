@@ -8,6 +8,11 @@
     <input type="date" name="task[due]" value="<%= task.get("due") %>">
   </div>
 
+  <div id="task-priority-field" class="field">
+    <input type="hidden" id="task-priority-input" name="task[priority]"/>
+    <div id="task-priority-slider" class="slider"></div>
+  </div>
+
   <div id="task-description-field" class="field">
     <textarea name="task[description]"><%= task.get("description") %></textarea>
   </div>
@@ -17,3 +22,18 @@
   </div>
 
 </form>
+
+<script>
+$(function() {
+  $( "#task-priority-slider" ).slider({
+    value: 3,
+    min: 1,
+    max: 5,
+    step: 1,
+    slide: function( event, ui ) {
+      $( "#task-priority-input" ).val( ui.value );
+    }
+  });
+  $( "#task-priority-input" ).val( $( "#task-priority-slider" ).slider( "value" ) );
+});
+</script>

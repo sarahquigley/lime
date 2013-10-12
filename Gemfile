@@ -30,6 +30,7 @@ end
 
 # Javascript libraries
 gem 'jquery-rails'
+gem 'jquery-ui-sass-rails'
 gem 'backbone-on-rails'
 
 # To use ActiveModel has_secure_password
