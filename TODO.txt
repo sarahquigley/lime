@@ -11,8 +11,5 @@ Backbone:
 
 - Bugfix:
 
-  - When a list is edited, if you are viewing the list - the list view is not updated
-      - need list to update if viewing list
-      - otherwise nothing to happen
   - fix blank form submission problem
   - fix annoying dropdown menus
