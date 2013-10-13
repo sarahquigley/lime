@@ -7,4 +7,4 @@ Lime.Collections.Tags = Backbone.Collection.extend({
   model: Lime.Models.Tag,
   url: "/tags"
 
-})
+});

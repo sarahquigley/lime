@@ -1,4 +1,4 @@
-Lime.Models.Tags = Backbone.Model.extend({
+Lime.Models.Tag = Backbone.Model.extend({
 
   initialize: function(listData){
     this.modelName = "tag";
