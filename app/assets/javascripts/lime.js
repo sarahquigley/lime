@@ -4,8 +4,6 @@ window.Lime = {
   Views: {},
   Routers: {},
   initialize: function(listsData, tasksData, tagsData) {
-    console.log(tasksData);
-    console.log(tagsData);
     var listsCollection = new Lime.Collections.Lists(listsData);
     var tasksCollection = new Lime.Collections.Tasks(tasksData);
     var tagsCollection = new Lime.Collections.Tags(tagsData);
