@@ -38,6 +38,21 @@ palpatines_dark_path_tasks = Task.create([
   { list: List.find(4), title: 'Double strangulation distance', list_position: 2 }
 ])
 
+vaders_tags = Tag.create([
+  { user: User.first, name: 'family' },
+  { user: User.first, name: 'empire' },
+  { user: User.first, name: 'rebels' },
+  { user: User.first, name: 'droids' }
+])
+
+vaders_taggings = Tagging.create([
+  { tag: Tag.first, task: Task.first },
+  { tag: Tag.find(2), task: Task.find(3) },
+  { tag: Tag.find(2), task: Task.find(4) },
+  { tag: Tag.find(3), task: Task.find(4) },
+  { tag: Tag.find(4), task: Task.find(5) },
+])
+
 
 
 
