@@ -1,10 +1,11 @@
 Lime.Routers.App = Backbone.Router.extend({
 
-  initialize: function(sidebarEl, contentEl, listsCollection, tasksCollection){
+  initialize: function(sidebarEl, contentEl, listsCollection, tasksCollection, tagsCollection){
     this.$sidebarEl = $(sidebarEl);
     this.$contentEl = $(contentEl);
     this.listsCollection = listsCollection;
     this.tasksCollection = tasksCollection;
+    this.tagsCollection = tagsCollection;
     this.currentViews = [];
   },
 
@@ -12,6 +13,7 @@ Lime.Routers.App = Backbone.Router.extend({
     '': 'index',
     'agenda': 'index',
     'agenda/:agenda': 'agenda',
+    'tags' : 'tags',
     'lists/:id' : 'featuredList'
   },
 
@@ -27,6 +29,16 @@ Lime.Routers.App = Backbone.Router.extend({
     });
     this.closeCurrentViews = ([appSidebarView, tasksAgendaView]);
     this.$contentEl.html(tasksAgendaView.render().$el);
+  },
+
+  tags: function(){
+    var appSidebarView = this.addSidebar();
+    var tagsIndexView = new Lime.Views.TagsIndex({
+      collection: this.tagsCollection
+    });
+    console.log(this.tagsCollection);
+    this.closeCurrentViews = ([appSidebarView, tagsIndexView]);
+    this.$contentEl.html(tagsIndexView.render().$el);
   },
 
   featuredList: function(id){

@@ -20,6 +20,6 @@ $(document).ready(function(){
   var tasksData = <%= @tasks.to_json.html_safe %>;
   var tagsData = <%= @tags.to_json.html_safe %>;
 
-  Lime.initialize(listsData, tasksData);
+  Lime.initialize(listsData, tasksData, tagsData);
 });
 </script>
