@@ -73,7 +73,7 @@ class Task < ActiveRecord::Base
 
   # Customise as_json
   def as_json(options = nil)
-    super(methods: :due_to_s).merge(options || {})
+    super(methods: :due_to_s, include: :tags ).merge(options || {})
   end
 
 
