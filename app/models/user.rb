@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   # Relationships
   has_many :lists, dependent: :destroy, inverse_of: :user
   has_many :tasks, through: :lists
+  has_many :tags, dependent: :destroy, inverse_of: :user
 
   # Validations
 

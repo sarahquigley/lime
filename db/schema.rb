@@ -37,12 +37,15 @@ ActiveRecord::Schema.define(:version => 20131013171845) do
   add_index "taggings", ["task_id"], :name => "index_taggings_on_task_id"
 
   create_table "tags", :force => true do |t|
+    t.integer  "user_id",    :null => false
     t.string   "name",       :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   add_index "tags", ["name"], :name => "index_tags_on_name"
+  add_index "tags", ["user_id", "name"], :name => "index_tags_on_user_id_and_name", :unique => true
+  add_index "tags", ["user_id"], :name => "index_tags_on_user_id"
 
   create_table "tasks", :force => true do |t|
     t.integer  "list_id",                          :null => false
