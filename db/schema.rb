@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131007153010) do
+ActiveRecord::Schema.define(:version => 20131013171845) do
 
   create_table "lists", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +24,25 @@ ActiveRecord::Schema.define(:version => 20131007153010) do
   end
 
   add_index "lists", ["user_id"], :name => "index_lists_on_user_id"
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "task_id",    :null => false
+    t.integer  "tag_id",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["task_id", "tag_id"], :name => "index_taggings_on_task_id_and_tag_id", :unique => true
+  add_index "taggings", ["task_id"], :name => "index_taggings_on_task_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags", ["name"], :name => "index_tags_on_name"
 
   create_table "tasks", :force => true do |t|
     t.integer  "list_id",                          :null => false

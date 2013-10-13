@@ -6,7 +6,9 @@ class Task < ActiveRecord::Base
   after_update :swap_list_positions
 
   # Relationships
-  belongs_to :list
+  belongs_to :list, inverse_of: :tasks
+  has_many :taggings, inverse_of: :tag
+  has_many :tags, through: :taggings
 
   # Validations
   validates :list, :list_position, :title, presence: true

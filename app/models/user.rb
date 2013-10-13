@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   attr_accessible :fullname, :email, :password, :password_confirmation, :remember_me
 
   # Relationships
-  has_many :lists, dependent: :destroy
+  has_many :lists, dependent: :destroy, inverse_of: :user
   has_many :tasks, through: :lists
 
   # Validations

@@ -2,7 +2,7 @@ class List < ActiveRecord::Base
   attr_accessible :archived, :completed, :label, :title, :user
 
   # Relationships
-  belongs_to :user
+  belongs_to :user, inverse_of: :lists
   has_many :tasks, dependent: :destroy
 
   # Validations
