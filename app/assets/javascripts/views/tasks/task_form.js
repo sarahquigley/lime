@@ -10,7 +10,8 @@ Lime.Views.TaskForm = Backbone.View.extend({
   },
 
   events: {
-    "submit #task-form": "submit"
+    "submit #task-form": "submit",
+    "click .task-priority-menu .app-drop-button": "dropMenu"
   },
 
   el: '<div id="task-form-container" >',
@@ -22,6 +23,12 @@ Lime.Views.TaskForm = Backbone.View.extend({
       task: this.model
     }));
     return this;
+  },
+
+  // Drop Menu (needs click outside collapse)
+
+  dropMenu: function(event){
+    $(event.target).closest('.app-drop-parent').toggleClass('dropped');
   },
 
   submit: function(event){

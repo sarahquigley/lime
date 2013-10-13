@@ -44,12 +44,9 @@
   background: $accent-color-lmid;
 }
 
-.app-drop-menu:hover{
-  .app-drop-button{
+.app-drop-menu .app-drop-button:hover{
     background: $accent-color-dmid;
     color: $accent-color-light;
-  }
-
 }
 
 /* Dropped Styles */
@@ -58,7 +55,8 @@
   background: $accent-color-light;
 
   .app-drop-button{
-    background: $accent-color-dmid;
+    background: $accent-color-lmid;
+    color: $accent-color-light;
   }
 
   menu{
@@ -75,9 +73,11 @@
     display: inline-block;
     width: 580px;
   }
+}
 
+#featured-list-header, #task-options{
   .app-drop-button{
-    background: $accent-color-lmid;
+    background: $border-color-light;
   }
 
   .app-drop-button:hover{
@@ -86,6 +86,32 @@
 
 }
 
-#featured-list-header.dropped{
+#featured-list-header.dropped, #task-options.dropped{
   background: white;
+
+  .app-drop-button{
+      background: $accent-color-lmid;
+      color: $accent-color-light;
+    }
+
+    .app-drop-button:hover{
+      background: $accent-color-dmid;
+    }
+
+}
+
+#task-options menu{
+  background: none;
+  padding-left: 2px;
+}
+
+#task-priority-slider{
+  background: rgb(232,235,234); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(232,235,234,1) 0%, rgba(191,20,17,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(232,235,234,1)), color-stop(100%,rgba(191,20,17,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(232,235,234,1) 0%,rgba(191,20,17,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(232,235,234,1) 0%,rgba(191,20,17,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, rgba(232,235,234,1) 0%,rgba(191,20,17,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom, rgba(232,235,234,1) 0%,rgba(191,20,17,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8ebea', endColorstr='#bf1411',GradientType=0 ); /* IE6-9 */
 }

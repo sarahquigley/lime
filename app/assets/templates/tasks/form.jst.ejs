@@ -10,12 +10,22 @@
 
   <div id="task-priority-field" class="field">
     <input type="hidden" id="task-priority-input" name="task[priority]"/>
-    <div id="task-priority-slider" class="slider"></div>
   </div>
 
   <div id="task-description-field" class="field">
     <textarea name="task[description]"><%= task.get("description") %></textarea>
   </div>
+
+
+  <div id="task-options" class="app-drop-parent">
+    <div class="task-priority-menu app-drop-menu">
+      <div class="app-drop-button"><i class="icon-exclamation"></i></div>
+      <menu>
+        <div id="task-priority-slider" class="slider"></div>
+      </menu>
+    </div>
+
+  <div>
 
   <div id="task-submit-button" class="submit">
     <input type="submit" value="Add task">
@@ -26,14 +36,18 @@
 <script>
 $(function() {
   $( "#task-priority-slider" ).slider({
-    value: 3,
+    orientation: "vertical",
+    value: 5,
     min: 1,
     max: 5,
     step: 1,
     slide: function( event, ui ) {
       $( "#task-priority-input" ).val( ui.value );
+      $( ".task-priority-menu .app-drop-button" ).attr('class').replace( /^priority/, "priority" + ui.value );
+
     }
   });
   $( "#task-priority-input" ).val( $( "#task-priority-slider" ).slider( "value" ) );
+  $( ".task-priority-menu .app-drop-button" ).addClass( "priority" + $( "#task-priority-slider" ).slider( "value" ) );
 });
 </script>
