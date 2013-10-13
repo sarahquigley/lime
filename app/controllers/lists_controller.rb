@@ -14,7 +14,7 @@ class ListsController < ApplicationController
     if @list.save
       render json: @list
     else
-      render json: { errors: @task.errors.full_messages }, status: 422
+      render json: { errors: @list.errors.full_messages }, status: 422
     end
   end
 
@@ -24,7 +24,7 @@ class ListsController < ApplicationController
     if @list.update_attributes(params[:list])
       render json: @list
     else
-      render json: { errors: @task.errors.full_messages }, status: 422
+      render json: { errors: @list.errors.full_messages }, status: 422
     end
   end
 
