@@ -16,6 +16,7 @@
     margin-top: 3px;
     background: $accent-color-light;
     width: 175px;
+    z-index: 1;
 
     button{
       padding: 10px;
@@ -31,6 +32,10 @@
 .app-drop-button{
   width: 20px;
   height: 20px;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  border-radius: 8px;
 }
 
 /* Hover effects */
@@ -42,6 +47,7 @@
 .app-drop-menu:hover{
   .app-drop-button{
     background: $accent-color-dmid;
+    color: $accent-color-light;
   }
 
 }
