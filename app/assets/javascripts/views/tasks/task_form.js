@@ -7,6 +7,7 @@ Lime.Views.TaskForm = Backbone.View.extend({
   },
 
   initialize: function(list){
+    console.log('init task form')
   },
 
   events: {
@@ -40,10 +41,12 @@ Lime.Views.TaskForm = Backbone.View.extend({
     if (this.model.isNew()){
       this.collection = this.options.list.get('tasks');
       this.collection.url = '/lists/' + this.options.list.get('id') + '/tasks';
+
       this.collection.create(this.model, {
         wait: true,
         success: function(){
           console.log('Task created.');
+          //model.set('tags', new Lime.Collections.Tags());
           that.collection.url = '/tasks';
           event.target.reset();
         }

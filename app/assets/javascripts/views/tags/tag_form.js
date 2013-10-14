@@ -37,7 +37,7 @@ Lime.Views.TagForm = Backbone.View.extend({
           console.log('Tag created.');
         },
         error: function(model, errors){
-          console.log('Error.');
+          console.log(errors);
         }
       });
     } else {

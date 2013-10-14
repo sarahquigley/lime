@@ -17,7 +17,7 @@ Lime.Views.ListShow = Backbone.View.extend({
     "click .sort-menu button.sort-tasks": "sort"
   },
 
-  el: '<section id="featured-list">',
+  el: '<section id="app-content">',
 
   template: JST['lists/show'],
 
@@ -32,8 +32,10 @@ Lime.Views.ListShow = Backbone.View.extend({
     var tasksIndexView = new Lime.Views.TasksIndex({
       collection: this.collection
     });
-    this.nestedViews = [tasksIndexView];
+    var taskFormView = new Lime.Views.TaskForm({ list: this.model });
+    this.nestedViews = [tasksIndexView, taskFormView];
     this.$el.append(tasksIndexView.render().$el);
+    this.$el.append(taskFormView.render().$el);
     return this;
   },
 
