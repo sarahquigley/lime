@@ -143,7 +143,7 @@
 }
 
 .task-title{
-  width: 589px;
+  width: 587px;
   line-height: 15px;
   font-size: 15px;
   padding: 10px 5px 10px 3px;
@@ -151,13 +151,32 @@
 }
 
 .task-title h3{
-  width: 565px;
+  width: 563px;
   display: inline-block;
 }
 
 .task-description{
   font-size: 12px;
   padding: 10px 3px;
+}
+
+.task-tags a{
+  font-size: 11px;
+  color: $accent-color-dmid;
+  border-right: $border-light;
+  padding-right: 5px;
+}
+
+.task-tags a:last-child{
+  border: 0;
+}
+
+.task-tags {
+  border-bottom: 1px dashed $border-color-light;
+}
+
+.task-tags a:hover{
+  color: $accent-color-dark;
 }
 
 .task-due{
@@ -189,11 +208,6 @@
   font-size: 15px;
   padding: 10px 5px 10px 3px;
   border-bottom: $border-light;
-}
-
-.task-title h3{
-  width: 565px;
-  display: inline-block;
 }
 
 .tag-task-count{

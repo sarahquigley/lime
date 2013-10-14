@@ -1,15 +1,15 @@
 Lime.Models.Task = Backbone.Model.extend({
 
-  //  defaults: function(){
-  //   return {
-  //     tags: new Lime.Collections.Tags()
-  //   }
-  // },
+   defaults: function(){
+    return {
+      tags: new Lime.Collections.Tags()
+    }
+  },
 
   initialize: function(taskData){
-    // Lime.Models.Task.__super__.initialize.apply(this, arguments)
-    // var tagsData = taskData ? taskData.tags : {};
-    // this.set("tags", new Lime.Collections.Tags(tagsData));
+    Lime.Models.Task.__super__.initialize.apply(this, arguments)
+    var tagsData = taskData ? taskData.tags : {};
+    this.set("tags", new Lime.Collections.Tags(tagsData));
     this.modelName = "task";
   },
 

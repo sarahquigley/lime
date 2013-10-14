@@ -7,7 +7,6 @@ Lime.Views.TaskForm = Backbone.View.extend({
   },
 
   initialize: function(list){
-    console.log('init task form')
   },
 
   events: {
@@ -46,7 +45,7 @@ Lime.Views.TaskForm = Backbone.View.extend({
         wait: true,
         success: function(){
           console.log('Task created.');
-          //model.set('tags', new Lime.Collections.Tags());
+          that.model.set('tags', new Lime.Collections.Tags());
           that.collection.url = '/tasks';
           event.target.reset();
         }
