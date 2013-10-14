@@ -1,6 +1,7 @@
 Lime.Views.TagsIndex = Backbone.View.extend({
 
   initialize: function(){
+    this.nestedViews = [];
     var that = this;
     var events = ['add', 'remove', 'change'];
     _(events).each(function(event){
@@ -9,12 +10,12 @@ Lime.Views.TagsIndex = Backbone.View.extend({
   },
 
   events: {
-    "click .task-menu .app-drop-button": "dropmenu",
+    "click .tag-menu .app-drop-button": "dropMenu",
     "click .tag-menu .edit-tag" : "edit",
     "click .tag-menu .delete-tag" : "delete"
   },
 
-  el: $('<div id="tags-container">'),
+  el: $('<section id="app-content">'),
 
   template: JST['tags/index'],
   menuTemplate: JST['tags/menu'],
@@ -24,6 +25,11 @@ Lime.Views.TagsIndex = Backbone.View.extend({
       tags: this.collection,
       menuTemplate: this.menuTemplate
     }));
+    var tagFormView = new Lime.Views.TagForm({
+        collection: this.collection
+    });
+    this.nestedViews = [tagFormView];
+    this.$el.append(tagFormView.render().$el);
     return this;
   },
 
@@ -33,12 +39,24 @@ Lime.Views.TagsIndex = Backbone.View.extend({
     $(event.target).closest('.app-drop-parent').toggleClass('dropped');
   },
 
-  edit: function(){
-
+  edit: function(event){
+    event.preventDefault();
+    var tagFormView = new Lime.Views.TagForm({ model: this.eventModel(event) });
+    $(event.target).parents('.tag').html(tagFormView.render().$el);
   },
 
-  delete: function(){
+  delete: function(event){
+    event.preventDefault();
+    this.eventModel(event).destroy({
+      success: function(){
+        console.log('Tag destroyed');
+      }
+    });
+  },
 
+  eventModel: function(event){
+    var eventModelId = $(event.target).parents('.tag').attr('data-tag-id');
+    return this.collection.get(eventModelId);
   }
 
 })

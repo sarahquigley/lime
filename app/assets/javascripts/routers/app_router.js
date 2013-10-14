@@ -36,7 +36,6 @@ Lime.Routers.App = Backbone.Router.extend({
     var tagsIndexView = new Lime.Views.TagsIndex({
       collection: this.tagsCollection
     });
-    console.log(this.tagsCollection);
     this.closeCurrentViews = ([appSidebarView, tagsIndexView]);
     this.$contentEl.html(tagsIndexView.render().$el);
   },

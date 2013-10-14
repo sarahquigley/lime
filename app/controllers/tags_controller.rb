@@ -19,7 +19,7 @@ class TagsController < ApplicationController
   end
 
   def update
-    @tag = tag.find(params[:id])
+    @tag = Tag.find(params[:id])
 
     if @tag.update_attributes(params[:tag])
       render json: @tag
@@ -29,7 +29,7 @@ class TagsController < ApplicationController
   end
 
   def destroy
-    @tag = tag.find(params[:id])
+    @tag = Tag.find(params[:id])
     @tag.destroy
     render json: @tag
   end
