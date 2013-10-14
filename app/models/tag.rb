@@ -9,4 +9,13 @@ class Tag < ActiveRecord::Base
   # Validations
   validates :name, presence: true
 
+  # Task count
+  def task_count
+    self.tasks.count
+  end
+
+  def as_json(options = nil)
+    super(methods: :task_count).merge(options || {})
+  end
+
 end
