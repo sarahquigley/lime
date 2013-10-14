@@ -1,18 +1,20 @@
-<header id="tags-header" class="app-content-header">
-  <h2>Tags</h2>
-</header>
+<section id="app-content">
+  <header id="tags-header" class="app-content-header">
+    <h2>Tags</h2>
+  </header>
 
-<ul id="tags">
+  <ul id="tags">
 
-  <% tags.each(function(tag){ %>
+    <% tags.each(function(tag){ %>
 
-    <li class="tag app-drop-parent">
-      <a href="#"><%= tag.get('name') %></a>
-      <span class="tag-task-count">??</span>
+      <li class="tag app-drop-parent">
+        <a href="#"><%= tag.get('name') %></a>
+        <span class="tag-task-count">??</span>
 
-      <%= menuTemplate({ tag: tag }) %>
-    </li>
+        <%= menuTemplate({ tag: tag }) %>
+      </li>
 
-  <% }); %>
+    <% }); %>
 
-</ul>
+  </ul>
+</section>

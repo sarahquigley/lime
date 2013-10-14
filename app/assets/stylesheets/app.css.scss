@@ -126,10 +126,8 @@
 }
 
 /****************************************************
-              FEATURED LIST
+              Tasks
 *****************************************************/
-
-/* Tasks */
 
 .task-body {
   width: 595px;
@@ -174,5 +172,37 @@
 }
 
 .task-title:hover .task-due{
+  background: $accent-color-lmid;
+}
+
+/****************************************************
+              Tags index
+*****************************************************/
+
+.tag{
+  width: 617px;
+  line-height: 15px;
+  font-size: 15px;
+  padding: 10px 5px 10px 3px;
+  border-bottom: $border-light;
+}
+
+.task-title h3{
+  width: 565px;
+  display: inline-block;
+}
+
+.tag-task-count{
+  font-size: 10px;
+  padding: 2px 4px;
+  border-radius: 5px;
+  background: $accent-color-light;
+}
+
+.tag:hover{
+  background: $accent-color-light;
+}
+
+.tag:hover .tag-task-count{
   background: $accent-color-lmid;
 }
