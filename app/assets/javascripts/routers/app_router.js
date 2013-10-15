@@ -1,11 +1,12 @@
 Lime.Routers.App = Backbone.Router.extend({
 
-  initialize: function(sidebarEl, contentEl, listsCollection, tasksCollection, tagsCollection){
+  initialize: function(sidebarEl, contentEl, listsCollection, tasksCollection, tagsCollection, sidebarViews){
     this.$sidebarEl = $(sidebarEl);
     this.$contentEl = $(contentEl);
     this.listsCollection = listsCollection;
     this.tasksCollection = tasksCollection;
     this.tagsCollection = tagsCollection;
+    this.sidebarViews = sidebarViews;
     this.currentViews = [];
   },
 
@@ -27,7 +28,7 @@ Lime.Routers.App = Backbone.Router.extend({
       collection: this.tasksCollection,
       agenda: agenda
     });
-    this.closeCurrentViews([appSidebarView, tasksAgendaView]);
+    //this.closeCurrentViews([appSidebarView, tasksAgendaView]);
     this.$contentEl.html(tasksAgendaView.render().$el);
   },
 
@@ -36,7 +37,7 @@ Lime.Routers.App = Backbone.Router.extend({
     var tagsIndexView = new Lime.Views.TagsIndex({
       collection: this.tagsCollection
     });
-    this.closeCurrentViews([appSidebarView, tagsIndexView]);
+    //this.closeCurrentViews([appSidebarView, tagsIndexView]);
     this.$contentEl.html(tagsIndexView.render().$el);
   },
 
@@ -46,14 +47,14 @@ Lime.Routers.App = Backbone.Router.extend({
       model: this.listsCollection.get(id),
       tags: this.tagsCollection
     });
-    this.closeCurrentViews([appSidebarView, listShowView]);
+    //this.closeCurrentViews([appSidebarView, listShowView]);
     this.$contentEl.html(listShowView.render().$el);
   },
 
   addSidebar: function(){
-    var appSidebarView = new Lime.Views.AppSidebar({ collection: this.listsCollection });
-    this.$sidebarEl.html(appSidebarView.render().$el);
-    return appSidebarView;
+    this.$sidebarEl.html(this.sidebarViews.agendaNavView.render().$el);
+    this.$sidebarEl.append(this.sidebarViews.listsIndexView.render().$el);
+    this.$sidebarEl.append(this.sidebarViews.listFormView.render().$el);
   },
 
   closeCurrentViews: function(newViews){
