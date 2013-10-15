@@ -22,6 +22,9 @@ window.Lime = {
 
     // Main Content:
 
+    var mainContentViews = {
+
+    }
 
     new Lime.Routers.App('#app-sidebar', '#app-content-container', listsCollection, tasksCollection, tagsCollection, sidebarViews);
 

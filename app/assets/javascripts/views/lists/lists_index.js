@@ -15,7 +15,7 @@ Lime.Views.ListsIndex = Backbone.View.extend({
     "click .list-menu button.delete-list" : "delete"
   },
 
-  el: '<div id="lists-container" class="sidebar-section">',
+  el: '#app-sidebar > #lists-container',
 
   template: JST['lists/index'],
 

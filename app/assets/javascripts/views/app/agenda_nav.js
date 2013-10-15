@@ -4,7 +4,7 @@ Lime.Views.AgendaNav = Backbone.View.extend({
     this.nestedViews = [];
   },
 
-  el: '<div id="app-agendas">',
+  el: '#app-sidebar > #app-agendas',
 
   template: JST['agenda/index'],
 

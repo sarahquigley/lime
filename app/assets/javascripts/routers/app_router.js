@@ -52,9 +52,9 @@ Lime.Routers.App = Backbone.Router.extend({
   },
 
   addSidebar: function(){
-    this.$sidebarEl.html(this.sidebarViews.agendaNavView.render().$el);
-    this.$sidebarEl.append(this.sidebarViews.listsIndexView.render().$el);
-    this.$sidebarEl.append(this.sidebarViews.listFormView.render().$el);
+    this.sidebarViews.agendaNavView.render();
+    this.sidebarViews.listsIndexView.render();
+    this.sidebarViews.listFormView.render();
   },
 
   closeCurrentViews: function(newViews){

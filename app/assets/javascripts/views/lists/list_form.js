@@ -13,7 +13,7 @@ Lime.Views.ListForm = Backbone.View.extend({
     'submit #list-form': 'submit'
   },
 
-  el: '<div id="lists-form-container" class="sidebar-section">',
+  el: '#app-sidebar > #lists-form-container',
 
   template: JST['lists/form'],
 
