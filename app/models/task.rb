@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  attr_accessible :archived, :completed, :description, :due, :list, :list_position, :priority, :title
+  attr_accessible :archived, :completed, :description, :due, :list, :list_position, :priority, :title, :tag_ids
 
   # Callbacks
   before_validation :increment_list_position, on: :create
