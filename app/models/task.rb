@@ -1,9 +1,9 @@
 class Task < ActiveRecord::Base
-  attr_accessible :archived, :completed, :description, :due, :list, :list_position, :priority, :title, :tag_ids
+  attr_accessible :archived, :completed, :description, :due, :list, :list_position, :priority, :title
 
   # Callbacks
   before_validation :increment_list_position, on: :create
-  # after_update :swap_list_positions
+  after_update :swap_list_positions
 
   # Relationships
   belongs_to :list, inverse_of: :tasks
@@ -15,7 +15,7 @@ class Task < ActiveRecord::Base
   validates :list_position, uniqueness: { scope: :list_id, message: "must be unique within list" }, on: :create
   validates :list_position, numericality: { greater_than: 0, only_integer: true }
   validates :priority, numericality: { only_integer: true, greater_than: 0, less_than: 6 }, allow_nil: true
-  # validate  :must_have_list_position_in_list, on: :update
+  validate  :must_have_list_position_in_list, on: :update
 
   # SAVE: Increment list_position before save
   def increment_list_position
@@ -25,22 +25,23 @@ class Task < ActiveRecord::Base
     self.list_position = last_pos_occupied + 1
   end
 
-  # UPDATE: Swap list_position on update
-  # def swap_list_positions
-  #   if self.changed_attributes.keys.include?("list_position")
-  #     new_pos = self.list_position
-  #     old_pos = self.changed_attributes["list_position"]
-  #     if new_pos > old_pos      #moving down
-  #       tasks = siblings.where("list_position BETWEEN ? AND ?", old_pos, new_pos)
-  #       tasks.update_all("list_position = list_position - 1")
-  #     elsif new_pos < old_pos  #moving up
-  #       tasks = siblings.where("list_position BETWEEN ? AND ?", new_pos, old_pos)
-  #       tasks.update_all("list_position = list_position + 1")
-  #     end
-  #   end
-  # end
+  #UPDATE: Swap list_position on update
+  def swap_list_positions
+    if self.changed_attributes.keys.include?("list_position")
+      new_pos = self.list_position
+      old_pos = self.changed_attributes["list_position"]
+      if new_pos > old_pos      #moving down
+        tasks = siblings.where("list_position BETWEEN ? AND ?", old_pos, new_pos)
+        tasks.update_all("list_position = list_position - 1")
+      elsif new_pos < old_pos  #moving up
+        tasks = siblings.where("list_position BETWEEN ? AND ?", new_pos, old_pos)
+        tasks.update_all("list_position = list_position + 1")
+      end
+    end
+  end
 
-  # VALIDATION: cannot update list position if at end of list
+<<<<<<< Local Changes
+  # # VALIDATION: cannot update list position if at end of list
   # def must_have_list_position_in_list
   #   if self.list_position > self.list.tasks.count
   #     self.errors.add(:list_position, "Cannot move last item in list.")
@@ -51,6 +52,19 @@ class Task < ActiveRecord::Base
   # def siblings
   #   self.list.tasks.where("id != ?", self.id)
   # end
+=======
+  # VALIDATION: cannot update list position if at end of list
+  def must_have_list_position_in_list
+    if self.list_position > self.list.tasks.count
+      self.errors.add(:list_position, "Cannot move last item in list.")
+    end
+  end
+
+  # HELPER: sibling tasks
+  def siblings
+    self.list.tasks.where("id != ?", self.id)
+  end
+>>>>>>> External Changes
 
   # Due Date for Display
   def due_to_s
