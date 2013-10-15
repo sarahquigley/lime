@@ -8,16 +8,12 @@
     <input type="date" name="task[due]" value="<%= task.get("due") %>">
   </div>
 
-  <div id="task-priority-field" class="field">
-    <input type="hidden" id="task-priority-input" name="task[priority]"/>
-  </div>
-
   <div id="task-description-field" class="field">
     <textarea name="task[description]"><%= task.get("description") %></textarea>
   </div>
 
   <div id="task-tags-field" class="field">
-    <select data-placeholder="@" class="chosen-select" name='task[tag_ids][]' style="width:100%;" multiple tabindex="4">
+    <select data-placeholder="@" class="chosen-select" name='task[tag_ids][]' multiple tabindex="4">
       <option value=""></option>
       <% tags.each(function(tag){ %>
         <% var selected = task.get('tags').findWhere({id: tag.get('id')}) ? 'selected' : null %>
@@ -26,14 +22,16 @@
     </select>
   </div>
 
-  <div id="task-options" class="app-drop-parent">
-    <div class="task-priority-menu app-drop-menu">
-      <div class="app-drop-button"><i class="icon-exclamation"></i></div>
-      <menu>
-      </menu>
-    </div>
+  <div id="task-priority-field" class="field">
+    <select name='task[priority]'>
+      <option value="">!</option>
+      <% _.each([1, 2, 3, 4, 5], function(priority){ %>
+        <% var selected = task.get('priority') === priority ? 'selected' : null %>
+        <option value="<%= priority %>" <%= selected %>><%= priority %></option>
+      <% }); %>
+    </select>
+  </div>
 
-  <div>
 
   <div id="task-submit-button" class="submit">
     <input type="submit" value="Add task">

@@ -1,6 +1,7 @@
 .app-form{
 
-  .field > input, .field > textarea{
+  .field > input, .field > textarea, .field select, .field option{
+    width: 100%;
     font-size: 15px;
     padding: 4px;
     border: $border-light;
@@ -18,6 +19,7 @@
   .submit > input:hover{
     background: $accent-color-dmid;
   }
+
 }
 
 #list-form{
@@ -32,6 +34,21 @@
 
   .field > input, .field > textarea{
     width: 615px;
+  }
+
+  #task-tags-field{
+    width: 92%;
+    float: left;
+    height: 31px;
+  }
+
+  #task-priority-field{
+    width: 7%;
+    float: right;
+
+    select{
+      margin: 0;
+    }
   }
 
 }

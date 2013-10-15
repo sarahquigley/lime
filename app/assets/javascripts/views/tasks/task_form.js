@@ -12,7 +12,6 @@ Lime.Views.TaskForm = Backbone.View.extend({
 
   events: {
     "submit #task-form": "submit",
-    "click .task-priority-menu .app-drop-button": "dropMenu"
   },
 
   el: '<div id="task-form-container" >',
