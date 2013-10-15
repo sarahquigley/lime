@@ -7,19 +7,17 @@ Lime.Views.ListForm = Backbone.View.extend({
   },
 
   initialize: function(options){
-    this.nestedViews = [];
   },
 
   events: {
     'submit #list-form': 'submit'
   },
 
-  el: '<div id="lists-form-container" class="sidebar-section">',
+  el: '#app-sidebar > #lists-form-container',
 
   template: JST['lists/form'],
 
   render: function(){
-    console.log('rendering list form');
     this.$el.html(this.template({
       list: this.model
     }));
@@ -32,27 +30,20 @@ Lime.Views.ListForm = Backbone.View.extend({
     var attrs = $(event.target).serializeJSON();
     this.model.set(attrs);
 
-    if(this.model.isNew()){
-      this.collection.create(this.model, {
-        wait: true,
-        success: function(model){
-          console.log('List created.');
-          // There must be a better way to do this (in model)
-          model.set('tasks', new Lime.Collections.Tasks());
-          Backbone.history.navigate(model.url(), {trigger: true})
-        },
-        error: function(model, errors){
-          console.log('Error');
-        }
-      });
-    } else {
-      this.model.save({}, {
-        success: function(){
-          console.log('List updated');
-        }
-      });
-    }
-
+    this.collection.create(this.model, {
+      wait: true,
+      success: function(model){
+        console.log('List created.');
+        // There must be a better way to do this (in model)
+        model.set('tasks', new Lime.Collections.Tasks());
+        that.model = new Lime.Models.List();
+        event.target.reset();
+        Backbone.history.navigate(model.url(), {trigger: true});
+      },
+      error: function(model, errors){
+        console.log('Error');
+      }
+    });
   }
 
 });
