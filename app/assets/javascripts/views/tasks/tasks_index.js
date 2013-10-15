@@ -1,6 +1,7 @@
 Lime.Views.TasksIndex = Backbone.View.extend({
 
   initialize: function(){
+    this.tags = this.options.tags;
     var that = this;
     var events = ['add', 'change', 'remove'];
     _(events).each(function(event){
@@ -43,7 +44,10 @@ Lime.Views.TasksIndex = Backbone.View.extend({
 
   edit: function(){
     event.preventDefault();
-    var taskFormView = new Lime.Views.TaskForm({model: this.eventModel(event)});
+    var taskFormView = new Lime.Views.TaskForm({
+      model: this.eventModel(event),
+      tags: this.tags
+    });
     $(event.target).parents('.task').html(taskFormView.render().$el);
   },
 

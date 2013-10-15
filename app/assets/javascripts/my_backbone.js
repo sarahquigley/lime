@@ -3,8 +3,7 @@
 _.extend(Backbone.View.prototype, {
 
   close: function(){
-    this.remove();
-    this.unbind();
+    this.remove(); // Remove view from DOM
 
     if(this.nestedViews){
       _.each(this.nestedViews, function(view){

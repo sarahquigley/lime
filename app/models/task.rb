@@ -1,5 +1,5 @@
 class Task < ActiveRecord::Base
-  attr_accessible :archived, :completed, :description, :due, :list, :list_position, :priority, :title, :tags
+  attr_accessible :archived, :completed, :description, :due, :list, :list_position, :priority, :title, :tag_ids
 
   # Callbacks
   before_validation :increment_list_position, on: :create
@@ -15,7 +15,7 @@ class Task < ActiveRecord::Base
   validates :list_position, uniqueness: { scope: :list_id, message: "must be unique within list" }, on: :create
   validates :list_position, numericality: { greater_than: 0, only_integer: true }
   validates :priority, numericality: { only_integer: true, greater_than: 0, less_than: 6 }, allow_nil: true
-  validate  :must_have_list_position_in_list, on: :update
+  # validate  :must_have_list_position_in_list, on: :update
 
   # SAVE: Increment list_position before save
   def increment_list_position
@@ -25,7 +25,7 @@ class Task < ActiveRecord::Base
     self.list_position = last_pos_occupied + 1
   end
 
-  #UPDATE: Swap list_position on update
+  UPDATE: Swap list_position on update
   def swap_list_positions
     if self.changed_attributes.keys.include?("list_position")
       new_pos = self.list_position
@@ -40,7 +40,7 @@ class Task < ActiveRecord::Base
     end
   end
 
-  # VALIDATION: cannot update list position if at end of list
+  VALIDATION: cannot update list position if at end of list
   def must_have_list_position_in_list
     if self.list_position > self.list.tasks.count
       self.errors.add(:list_position, "Cannot move last item in list.")

@@ -7,6 +7,7 @@ Lime.Views.TaskForm = Backbone.View.extend({
   },
 
   initialize: function(list){
+    this.tags = this.options.tags;
   },
 
   events: {
@@ -20,7 +21,8 @@ Lime.Views.TaskForm = Backbone.View.extend({
 
   render: function(){
     this.$el.html(this.template({
-      task: this.model
+      task: this.model,
+      tags: this.tags
     }));
     return this;
   },
@@ -43,18 +45,25 @@ Lime.Views.TaskForm = Backbone.View.extend({
 
       this.collection.create(this.model, {
         wait: true,
-        success: function(){
+        success: function(model, response){
           console.log('Task created.');
-          that.model.set('tags', new Lime.Collections.Tags());
+          model.set('tags', new Lime.Collections.Tags(response.get('tags')));
           that.collection.url = '/tasks';
           event.target.reset();
+        },
+        errors: function(model, errors){
+          console.log(errors);
         }
       });
     } else {
       this.model.save({}, {
-        success: function(){
+        success: function(model, response){
           console.log('Task updated');
+          model.set('tags', new Lime.Collections.Tags(response.tags));
           event.target.reset();
+        },
+        errors: function(model, errors){
+          console.log(errors);
         }
       })
     }

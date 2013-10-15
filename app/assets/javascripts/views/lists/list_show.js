@@ -2,6 +2,7 @@ Lime.Views.ListShow = Backbone.View.extend({
 
   initialize: function(){
     this.collection = this.model.get('tasks');
+    this.tags = this.options.tags;
     this.nestedViews = [];
     var that = this;
     var events = ['add', 'change', 'remove'];
@@ -30,9 +31,13 @@ Lime.Views.ListShow = Backbone.View.extend({
     }));
 
     var tasksIndexView = new Lime.Views.TasksIndex({
-      collection: this.collection
+      collection: this.collection,
+      tags: this.tags
     });
-    var taskFormView = new Lime.Views.TaskForm({ list: this.model });
+    var taskFormView = new Lime.Views.TaskForm({
+      list: this.model,
+      tags: this.tags
+    });
     this.nestedViews = [tasksIndexView, taskFormView];
     this.$el.append(tasksIndexView.render().$el);
     this.$el.append(taskFormView.render().$el);
@@ -47,7 +52,6 @@ Lime.Views.ListShow = Backbone.View.extend({
 
   // Sort
   sort: function(event){
-    console.log('moo')
     sortAttribute = $(event.target).attr("data-sort");
     this.collection.sortCollection(sortAttribute);
   }

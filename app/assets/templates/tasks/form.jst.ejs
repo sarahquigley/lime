@@ -16,15 +16,20 @@
     <textarea name="task[description]"><%= task.get("description") %></textarea>
   </div>
 
-  <!-- <div id="task-tags-field" class="field">
-    <input type="text" name="task[tags]" value="">
-  </div> -->
+  <div id="task-tags-field" class="field">
+    <select data-placeholder="@" class="chosen-select" name='task[tag_ids][]' style="width:100%;" multiple tabindex="4">
+      <option value=""></option>
+      <% tags.each(function(tag){ %>
+        <% var selected = task.get('tags').findWhere({id: tag.get('id')}) ? 'selected' : null %>
+        <option value="<%= tag.get('id') %>" <%= selected %>><%= tag.get('name') %></option>
+      <% }); %>
+    </select>
+  </div>
 
   <div id="task-options" class="app-drop-parent">
     <div class="task-priority-menu app-drop-menu">
       <div class="app-drop-button"><i class="icon-exclamation"></i></div>
       <menu>
-        <div id="task-priority-slider" class="slider"></div>
       </menu>
     </div>
 
@@ -37,20 +42,5 @@
 </form>
 
 <script>
-$(function() {
-  $( "#task-priority-slider" ).slider({
-    orientation: "vertical",
-    value: 5,
-    min: 1,
-    max: 5,
-    step: 1,
-    slide: function( event, ui ) {
-      $( "#task-priority-input" ).val( ui.value );
-      $( ".task-priority-menu .app-drop-button" ).attr('class').replace( /^priority/, "priority" + ui.value );
-
-    }
-  });
-  $( "#task-priority-input" ).val( $( "#task-priority-slider" ).slider( "value" ) );
-  $( ".task-priority-menu .app-drop-button" ).addClass( "priority" + $( "#task-priority-slider" ).slider( "value" ) );
-});
+  $(".chosen-select").chosen()
 </script>

@@ -14,6 +14,7 @@
 //= require jquery.ui.all
 //= require jquery_ujs
 //= require jquery.serializeJSON.min
+//= require chosen.jquery.min.js
 //= require underscore
 //= require backbone
 //= require my_backbone
