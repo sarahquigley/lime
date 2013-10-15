@@ -3,7 +3,7 @@ class Task < ActiveRecord::Base
 
   # Callbacks
   before_validation :increment_list_position, on: :create
-  after_update :swap_list_positions
+  # after_update :swap_list_positions
 
   # Relationships
   belongs_to :list, inverse_of: :tasks
@@ -25,32 +25,32 @@ class Task < ActiveRecord::Base
     self.list_position = last_pos_occupied + 1
   end
 
-  UPDATE: Swap list_position on update
-  def swap_list_positions
-    if self.changed_attributes.keys.include?("list_position")
-      new_pos = self.list_position
-      old_pos = self.changed_attributes["list_position"]
-      if new_pos > old_pos      #moving down
-        tasks = siblings.where("list_position BETWEEN ? AND ?", old_pos, new_pos)
-        tasks.update_all("list_position = list_position - 1")
-      elsif new_pos < old_pos  #moving up
-        tasks = siblings.where("list_position BETWEEN ? AND ?", new_pos, old_pos)
-        tasks.update_all("list_position = list_position + 1")
-      end
-    end
-  end
+  # UPDATE: Swap list_position on update
+  # def swap_list_positions
+  #   if self.changed_attributes.keys.include?("list_position")
+  #     new_pos = self.list_position
+  #     old_pos = self.changed_attributes["list_position"]
+  #     if new_pos > old_pos      #moving down
+  #       tasks = siblings.where("list_position BETWEEN ? AND ?", old_pos, new_pos)
+  #       tasks.update_all("list_position = list_position - 1")
+  #     elsif new_pos < old_pos  #moving up
+  #       tasks = siblings.where("list_position BETWEEN ? AND ?", new_pos, old_pos)
+  #       tasks.update_all("list_position = list_position + 1")
+  #     end
+  #   end
+  # end
 
-  VALIDATION: cannot update list position if at end of list
-  def must_have_list_position_in_list
-    if self.list_position > self.list.tasks.count
-      self.errors.add(:list_position, "Cannot move last item in list.")
-    end
-  end
+  # VALIDATION: cannot update list position if at end of list
+  # def must_have_list_position_in_list
+  #   if self.list_position > self.list.tasks.count
+  #     self.errors.add(:list_position, "Cannot move last item in list.")
+  #   end
+  # end
 
-  # HELPER: sibling tasks
-  def siblings
-    self.list.tasks.where("id != ?", self.id)
-  end
+  # # HELPER: sibling tasks
+  # def siblings
+  #   self.list.tasks.where("id != ?", self.id)
+  # end
 
   # Due Date for Display
   def due_to_s
