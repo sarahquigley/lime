@@ -1,18 +1,3 @@
 <header id="tags-header" class="app-content-header">
   <h2>Tags</h2>
 </header>
-
-<ul id="tags">
-
-  <% tags.each(function(tag){ %>
-
-  <li class="tag app-drop-parent" data-tag-id="<%= tag.get('id') %>">
-      <a href="#"><%= tag.get('name') %></a>
-      <span class="tag-task-count"><%= tag.get('task_count') %></span>
-
-      <%= menuTemplate({ tag: tag }) %>
-    </li>
-
-  <% }); %>
-
-</ul>

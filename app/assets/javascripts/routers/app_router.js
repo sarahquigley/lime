@@ -1,12 +1,13 @@
 Lime.Routers.App = Backbone.Router.extend({
 
-  initialize: function(sidebarEl, contentEl, listsCollection, tasksCollection, tagsCollection, sidebarViews){
+  initialize: function(sidebarEl, contentEl, listsCollection, tasksCollection, tagsCollection, sidebarViews, tagsViews){
     this.$sidebarEl = $(sidebarEl);
     this.$contentEl = $(contentEl);
     this.listsCollection = listsCollection;
     this.tasksCollection = tasksCollection;
     this.tagsCollection = tagsCollection;
     this.sidebarViews = sidebarViews;
+    this.tagsViews = tagsViews;
     this.currentViews = [];
   },
 
@@ -23,7 +24,7 @@ Lime.Routers.App = Backbone.Router.extend({
   },
 
   agenda: function(agenda){
-    var appSidebarView = this.addSidebar();
+    this.addSidebar();
     var tasksAgendaView = new Lime.Views.TasksAgenda({
       collection: this.tasksCollection,
       agenda: agenda
@@ -33,16 +34,12 @@ Lime.Routers.App = Backbone.Router.extend({
   },
 
   tags: function(){
-    var appSidebarView = this.addSidebar();
-    var tagsIndexView = new Lime.Views.TagsIndex({
-      collection: this.tagsCollection
-    });
-    //this.closeCurrentViews([appSidebarView, tagsIndexView]);
-    this.$contentEl.html(tagsIndexView.render().$el);
+    this.addSidebar();
+    this.tagsViews.tagsIndexView.render();
   },
 
   listShow: function(id){
-    var appSidebarView = this.addSidebar();
+    this.addSidebar();
     var listShowView = new Lime.Views.ListShow({
       model: this.listsCollection.get(id),
       tags: this.tagsCollection
@@ -55,15 +52,15 @@ Lime.Routers.App = Backbone.Router.extend({
     this.sidebarViews.agendaNavView.render();
     this.sidebarViews.listsIndexView.render();
     this.sidebarViews.listFormView.render();
-  },
-
-  closeCurrentViews: function(newViews){
-    if(this.currentViews.length > 0){
-      _.each(this.currentViews, function(view){
-        view.close();
-      });
-    }
-    this.currentViews = newViews;
   }
+
+  // closeCurrentViews: function(newViews){
+  //   if(this.currentViews.length > 0){
+  //     _.each(this.currentViews, function(view){
+  //       view.close();
+  //     });
+  //   }
+  //   this.currentViews = newViews;
+  // }
 
 });

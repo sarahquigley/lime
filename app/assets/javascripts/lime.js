@@ -14,6 +14,8 @@ window.Lime = {
 
     // Create site-wide views
 
+    // Sidebar
+
     var sidebarViews = {
       agendaNavView: new Lime.Views.AgendaNav(),
       listsIndexView: new Lime.Views.ListsIndex({ collection: listsCollection }),
@@ -22,11 +24,21 @@ window.Lime = {
 
     // Main Content:
 
-    var mainContentViews = {
+    // var listShowViews = {
+    //   listShowView: new Lime.Views.ListShow(),
+    //   taskFormView: new Lime.Views.TaskForm()
+    // }
+
+    var tagsViews = {
+      tagsIndexView: new Lime.Views.TagsIndex({ collection: tagsCollection }),
+      tagFormView: new Lime.Views.TagForm({ collection: tagsCollection })
+    }
+
+    var agendaViews = {
 
     }
 
-    new Lime.Routers.App('#app-sidebar', '#app-content-container', listsCollection, tasksCollection, tagsCollection, sidebarViews);
+    new Lime.Routers.App('#app-sidebar', '#app-content-container', listsCollection, tasksCollection, tagsCollection, sidebarViews, tagsViews);
 
     Backbone.history.start();
     console.log('Welcome to Lime.');

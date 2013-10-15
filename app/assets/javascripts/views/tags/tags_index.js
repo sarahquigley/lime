@@ -9,54 +9,35 @@ Lime.Views.TagsIndex = Backbone.View.extend({
     });
   },
 
-  events: {
-    "click .tag-menu .app-drop-button": "dropMenu",
-    "click .tag-menu .edit-tag" : "edit",
-    "click .tag-menu .delete-tag" : "delete"
-  },
-
-  el: $('<section id="app-content">'),
+  el: $('#app-content'),
 
   template: JST['tags/index'],
-  menuTemplate: JST['tags/menu'],
 
   render: function(){
-    this.$el.html(this.template({
-      tags: this.collection,
-      menuTemplate: this.menuTemplate
-    }));
-    var tagFormView = new Lime.Views.TagForm({
-        collection: this.collection
+    var that = this;
+
+    // Close all previously nested views and reset this.nestedViews
+    _.each(this.nestedViews, function(view){ view.close() });
+    this.nestedViews = [];
+
+    // Create <ul> to contain <li> items for every model in the collection
+    var $ul = $('<ul id="tags">');
+
+    // Add <li> items for every model in the collection
+    this.collection.each(function(model){
+      var tagIndexItemView = new Lime.Views.TagIndexItem({
+        model: model
+      });
+      that.nestedViews.push(tagIndexItemView);
+      $ul.append(tagIndexItemView.render().$el);
     });
-    this.nestedViews = [tagFormView];
-    this.$el.append(tagFormView.render().$el);
+
+    // Insert populated <ul>
+    this.$el.empty();
+    this.$el.append(this.template({}));
+    this.$el.append($ul);
+
     return this;
-  },
-
-  // Drop Menu (needs click outside collapse)
-
-  dropMenu: function(event){
-    $(event.target).closest('.app-drop-parent').toggleClass('dropped');
-  },
-
-  edit: function(event){
-    event.preventDefault();
-    var tagFormView = new Lime.Views.TagForm({ model: this.eventModel(event) });
-    $(event.target).parents('.tag').html(tagFormView.render().$el);
-  },
-
-  delete: function(event){
-    event.preventDefault();
-    this.eventModel(event).destroy({
-      success: function(){
-        console.log('Tag destroyed');
-      }
-    });
-  },
-
-  eventModel: function(event){
-    var eventModelId = $(event.target).parents('.tag').attr('data-tag-id');
-    return this.collection.get(eventModelId);
   }
 
 })

@@ -1,0 +1,10 @@
+<div class="tag-show">
+  <a href="#"><%= tag.get('name') %></a>
+  <span class="tag-task-count"><%= tag.get('task_count') %></span>
+
+  <%= menuTemplate({ tag: tag }) %>
+</div>
+
+<div class="tag-edit hidden">
+  <%= formTemplate({ tag: tag }) %>
+</div>
