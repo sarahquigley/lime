@@ -1,3 +1,6 @@
+// Purpose: Renders some misc. sidebar menu items
+// Where? Sidebar (no Parent View)
+
 Lime.Views.AgendaNav = Backbone.View.extend({
 
   initialize: function(){

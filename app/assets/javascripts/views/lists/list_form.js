@@ -1,3 +1,6 @@
+// Purpose: Renders form for creating new Lists
+// Where? Sidebar (no Parent View)
+
 Lime.Views.ListForm = Backbone.View.extend({
 
   options: function(){
@@ -24,6 +27,7 @@ Lime.Views.ListForm = Backbone.View.extend({
     return this;
   },
 
+  // Submits new Lists and resets the model on submission
   submit: function(event){
     var that = this;
     event.preventDefault();

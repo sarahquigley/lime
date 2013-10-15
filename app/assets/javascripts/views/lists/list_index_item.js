@@ -1,3 +1,6 @@
+// Purpose: Displays individual Lists
+// Where? Sidebar (Parent View: ListsIndexView)
+
 Lime.Views.ListIndexItem = Backbone.View.extend({
 
   initialize: function(){
@@ -31,22 +34,30 @@ Lime.Views.ListIndexItem = Backbone.View.extend({
     return this;
   },
 
+
+  /* These functions alter the way the view is displayed */
+
+  // Drops down then list item menus
   dropMenu: function(event){
     $(event.target).closest('.app-drop-parent').toggleClass('dropped');
   },
 
+  // Toggles between displaying the list item / displaying a form for editing the list item
   switchView: function(){
-    event.preventDefault();
     this.$el.children('.list-show').toggleClass('hidden');
     this.$el.children('.list-edit').toggleClass('hidden');
   },
 
+  // Switches to display the edit form for the list item when edit button (in menu) is clicked
   edit: function(event){
-    console.log('Editing List');
     event.preventDefault();
     this.switchView();
   },
 
+
+  /* These functions change the event model, and save those changes to the DB */
+
+  // Update the model on form submission
   update: function(event){
     var that = this;
     event.preventDefault();
@@ -62,12 +73,14 @@ Lime.Views.ListIndexItem = Backbone.View.extend({
     });
   },
 
+  // Toggle individual attributes of the model
   toggle: function(event){
     event.preventDefault();
     var attribute = $(event.target).attr('data-toggle');
     this.model.toggleAttribute(attribute);
   },
 
+  // Delete the model
   delete: function(event){
     this.model.destroy({
       success: function(){
