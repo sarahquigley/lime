@@ -30,26 +30,15 @@ Lime.Views.TagForm = Backbone.View.extend({
     var attrs = $(event.target).serializeJSON();
     this.model.set(attrs);
 
-    if(this.model.isNew()){
-      this.collection.create(this.model, {
-        wait: true,
-        success: function(model){
-          console.log('Tag created.');
-        },
-        error: function(model, errors){
-          console.log(errors);
-        }
-      });
-    } else {
-      this.model.save({}, {
-        success: function(model){
-          console.log('Tag updated.');
-        },
-        error: function(model, errors){
-          console.log(errors);
-        }
-      });
-    }
+    this.collection.create(this.model, {
+      wait: true,
+      success: function(model){
+        console.log('Tag created.');
+      },
+      error: function(model, errors){
+        console.log(errors);
+      }
+    });
   }
 
 });

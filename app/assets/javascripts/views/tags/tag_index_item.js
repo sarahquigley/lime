@@ -14,7 +14,7 @@ Lime.Views.TagIndexItem = Backbone.View.extend({
     "click .tag-menu .delete-tag" : "delete"
   },
 
-  el: $('<li class="tag app-drop-parent">'),
+  el: '<li class="tag app-drop-parent">',
 
   template: JST['tags/index_item'],
   menuTemplate: JST['tags/menu'],
@@ -60,9 +60,6 @@ Lime.Views.TagIndexItem = Backbone.View.extend({
       success: function(model){
         console.log('Tag updated.');
         this.switchView();
-      },
-      error: function(model, errors){
-        console.log(errors);
       }
     });
   },
@@ -70,7 +67,7 @@ Lime.Views.TagIndexItem = Backbone.View.extend({
   // Delete the model
   delete: function(event){
     event.preventDefault();
-    this.model(event).destroy({
+    this.model.destroy({
       success: function(){
         console.log('Tag destroyed');
       }

@@ -1,6 +1,7 @@
 Lime.Views.TagsIndex = Backbone.View.extend({
 
   initialize: function(){
+    this.model = new Lime.Models.Tag();
     this.nestedViews = [];
     var that = this;
     var events = ['add', 'remove', 'change'];
@@ -9,9 +10,14 @@ Lime.Views.TagsIndex = Backbone.View.extend({
     });
   },
 
-  el: $('#app-content'),
+  events: {
+    "submit #tag-form": "submit"
+  },
+
+  el: '#app-content',
 
   template: JST['tags/index'],
+  formTemplate: JST['tags/form'],
 
   render: function(){
     var that = this;
@@ -32,12 +38,36 @@ Lime.Views.TagsIndex = Backbone.View.extend({
       $ul.append(tagIndexItemView.render().$el);
     });
 
-    // Insert populated <ul>
+    // Insert template & populated <ul>
     this.$el.empty();
     this.$el.append(this.template({}));
     this.$el.append($ul);
 
+    // Append form
+    this.$el.append(this.formTemplate({
+      tag: this.model
+    }));
+
     return this;
+  },
+
+  submit: function(){
+    var that = this;
+    event.preventDefault();
+    var attrs = $(event.target).serializeJSON();
+    this.model.set(attrs);
+
+    this.collection.create(this.model, {
+      wait: true,
+      success: function(model){
+        console.log('Tag created.');
+        that.model = new Lime.Models.Tag();
+        event.target.reset();
+      },
+      error: function(model, errors){
+        console.log(errors);
+      }
+    });
   }
 
 })

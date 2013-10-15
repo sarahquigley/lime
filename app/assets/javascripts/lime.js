@@ -34,11 +34,12 @@ window.Lime = {
       tagFormView: new Lime.Views.TagForm({ collection: tagsCollection })
     }
 
-    var agendaViews = {
+    // var agendaViews = {
+    //
+    // }
 
-    }
-
-    new Lime.Routers.App('#app-sidebar', '#app-content-container', listsCollection, tasksCollection, tagsCollection, sidebarViews, tagsViews);
+    // new Lime.Routers.App('#app-sidebar', '#app-content', listsCollection, tasksCollection, tagsCollection, sidebarViews, tagsViews);
+    new Lime.Routers.App(sidebarViews, tagsViews);
 
     Backbone.history.start();
     console.log('Welcome to Lime.');
