@@ -7,17 +7,19 @@ Lime.Views.ListForm = Backbone.View.extend({
   },
 
   initialize: function(options){
+    this.nestedViews = [];
   },
 
   events: {
     'submit #list-form': 'submit'
   },
 
-  el: '#app-sidebar > #lists-form-container',
+  el: '<div id="lists-form-container" class="sidebar-section">',
 
   template: JST['lists/form'],
 
   render: function(){
+    console.log('rendering list form');
     this.$el.html(this.template({
       list: this.model
     }));
