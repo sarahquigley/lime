@@ -4,6 +4,7 @@ Lime.Views.ListShow = Backbone.View.extend({
     var that = this;
 
     this.collection = this.model.get('tasks');
+    this.newTask = new Lime.Models.Task(),
     this.nestedViews = [];
 
     var events = ['add', 'change', 'remove'];
@@ -38,7 +39,7 @@ Lime.Views.ListShow = Backbone.View.extend({
 
     this.$el.append(this.renderCollection());
     this.$el.append(this.formTemplate({
-      task: new Lime.Models.Task(),
+      task: this.newTask,
       tags: Lime.Live.Collections.tags
     }))
 
@@ -82,14 +83,14 @@ Lime.Views.ListShow = Backbone.View.extend({
     var that = this;
     event.preventDefault();
     var attrs = $(event.target).serializeJSON();
-    this.model.set(attrs);
+    this.newTask.set(attrs);
 
     this.collection.url = '/lists/' + this.model.get('id') + '/tasks';
-    this.collection.create(this.model, {
+    this.collection.create(this.newTask, {
       wait: true,
       success: function(model, response){
         console.log('Task created.');
-        that.model.set('tags', new Lime.Collections.Tags(response.get('tags')));
+        model.set('tags', new Lime.Collections.Tags(response.get('tags')));
         that.collection.url = '/tasks';
         event.target.reset();
       },

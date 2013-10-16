@@ -1,12 +1,10 @@
 Lime.Views.TaskIndexItem = Backbone.View.extend({
 
   initialize: function(options){
-    this.modelTags = this.model.get('tags')
     var that = this;
     var events = ['add', 'change', 'remove', 'sync'];
     _(events).each(function(event){
       that.listenTo(that.model, event, that.render);
-      that.listenTo(that.modelTags, event, that.render);
     });
   },
 
