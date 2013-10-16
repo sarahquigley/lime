@@ -7,7 +7,8 @@ Lime.Views.ListIndexItem = Backbone.View.extend({
     var that = this;
     var events = ['add', 'change', 'remove'];
     _(events).each(function (event){
-      that.listenTo(that.model, event, that.render)
+      that.listenTo(that.model, event, that.render);
+      that.listenTo(that.model.get('tasks'), event, that.render);
     });
   },
 
