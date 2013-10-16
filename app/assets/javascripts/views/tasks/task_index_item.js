@@ -1,7 +1,6 @@
 Lime.Views.TaskIndexItem = Backbone.View.extend({
 
   initialize: function(options){
-    this.tags = this.options.tags;
     this.modelTags = this.model.get('tags')
     var that = this;
     var events = ['add', 'change', 'remove', 'sync'];
@@ -34,7 +33,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
       task: this.model,
       menuTemplate: this.menuTemplate,
       formTemplate: this.formTemplate,
-      tags: this.tags
+      tags: Lime.Live.Collections.tags
     }));
     return this;
   },
