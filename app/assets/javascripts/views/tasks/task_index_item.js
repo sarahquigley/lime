@@ -72,6 +72,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
     this.model.save({}, {
       success: function(model, response){
         console.log('Task updated');
+        // This is bad
         that.model.set('tags', new Lime.Collections.Tags(response.tags));
         console.log(that.model.get('tags'));
       }
@@ -84,6 +85,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
     event.preventDefault();
     var attribute = $(event.target).attr('data-toggle');
     this.model.toggleAttribute(attribute, function(model, response){
+      // Bad again
       that.model.set('tags', new Lime.Collections.Tags(response.tags));
     });
   },
@@ -108,6 +110,6 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
         console.log('Task deleted.')
       }
     })
-  },
+  }
 
 });

@@ -55,7 +55,7 @@ _.extend(Backbone.Model.prototype, {
     this.save(options, {
       success: function(model, response){
         console.log('Toggled ' + options[this.modelName] + attribute + '.');
-        callback(model, response);
+        if(callback){ callback(model, response); }
       }
     });
   },

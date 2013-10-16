@@ -20,7 +20,9 @@ Lime.Routers.App = Backbone.Router.extend({
 
   agenda: function(agenda){
     this.addSidebar();
-    this.mainContentViews.taskAgendaView.options.agenda = agenda;
+    var filter = { due_to_s: agenda };
+    this.mainContentViews.taskAgendaView.options.agenda = filter;
+    this.mainContentViews.taskAgendaView.options.title = agenda;
     this.mainContentViews.taskAgendaView.render();
   },
 
@@ -31,12 +33,10 @@ Lime.Routers.App = Backbone.Router.extend({
 
   listShow: function(id){
     this.addSidebar();
-    // var listShowView = new Lime.Views.ListShow({
-    //   model: this.listsCollection.get(id),
-    //   tags: this.tagsCollection
-    // });
-    // //this.closeCurrentViews([appSidebarView, listShowView]);
-    // this.$contentEl.html(listShowView.render().$el);
+    var filter = { list_id: parseInt(id) };
+    this.mainContentViews.taskAgendaView.options.agenda = filter;
+    this.mainContentViews.taskAgendaView.options.title = "Featured List";
+    this.mainContentViews.taskAgendaView.render();
   },
 
   addSidebar: function(){

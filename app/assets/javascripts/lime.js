@@ -21,17 +21,10 @@ window.Lime = {
       listFormView: new Lime.Views.ListForm({ collection: listsCollection })
     }
 
-
-
-    // var listShowViews = {
-    //   listShowView: new Lime.Views.ListShow(),
-    //   taskFormView: new Lime.Views.TaskForm()
-    // }
-
     // Main Content:
     var mainContentViews = {
       tagsIndexView: new Lime.Views.TagsIndex({ collection: tagsCollection, model: new Lime.Models.Tag() }),
-      taskAgendaView: new Lime.Views.TasksAgenda({ collection: tasksCollection, tags: tagsCollection })
+      taskAgendaView: new Lime.Views.TasksAgenda({ collection: tasksCollection, tags: tagsCollection }),
     }
 
     new Lime.Routers.App(sidebarViews, mainContentViews);

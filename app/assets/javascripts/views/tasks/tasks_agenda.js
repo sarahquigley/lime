@@ -2,7 +2,8 @@ Lime.Views.TasksAgenda = Backbone.View.extend({
 
   options: function(){
     return {
-      agenda: "Today"
+      agenda: { due_to_s: "Today" },
+      title: "Today"
     };
   },
 
@@ -17,11 +18,11 @@ Lime.Views.TasksAgenda = Backbone.View.extend({
 
   render: function(){   // Refactor into methods
     this.resetNestedViews();
-    var filteredCollection = this.collection.collectionWhere({due_to_s: this.options.agenda});
+    var filteredCollection = this.collection.collectionWhere( this.options.agenda );
     // Insert template & rendered collection
     this.$el.empty();
     this.$el.append(this.template({
-      agenda: this.options.agenda
+      title: this.options.title
     }));
 
     this.$el.append(this.renderCollection(filteredCollection));

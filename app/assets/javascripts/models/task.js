@@ -31,6 +31,7 @@ Lime.Models.Task = Backbone.Model.extend({
     } , {
       success: function(model, response){
         console.log('Due date set for ' + newDueDate + '.');
+        /// badd
         that.set('tags', new Lime.Collections.Tags(response.tags));
       }
     });
