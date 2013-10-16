@@ -1,32 +1,31 @@
 <div class="task-menu app-drop-menu">
   <div class="app-drop-button"><i class="icon-caret-down"></i></div>
 
-    <menu>
-      <button class="edit-task">Edit task</button>
+  <menu>
+    <button class="edit-task">Edit task</button>
 
-      <button class="toggle" data-toggle="completed">
-        <% if(task.get('completed')){ %>
-          Mark as uncompleted
-        <% } else { %>
-          Mark as completed
-        <% }; %>
-      </button>
+    <button class="toggle" data-toggle="completed">
+      <% if(task.get('completed')){ %>
+        Mark as uncompleted
+      <% } else { %>
+        Mark as completed
+      <% }; %>
+    </button>
 
-      <button class="toggle" data-toggle="archived">
-        <% if(task.get('archived')){ %>
-          Unarchive task
-        <% } else { %>
-          Archive task
-        <% }; %>
-      </button>
+    <button class="toggle" data-toggle="archived">
+      <% if(task.get('archived')){ %>
+        Unarchive task
+      <% } else { %>
+        Archive task
+      <% }; %>
+    </button>
 
-      <button class="do-it-today-task">Do it today</button>
+    <button class="do-it-today-task">Do it today</button>
 
-      <button class="postpone-task">Postpone</button>
+    <button class="postpone-task">Postpone</button>
 
-      <button class="delete-task">Delete task</button>
+    <button class="delete-task">Delete task</button>
 
-    </menu>
+  </menu>
 
-  </div>
 </div>

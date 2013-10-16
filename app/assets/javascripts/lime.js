@@ -15,32 +15,26 @@ window.Lime = {
     // Create site-wide views
 
     // Sidebar
-
     var sidebarViews = {
       agendaNavView: new Lime.Views.AgendaNav(),
       listsIndexView: new Lime.Views.ListsIndex({ collection: listsCollection }),
       listFormView: new Lime.Views.ListForm({ collection: listsCollection })
     }
 
-    // Main Content:
+
 
     // var listShowViews = {
     //   listShowView: new Lime.Views.ListShow(),
     //   taskFormView: new Lime.Views.TaskForm()
     // }
 
-    var tagsViews = {
-      tagsIndexView: new Lime.Views.TagsIndex({ collection: tagsCollection,
-         model: new Lime.Models.Tag()
-       })
+    // Main Content:
+    var mainContentViews = {
+      tagsIndexView: new Lime.Views.TagsIndex({ collection: tagsCollection, model: new Lime.Models.Tag() }),
+      taskAgendaView: new Lime.Views.TasksAgenda({ collection: tasksCollection, tags: tagsCollection })
     }
 
-    // var agendaViews = {
-    //
-    // }
-
-    // new Lime.Routers.App('#app-sidebar', '#app-content', listsCollection, tasksCollection, tagsCollection, sidebarViews, tagsViews);
-    new Lime.Routers.App(sidebarViews, tagsViews);
+    new Lime.Routers.App(sidebarViews, mainContentViews);
 
     Backbone.history.start();
     console.log('Welcome to Lime.');

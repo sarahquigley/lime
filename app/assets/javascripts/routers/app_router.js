@@ -1,15 +1,8 @@
 Lime.Routers.App = Backbone.Router.extend({
 
-  // initialize: function(sidebarEl, contentEl, listsCollection, tasksCollection, tagsCollection, sidebarViews, tagsViews){
-  initialize: function(sidebarViews, tagsViews){
-    // this.$sidebarEl = $(sidebarEl);
-    // this.$contentEl = $(contentEl);
-    // this.listsCollection = listsCollection;
-    // this.tasksCollection = tasksCollection;
-    // this.tagsCollection = tagsCollection;
+  initialize: function(sidebarViews, mainContentViews){
     this.sidebarViews = sidebarViews;
-    this.tagsViews = tagsViews;
-    // this.currentViews = [];
+    this.mainContentViews = mainContentViews;
   },
 
   routes: {
@@ -27,17 +20,13 @@ Lime.Routers.App = Backbone.Router.extend({
 
   agenda: function(agenda){
     this.addSidebar();
-    // var tasksAgendaView = new Lime.Views.TasksAgenda({
-    //   collection: this.tasksCollection,
-    //   agenda: agenda
-    // });
-    // //this.closeCurrentViews([appSidebarView, tasksAgendaView]);
-    // this.$contentEl.html(tasksAgendaView.render().$el);
+    this.mainContentViews.taskAgendaView.options.agenda = agenda;
+    this.mainContentViews.taskAgendaView.render();
   },
 
   tags: function(){
     this.addSidebar();
-    this.tagsViews.tagsIndexView.render();
+    this.mainContentViews.tagsIndexView.render();
   },
 
   listShow: function(id){
@@ -55,14 +44,5 @@ Lime.Routers.App = Backbone.Router.extend({
     this.sidebarViews.listsIndexView.render();
     this.sidebarViews.listFormView.render();
   }
-
-  // closeCurrentViews: function(newViews){
-  //   if(this.currentViews.length > 0){
-  //     _.each(this.currentViews, function(view){
-  //       view.close();
-  //     });
-  //   }
-  //   this.currentViews = newViews;
-  // }
 
 });

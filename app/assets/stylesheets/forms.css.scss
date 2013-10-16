@@ -36,10 +36,19 @@
     width: 615px;
   }
 
+}
+
+#task-form{
+  display: block;
+
   #task-tags-field{
     width: 92%;
     float: left;
     height: 31px;
+  }
+
+  #task-tags-field select{
+    width: 100%;
   }
 
   #task-priority-field{

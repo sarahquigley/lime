@@ -1,4 +1,4 @@
-<form id="task-form" class="app-form">
+<form id="task-form" class="app-form clearfix">
 
   <div id="task-title-field" class="field">
     <input type="text" name="task[title]" value="<%= task.get("title") %>">
@@ -14,11 +14,21 @@
 
   <div id="task-tags-field" class="field">
     <select data-placeholder="@" class="chosen-select" name='task[tag_ids][]' multiple tabindex="4">
+
       <option value=""></option>
+
       <% tags.each(function(tag){ %>
-        <% var selected = task.get('tags').findWhere({id: tag.get('id')}) ? 'selected' : null %>
+
+        <% if( task.get(tags) ){ %>
+          <% var selected = task.get('tags').findWhere({id: tag.get('id')}) ? 'selected' : null %>
+        <% } else { %>
+          <% var selected= null %>
+        <% }%>
+
         <option value="<%= tag.get('id') %>" <%= selected %>><%= tag.get('name') %></option>
+
       <% }); %>
+
     </select>
   </div>
 
@@ -40,5 +50,5 @@
 </form>
 
 <script>
-  $(".chosen-select").chosen()
+  $(".chosen-select").chosen();
 </script>

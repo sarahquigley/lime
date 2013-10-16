@@ -47,14 +47,15 @@ _.extend(Backbone.Collection.prototype, {
 
 _.extend(Backbone.Model.prototype, {
 
-  toggleAttribute: function(attribute){
+  toggleAttribute: function(attribute, callback){
     var options = {};
     options[attribute] = !this.get(attribute);
     options[this.modelName] = {};
     options[this.modelName][attribute] = !this.get(attribute);
     this.save(options, {
-      success: function(){
-        console.log('Toggled ' + this.modelName + attribute + '.');
+      success: function(model, response){
+        console.log('Toggled ' + options[this.modelName] + attribute + '.');
+        callback(model, response);
       }
     });
   },

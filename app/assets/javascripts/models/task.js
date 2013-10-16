@@ -24,12 +24,14 @@ Lime.Models.Task = Backbone.Model.extend({
   },
 
   setDue: function(newDueDate){
+    var that = this;
     this.save({
-      due: newDate,
+      due: newDueDate,
       task: { due: newDueDate }
     } , {
-      success: function(){
-        console.log('Due date set for ' + newDate + '.')
+      success: function(model, response){
+        console.log('Due date set for ' + newDueDate + '.');
+        that.set('tags', new Lime.Collections.Tags(response.tags));
       }
     });
   },
