@@ -16,7 +16,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
     "click .task-menu .app-drop-button": "dropMenu",
     "click .task-menu button.edit-task" : "edit",
     "click .task-title h3": "edit",
-    "submit #task-form": "update",
+    "submit .task-form": "update",
     "click .task-menu button.toggle" : "toggle",
     "click .task-menu button.do-it-today-task" : "doItToday",
     "click .task-menu button.postpone-task" : "postpone",
@@ -74,7 +74,6 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
         console.log('Task updated');
         // This is bad
         that.model.set('tags', new Lime.Collections.Tags(response.tags));
-        console.log(that.model.get('tags'));
       }
     });
   },

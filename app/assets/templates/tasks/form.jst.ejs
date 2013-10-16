@@ -19,10 +19,10 @@
 
       <% tags.each(function(tag){ %>
 
-        <% if( task.get(tags) ){ %>
+        <% if( task.has('tags') ){ %>
           <% var selected = task.get('tags').findWhere({id: tag.get('id')}) ? 'selected' : null %>
         <% } else { %>
-          <% var selected= null %>
+          <% var selected = null %>
         <% }%>
 
         <option value="<%= tag.get('id') %>" <%= selected %>><%= tag.get('name') %></option>
