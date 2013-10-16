@@ -22,15 +22,17 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
 
   el: '<li class="task clearfix">',
 
-  template: JST['tasks/index_item'],
-  menuTemplate: JST['tasks/menu'],
-  formTemplate: JST['tasks/form'],
+  templates:{
+    index_item: JST['tasks/index_item'],
+    menu: JST['tasks/menu'],
+    form: JST['tasks/form']
+  },
 
   render: function(){
-    this.$el.html(this.template({
+    this.$el.html(this.templates.index_item({
       task: this.model,
-      menuTemplate: this.menuTemplate,
-      formTemplate: this.formTemplate,
+      menuTemplate: this.templates.menu,
+      formTemplate: this.templates.form,
       tags: Lime.Live.Collections.tags
     }));
     return this;

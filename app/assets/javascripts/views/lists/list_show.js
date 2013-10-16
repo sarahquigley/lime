@@ -23,22 +23,24 @@ Lime.Views.ListShow = Backbone.View.extend({
 
   el: '#app-content',
 
-  template: JST['lists/show'],
-  menuTemplate: JST['lists/show_menu'],
-  formTemplate: JST['tasks/form'],
+  templates: {
+    show: JST['lists/show'],
+    showMenu: JST['lists/show_menu'],
+    form: JST['tasks/form']
+  },
 
   render: function(){   // Refactor into methods
     this.resetNestedViews();
 
     // Insert template & rendered collection
     this.$el.empty();
-    this.$el.html(this.template({
+    this.$el.html(this.templates.show({
       list: this.model,
-      showMenuTemplate: this.menuTemplate
+      showMenuTemplate: this.templates.showMenu
     }));
 
     this.$el.append(this.renderCollection());
-    this.$el.append(this.formTemplate({
+    this.$el.append(this.templates.form({
       task: this.newTask,
       tags: Lime.Live.Collections.tags
     }))

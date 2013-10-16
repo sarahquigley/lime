@@ -21,19 +21,20 @@ Lime.Views.ListIndexItem = Backbone.View.extend({
 
   el: '<li class="list">',
 
-  template: JST['lists/index_item'],
-  menuTemplate: JST['lists/menu'],
-  formTemplate: JST['lists/form'],
+  templates: {
+    indexItem: JST['lists/index_item'],
+    menu: JST['lists/menu'],
+    form: JST['lists/form'],
+  },
 
   render: function(){
-    this.$el.html(this.template({
+    this.$el.html(this.templates.indexItem({
       list: this.model,
-      menuTemplate: this.menuTemplate,
-      formTemplate: this.formTemplate
+      menuTemplate: this.templates.menu,
+      formTemplate: this.templates.form
     }));
     return this;
   },
-
 
   /* These functions alter the way the view is displayed */
 

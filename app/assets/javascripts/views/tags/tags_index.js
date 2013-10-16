@@ -19,19 +19,21 @@ Lime.Views.TagsIndex = Backbone.View.extend({
 
   el: '#app-content',
 
-  template: JST['tags/index'],
-  formTemplate: JST['tags/form'],
+  templates: {
+    index: JST['tags/index'],
+    form: JST['tags/form'],
+  },
 
   render: function(){   // Refactor into methods
     this.resetNestedViews();
 
     // Insert template & rendered collection
     this.$el.empty();
-    this.$el.append(this.template({}));
+    this.$el.append(this.templates.index({}));
     this.$el.append(this.renderCollection());
 
     // Append form
-    this.$el.append(this.formTemplate({
+    this.$el.append(this.templates.form({
       tag: this.model
     }));
 

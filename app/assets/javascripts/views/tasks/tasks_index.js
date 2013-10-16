@@ -22,14 +22,15 @@ Lime.Views.TasksIndex = Backbone.View.extend({
 
   el: '<div id="tasks-container">',
 
-  template: JST['tasks/index'],
-
-  menuTemplate: JST['tasks/menu'],
+  templates: {
+    index: JST['tasks/index'],
+    menu: JST['tasks/menu']
+  },
 
   render: function(){
-    this.$el.html(this.template({
+    this.$el.html(this.template.index({
       tasks: this.collection,
-      menuTemplate: this.menuTemplate
+      menuTemplate: this.templates.menu
     }));
     return this;
   },
