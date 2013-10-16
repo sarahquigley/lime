@@ -3,7 +3,6 @@ class Task < ActiveRecord::Base
 
   # Callbacks
   before_validation :increment_list_position, on: :create
-  # after_update :swap_list_positions
 
   # Relationships
   belongs_to :list, inverse_of: :tasks
@@ -15,7 +14,6 @@ class Task < ActiveRecord::Base
   validates :list_position, uniqueness: { scope: :list_id, message: "must be unique within list" }, on: :create
   validates :list_position, numericality: { greater_than: 0, only_integer: true }
   validates :priority, numericality: { only_integer: true, greater_than: 0, less_than: 6 }, allow_nil: true
-  # validate  :must_have_list_position_in_list, on: :update
 
   # SAVE: Increment list_position before save
   def increment_list_position
@@ -25,50 +23,62 @@ class Task < ActiveRecord::Base
     self.list_position = last_pos_occupied + 1
   end
 
-  # # UPDATE: Swap list_position on update
-  # def swap_list_positions
-  #   if self.changed_attributes.keys.include?("list_position")
-  #     new_pos = self.list_position
-  #     old_pos = self.changed_attributes["list_position"]
-  #     if new_pos > old_pos      #moving down
-  #       tasks = siblings.where("list_position BETWEEN ? AND ?", old_pos, new_pos)
-  #       tasks.update_all("list_position = list_position - 1")
-  #     elsif new_pos < old_pos  #moving up
-  #       tasks = siblings.where("list_position BETWEEN ? AND ?", new_pos, old_pos)
-  #       tasks.update_all("list_position = list_position + 1")
-  #     end
-  #   end
-  # end
-
-  # # VALIDATION: cannot update list position if at end of list
-  # def must_have_list_position_in_list
-  #   if self.list_position > self.list.tasks.count
-  #     self.errors.add(:list_position, "Cannot move last item in list.")
-  #   end
-  # end
-
-  # # HELPER: sibling tasks
-  # def siblings
-  #   self.list.tasks.where("id != ?", self.id)
-  # end
-
   # Due Date for Display
   def due_to_s
     return nil if self.due == nil
-    display = ["Today", "Tomorrow"]
-    today = Date.today
-    day_diff = self.due - Date.today
-    if day_diff < 0
+    if overdue?
       return "Overdue"
-    elsif day_diff < 2
-      return display[day_diff]
-    elsif day_diff < 8
+    elsif today?
+      return "Today"
+    elsif tomorrow?
+      return "Tomorrow"
+    elsif this_week?
       return self.due.strftime('%A')
-    elsif self.due.year != today.year
+    elsif this_year?
       return self.due.strftime('%e %b %Y')
     else
       return self.due.strftime('%e %b')
     end
+  end
+
+  # Due Date Boolean Helpers
+  def no_due_date?
+    self.due == nil
+  end
+
+  def overdue?
+    days_from_today < 0
+  end
+
+  def today?
+    days_from_today == 0
+  end
+
+  def tomorrow?
+    days_from_today == 1
+  end
+
+  def this_week?
+    days_from_today < 8
+  end
+
+  def this_year?
+    self.due.year != Date.today.year
+  end
+
+  def days_from_today
+    self.due - Date.today
+  end
+
+  # Meta Data
+  def meta
+    meta = {
+      no_due_date: no_due_date?,
+      overdue: this.overdue?,
+      today: this.today?,
+      tomorrow: this.tomorrow?,
+      this_week: this_week?
+    }
   end
 
   # Customise as_json
