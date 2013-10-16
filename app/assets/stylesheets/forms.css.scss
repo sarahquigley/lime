@@ -1,3 +1,9 @@
+/****************************************************
+              APP FORM
+*****************************************************/
+
+/** App Form **/
+
 .app-form{
 
   .field > input, .field > textarea, .field select, .field option{
@@ -5,6 +11,10 @@
     font-size: 15px;
     padding: 4px;
     border: $border-light;
+    margin: 1px 0;
+  }
+
+  .field > input, .field > textarea{
     margin: 1px 0;
   }
 
@@ -22,45 +32,39 @@
 
 }
 
-#list-form{
+/** List Form **/
 
+#list-form{
   .field > input, .field > textarea{
     width: 215px;
   }
-
 }
 
-#task-form, .tag-form{
 
+/** Task Form & Tag Form **/
+
+.app-form.task-form, .app-form.tag-form{
   .field > input, .field > textarea{
     width: 615px;
   }
-
 }
 
-#task-form{
-  display: block;
+/** Task Form **/
 
-  #task-tags-field{
+.app-form.task-form{
+  .task-tags-field{
     width: 92%;
     float: left;
     height: 31px;
   }
 
-  #task-tags-field select{
-    width: 100%;
-  }
-
-  #task-priority-field{
+  .task-priority-field{
     width: 7%;
     float: right;
-
-    select{
-      margin: 0;
-    }
   }
-
 }
+
+/** Auth Forms **/
 
 .auth-form-container{
   width: 259px;

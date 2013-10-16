@@ -206,7 +206,6 @@
   width: 617px;
   line-height: 15px;
   font-size: 15px;
-  padding: 10px 5px 10px 3px;
   border-bottom: $border-light;
 }
 
@@ -217,10 +216,14 @@
   background: $accent-color-light;
 }
 
-.tag:hover{
+.tag-show, .tag-edit{
+  padding: 10px 5px 10px 3px;
+}
+
+.tag-show:hover{
   background: $accent-color-light;
 }
 
-.tag:hover .tag-task-count{
+.tag-show:hover .tag-task-count{
   background: $accent-color-lmid;
 }
