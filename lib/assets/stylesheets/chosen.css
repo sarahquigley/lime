@@ -182,9 +182,14 @@
   text-decoration: underline;
 }
 
+.chosen-container.chosen-container-multi{
+  width: 100% !important;
+}
+
 /* @end */
 /* @group Multi Chosen */
 .chosen-container-multi .chosen-choices {
+  display: block;
   position: relative;
   overflow: hidden;
   -webkit-box-sizing: border-box;
@@ -192,7 +197,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 1px;
-  width: 100%;
+  width: 100% !important;
   height: auto !important;
   height: 1%;
   border: 1px solid #E8EBEA;
