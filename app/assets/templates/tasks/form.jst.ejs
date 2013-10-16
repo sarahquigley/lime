@@ -19,7 +19,7 @@
 
       <% tags.each(function(tag){ %>
 
-        <% if( task.has('tags') ){ %>
+        <% if( task.has('tags') && !( Object.prototype.toString.call(task.get('tags')) === "[object Array]" )){ %>
           <% var selected = task.get('tags').findWhere({id: tag.get('id')}) ? 'selected' : null %>
         <% } else { %>
           <% var selected = null %>

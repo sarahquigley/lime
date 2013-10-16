@@ -24,7 +24,7 @@
       <%= menuTemplate({ task: task }) %>
     </header>
 
-    <% if( task.get('tags').length > 0 ){ %>
+    <% if( task.get('tags').length > 0 && !( Object.prototype.toString.call(task.get('tags')) === "[object Array]" )){ %>
       <div class="task-tags">
       <% task.get('tags').each(function(tag){ %>
         <a href="#"><%= tag.get('name') %></a>
