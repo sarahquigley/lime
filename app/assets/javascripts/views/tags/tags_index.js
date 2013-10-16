@@ -1,3 +1,6 @@
+// Purpose: Renders index of User's Tags
+// Where? Main Content(no Parent View)
+
 Lime.Views.TagsIndex = Backbone.View.extend({
 
   initialize: function(){
@@ -20,11 +23,24 @@ Lime.Views.TagsIndex = Backbone.View.extend({
   formTemplate: JST['tags/form'],
 
   render: function(){   // Refactor into methods
-    var that = this;
+    this.resetNestedViews();
 
-    // Close all previously nested views and reset this.nestedViews
-    _.each(this.nestedViews, function(view){ view.close() });
-    this.nestedViews = [];
+    // Insert template & rendered collection
+    this.$el.empty();
+    this.$el.append(this.template({}));
+    this.$el.append(this.renderCollection());
+
+    // Append form
+    this.$el.append(this.formTemplate({
+      tag: this.model
+    }));
+
+    return this;
+  },
+
+  // Helper method, called by render
+  renderCollection: function(){
+    var that = this;
 
     // Create <ul> to contain <li> items for every model in the collection
     var $ul = $('<ul id="tags">');
@@ -38,18 +54,10 @@ Lime.Views.TagsIndex = Backbone.View.extend({
       $ul.append(tagIndexItemView.render().$el);
     });
 
-    // Insert template & populated <ul>
-    this.$el.empty();
-    this.$el.append(this.template({})).append($ul);
-
-    // Append form
-    this.$el.append(this.formTemplate({
-      tag: this.model
-    }));
-
-    return this;
+    return $ul;
   },
 
+  // Submit new tags
   submit: function(event){
     var that = this;
     event.preventDefault();

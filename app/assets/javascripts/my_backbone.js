@@ -12,6 +12,11 @@ _.extend(Backbone.View.prototype, {
         }
       })
     }
+  },
+
+  resetNestedViews: function(){
+    _.each(this.nestedViews, function(view){ view.close() });
+    this.nestedViews = [];
   }
 
 });
@@ -49,7 +54,7 @@ _.extend(Backbone.Model.prototype, {
     options[this.modelName][attribute] = !this.get(attribute);
     this.save(options, {
       success: function(){
-        console.log('Toggled task ' + attribute + '.');
+        console.log('Toggled ' + this.modelName + attribute + '.');
       }
     });
   },

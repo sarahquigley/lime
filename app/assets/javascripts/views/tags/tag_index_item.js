@@ -1,3 +1,6 @@
+// Purpose: Displays individual Tags
+// Where? Main Content (Parent View: TagsIndexView)
+
 Lime.Views.TagIndexItem = Backbone.View.extend({
 
   initialize: function(){
@@ -61,7 +64,7 @@ Lime.Views.TagIndexItem = Backbone.View.extend({
     this.model.save({}, {
       success: function(model){
         console.log('Tag updated.');
-        that.switchView();
+        that.switchView();    // May not be needed
       }
     });
   },
