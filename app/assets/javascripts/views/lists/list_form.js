@@ -41,7 +41,6 @@ Lime.Views.ListForm = Backbone.View.extend({
         // There must be a better way to do this (in model)
         model.set('tasks', new Lime.Collections.Tasks());
         that.model = new Lime.Models.List();
-        event.target.reset();
         Backbone.history.navigate(model.url(), {trigger: true});
       },
       error: function(model, errors){

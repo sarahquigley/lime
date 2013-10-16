@@ -10,7 +10,7 @@ Lime.Views.TagForm = Backbone.View.extend({
   },
 
   events: {
-    "submit #tag-form": "submit"
+    "submit .tag-form": "submit"
   },
 
   el: '<div id="task-form-container" >',

@@ -7,7 +7,7 @@ class Tag < ActiveRecord::Base
   has_many :tasks, through: :taggings
 
   # Validations
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
 
   # Task count
   def task_count

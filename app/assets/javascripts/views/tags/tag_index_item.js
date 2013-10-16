@@ -11,10 +11,11 @@ Lime.Views.TagIndexItem = Backbone.View.extend({
   events: {
     "click .tag-menu .app-drop-button": "dropMenu",
     "click .tag-menu .edit-tag" : "edit",
-    "click .tag-menu .delete-tag" : "delete"
+    "click .tag-menu .delete-tag" : "delete",
+    "submit #tag-form": "update"
   },
 
-  el: '<li class="tag app-drop-parent">',
+  el: '<li class="tag">',
 
   template: JST['tags/index_item'],
   menuTemplate: JST['tags/menu'],
@@ -51,7 +52,8 @@ Lime.Views.TagIndexItem = Backbone.View.extend({
   /* These functions change the event model, and save those changes to the DB */
 
   // Update the model on form submission
-  update: function(){
+  update: function(event){
+    var that = this;
     event.preventDefault();
     var attrs = $(event.target).serializeJSON();
     this.model.set(attrs);
@@ -59,7 +61,7 @@ Lime.Views.TagIndexItem = Backbone.View.extend({
     this.model.save({}, {
       success: function(model){
         console.log('Tag updated.');
-        this.switchView();
+        that.switchView();
       }
     });
   },
