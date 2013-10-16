@@ -1,8 +1,9 @@
 Lime.Collections.Tags = Backbone.Collection.extend({
-  
+
   initialize: function(){
-    this.sortAttribute = "name";
   },
+
+  comparator: "name",
 
   model: Lime.Models.Tag,
   url: "/tags"

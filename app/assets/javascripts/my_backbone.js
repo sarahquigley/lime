@@ -25,17 +25,6 @@ _.extend(Backbone.View.prototype, {
 
 _.extend(Backbone.Collection.prototype, {
 
-  comparator: function(model1, model2){
-    model1 = model1.get(this.sortAttribute);
-    model2 = model2.get(this.sortAttribute);
-    return model1 > model2 ?  1 : model1 < model2 ? -1 : 0;
-  },
-
-  sortCollection: function(attribute){
-    this.sortAttribute = attribute;
-    this.sort();
-  },
-
   collectionWhere: function(options){
     var newCollection = this.clone();
     return newCollection.set(this.where(options));

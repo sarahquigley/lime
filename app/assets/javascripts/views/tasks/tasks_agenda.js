@@ -11,7 +11,7 @@ Lime.Views.TasksAgenda = Backbone.View.extend({
     this.nestedViews = [];
   },
 
-  el: '#app-content',
+  el: '<div></div>',
 
   template: JST['agenda/show'],
 

@@ -21,7 +21,7 @@ Lime.Views.ListShow = Backbone.View.extend({
     "submit .task-form": "submit",
   },
 
-  el: '#app-content',
+  el: '<div>',
 
   templates: {
     show: JST['lists/show'],
@@ -77,7 +77,8 @@ Lime.Views.ListShow = Backbone.View.extend({
   sort: function(event){
     event.preventDefault();
     var sortAttribute = $(event.target).attr("data-sort");
-    this.collection.sortCollection(sortAttribute);
+    this.collection.comparator = sortAttribute;
+    this.collection.sort();
   },
 
   // Submit new task
