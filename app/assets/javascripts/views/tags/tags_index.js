@@ -3,15 +3,15 @@ Lime.Views.TagsIndex = Backbone.View.extend({
   initialize: function(){
     this.nestedViews = [];
     var that = this;
-    var events = ['add', 'remove', 'change'];
+    var events = ['add', 'remove', 'change', 'sync'];
     _(events).each(function(event){
       that.listenTo(that.collection, event, that.render);
-      that.listenTo(that.model, event, that.render)
+      that.listenTo(that.model, event, that.render);  // NEEDED??
     });
   },
 
   events: {
-    "submit #tag-form": "submit"
+    "submit .tag-form": "submit"
   },
 
   el: '#app-content',
@@ -19,7 +19,7 @@ Lime.Views.TagsIndex = Backbone.View.extend({
   template: JST['tags/index'],
   formTemplate: JST['tags/form'],
 
-  render: function(){
+  render: function(){   // Refactor into methods
     var that = this;
 
     // Close all previously nested views and reset this.nestedViews

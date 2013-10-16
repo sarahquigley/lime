@@ -30,11 +30,9 @@ window.Lime = {
     // }
 
     var tagsViews = {
-      tagsIndexView: new Lime.Views.TagsIndex({
-         collection: tagsCollection,
+      tagsIndexView: new Lime.Views.TagsIndex({ collection: tagsCollection,
          model: new Lime.Models.Tag()
-       }),
-      tagFormView: new Lime.Views.TagForm({ collection: tagsCollection })
+       })
     }
 
     // var agendaViews = {

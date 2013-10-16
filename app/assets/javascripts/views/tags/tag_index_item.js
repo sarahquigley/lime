@@ -12,7 +12,7 @@ Lime.Views.TagIndexItem = Backbone.View.extend({
     "click .tag-menu .app-drop-button": "dropMenu",
     "click .tag-menu .edit-tag" : "edit",
     "click .tag-menu .delete-tag" : "delete",
-    "submit #tag-form": "update"
+    "submit .tag-form": "update"
   },
 
   el: '<li class="tag">',
