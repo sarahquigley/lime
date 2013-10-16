@@ -4,7 +4,7 @@ Lime.Views.ListShow = Backbone.View.extend({
     var that = this;
 
     this.collection = this.model.get('tasks');
-    this.newTask = new Lime.Models.Task(),
+    this.newTask = new Lime.Models.Task();
     this.nestedViews = [];
 
     var events = ['add', 'change', 'remove', 'sync'];
@@ -12,7 +12,7 @@ Lime.Views.ListShow = Backbone.View.extend({
       that.listenTo(that.model, event, that.render);
       that.listenTo(that.collection, event, that.render);
     });
-    this.listenTo(that.collection, 'sort', that.render);
+    that.listenTo(that.collection, 'sort', that.render);
   },
 
   events: {
@@ -76,7 +76,7 @@ Lime.Views.ListShow = Backbone.View.extend({
   // Sort
   sort: function(event){
     event.preventDefault();
-    sortAttribute = $(event.target).attr("data-sort");
+    var sortAttribute = $(event.target).attr("data-sort");
     this.collection.sortCollection(sortAttribute);
   },
 

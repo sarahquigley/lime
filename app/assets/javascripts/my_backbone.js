@@ -54,7 +54,7 @@ _.extend(Backbone.Model.prototype, {
     options[this.modelName][attribute] = !this.get(attribute);
     this.save(options, {
       success: function(model, response){
-        console.log('Toggled ' + options[this.modelName] + attribute + '.');
+        console.log('Toggled ' + attribute + '.');
         if(callback){ callback(model, response); }
       }
     });
