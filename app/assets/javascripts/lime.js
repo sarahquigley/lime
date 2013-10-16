@@ -29,12 +29,6 @@ window.Lime = {
     // Main Content
     var mainContentViews = this.Live.Views.MainContent = {
       tagsIndex: new Lime.Views.TagsIndex({ collection: collections.tags, model: new Lime.Models.Tag() }),
-      taskAgenda: new Lime.Views.TasksAgenda({ collection: collections.tasks }),
-      listShow: function(){
-        return collections.lists.map(function(list){
-          return new Lime.Views.ListShow({ model: list })
-        });
-      }
     }
 
     new Lime.Routers.App(collections, sidebarViews, mainContentViews);

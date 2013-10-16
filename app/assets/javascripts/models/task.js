@@ -9,6 +9,7 @@ Lime.Models.Task = Backbone.Model.extend({
   initialize: function(taskData){
     Lime.Models.Task.__super__.initialize.apply(this, arguments)
     var tagsData = taskData ? taskData.tags : {};
+
     this.set("tags", new Lime.Collections.Tags(tagsData));
     this.modelName = "task";
   },

@@ -17,27 +17,26 @@ Lime.Views.TasksAgenda = Backbone.View.extend({
 
   render: function(){   // Refactor into methods
     this.resetNestedViews();
-    var filteredCollection = this.collection.collectionWhere( this.options.agenda );
     // Insert template & rendered collection
     this.$el.empty();
     this.$el.append(this.template({
       title: this.options.title
     }));
 
-    this.$el.append(this.renderCollection(filteredCollection));
+    this.$el.append(this.renderCollection());
 
     return this;
   },
 
   // Helper method, called by render
-  renderCollection: function(filteredCollection){
+  renderCollection: function(){
     var that = this;
 
     // Create <ul> to contain <li> items for every model in the collection
     var $ul = $('<ul id="tasks">');
 
     // Add <li> items for every model in the collection
-    filteredCollection.each(function(model){
+    this.collection.each(function(model){
       var taskIndexItemView = new Lime.Views.TaskIndexItem({
         model: model
       });
