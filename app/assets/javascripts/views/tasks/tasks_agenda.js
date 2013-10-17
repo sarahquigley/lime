@@ -1,12 +1,5 @@
 Lime.Views.TasksAgenda = Backbone.View.extend({
 
-  options: function(){
-    return {
-      agenda: { due_to_s: "Today" },
-      title: "Today"
-    };
-  },
-
   initialize: function(options){
     this.nestedViews = [];
   },

@@ -14,6 +14,7 @@ Lime.Routers.App = Backbone.Router.extend({
     'agenda/:agenda': 'agenda',
     'priority/:priority' : 'priority',
     'tags' : 'tags',
+    'tags/:tag' : 'tag',
     'lists/:id' : 'listShow'
   },
 
@@ -23,24 +24,15 @@ Lime.Routers.App = Backbone.Router.extend({
   },
 
   agenda: function(agenda){
-    this.addSidebar();
-    var mainView = new Lime.Views.TasksAgenda({
-      collection: this.collections.tasks.collectionWhere({ due_to_s: agenda }),
-      title: agenda
-    });
-    $mainContent.html(mainView.render().$el);
-    this.resetMainView(mainView);
-    mainView.render();
+    var collection = this.collections.tasks.collectionWhere({ due_to_s: agenda });
+    var title = agenda;
+    this.addAgenda(collection, title);
   },
 
   priority: function(agenda){
-    this.addSidebar();
-    var mainView = new Lime.Views.TasksAgenda({
-      collection: this.collections.tasks.collectionWhere({ priority: parseInt(agenda) }),
-      title: 'Priority ' + agenda
-    });
-    this.resetMainView(mainView);
-    $mainContent.html(mainView.render().$el);
+    var collection = this.collections.tasks.collectionWhere({ priority: parseInt(agenda) });
+    var title = 'Priority ' + agenda;
+    this.addAgenda(collection, title);
   },
 
   tags: function(){
@@ -48,11 +40,31 @@ Lime.Routers.App = Backbone.Router.extend({
     this.mainContentViews.tagsIndex.render();
   },
 
+  tag: function(agenda){
+    var that = this;
+    var collection = that.collections.tasks.filter( function(task){
+      return task.has('tags') && _.findWhere( task.get('tags'), { name: agenda } );
+    });
+    collection = new Lime.Collections.Tasks(collection);
+    var title = agenda;
+    this.addAgenda(collection, title);
+  },
+
   listShow: function(id){
     this.addSidebar();
     var model = this.collections.lists.get(id);
     var mainView = new Lime.Views.ListShow({
       model: model
+    });
+    this.resetMainView(mainView);
+    $mainContent.html(mainView.render().$el);
+  },
+
+  addAgenda: function(collection, title){
+    this.addSidebar();
+    var mainView = new Lime.Views.TasksAgenda({
+      collection: collection,
+      title: title
     });
     this.resetMainView(mainView);
     $mainContent.html(mainView.render().$el);
