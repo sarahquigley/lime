@@ -49,6 +49,7 @@ Lime.Views.TagsIndex = Backbone.View.extend({
 
     // Add <li> items for every model in the collection
     this.collection.each(function(model){
+      model.tasks = Lime.Live.Collections.tasks;
       var tagIndexItemView = new Lime.Views.TagIndexItem({
         model: model
       });
@@ -58,6 +59,8 @@ Lime.Views.TagsIndex = Backbone.View.extend({
 
     return $ul;
   },
+
+
 
   // Submit new tags
   submit: function(event){

@@ -5,7 +5,6 @@ Lime.Views.ListShow = Backbone.View.extend({
     this.newTask = new Lime.Models.Task();
     this.nestedViews = [];
     this.collection.filtered = this.options.filter;
-    console.log(this.collection.filtered())
 
     var events = ['add', 'change', 'remove', 'sync'];
     _(events).each(function(event){
