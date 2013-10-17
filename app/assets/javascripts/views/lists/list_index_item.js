@@ -5,10 +5,16 @@ Lime.Views.ListIndexItem = Backbone.View.extend({
 
   initialize: function(){
     var that = this;
+    // this.collection = that.model.get('tasks');
     var events = ['add', 'change', 'remove'];
+
     _(events).each(function (event){
       that.listenTo(that.model, event, that.render);
-      that.listenTo(that.model.get('tasks'), event, that.render);
+
+      // if(!( Object.prototype.toString.call(that.collection) === "[object Array]" )){
+        that.listenTo(that.collection, event, that.render);
+      // }
+
     });
   },
 
@@ -68,8 +74,9 @@ Lime.Views.ListIndexItem = Backbone.View.extend({
 
     var that = this;
     this.model.save({}, {
-      success: function(){
+      success: function(model, response){
         console.log('List updated');
+        //model.set('tasks', new Lime.Collections.Tags(response.tasks));
         that.switchView();
       }
     });

@@ -50,8 +50,11 @@ Lime.Routers.App = Backbone.Router.extend({
 
   listShow: function(id){
     this.addSidebar();
+    var model = this.collections.lists.get(id);
+    var collection = this.collections.tasks.collectionWhere({ list_id: parseInt(id) })
     var mainView = new Lime.Views.ListShow({
-      model: this.collections.lists.get(id)
+      model: model,
+      collection: collection
     });
     this.resetMainView(mainView);
     $mainContent.append(mainView.render().$el);

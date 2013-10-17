@@ -3,7 +3,7 @@ Lime.Views.ListShow = Backbone.View.extend({
   initialize: function(){
     var that = this;
 
-    this.collection = this.model.get('tasks');
+    //this.collection = this.model.get('tasks');
     this.newTask = new Lime.Models.Task();
     this.nestedViews = [];
 
@@ -30,6 +30,7 @@ Lime.Views.ListShow = Backbone.View.extend({
   },
 
   render: function(){   // Refactor into methods
+    console.log(this.collection);
     this.resetNestedViews();
 
     // Insert template & rendered collection

@@ -33,7 +33,8 @@ Lime.Views.ListsIndex = Backbone.View.extend({
     // Add <li> items for every model in the collection
     this.collection.each(function(model){
       var listIndexItemView = new Lime.Views.ListIndexItem({
-        model: model
+        model: model,
+        collection: Lime.Live.Collections.tasks.collectionWhere({list_id: model.get('id')})
       });
       that.nestedViews.push(listIndexItemView);
       $ul.append(listIndexItemView.render().$el);
