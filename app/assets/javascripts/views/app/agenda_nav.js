@@ -7,6 +7,10 @@ Lime.Views.AgendaNav = Backbone.View.extend({
     this.nestedViews = [];
   },
 
+  events: {
+    "keypress .search" : "search"
+  },
+
   el: '#app-sidebar > #app-agendas',
 
   template: JST['agenda/index'],
@@ -15,6 +19,21 @@ Lime.Views.AgendaNav = Backbone.View.extend({
     this.$el.html(this.template({
     }));
     return this;
+  },
+
+  search: function(event){
+    if(event.keyCode == 13){
+      var search = $(event.target).val();
+      var type = search[0];
+      var term = search.slice(1);
+      if( search[0] == '@'){
+        Backbone.history.navigate('tags/' + term, { trigger: true });
+      } else if (search[0] == '!'){
+        Backbone.history.navigate('priority/' + term, { trigger: true });
+      } else if (search[0] == '&'){
+        Backbone.history.navigate('agenda/' + term, { trigger: true });
+      }
+    }
   }
 
 });
