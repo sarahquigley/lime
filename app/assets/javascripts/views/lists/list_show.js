@@ -3,6 +3,8 @@ Lime.Views.ListShow = Backbone.View.extend({
   initialize: function(){
     var that = this;
 
+    console.log(new Lime.Collections.Tasks(this.model.get('tasks')));
+
     this.collection = this.model.tasks;
     this.newTask = new Lime.Models.Task();
     this.nestedViews = [];
@@ -59,7 +61,7 @@ Lime.Views.ListShow = Backbone.View.extend({
     this.collection.each(function(model){
       var taskIndexItemView = new Lime.Views.TaskIndexItem({
         model: model,
-        tags: that.tags
+        tags: Lime.Live.Collections.tags
       });
       that.nestedViews.push(taskIndexItemView);
       $ul.append(taskIndexItemView.render().$el);
@@ -93,8 +95,9 @@ Lime.Views.ListShow = Backbone.View.extend({
       wait: true,
       success: function(model, response){
         console.log('Task created.');
-        model.set('tags', new Lime.Collections.Tags(response.get('tags')));
         that.collection.url = '/tasks';
+        var newTaskCount = that.model.get('task_count') + 1
+        that.model.set('task_count', newTaskCount)
         that.newTask = new Lime.Models.Task();
       },
       errors: function(model, errors){

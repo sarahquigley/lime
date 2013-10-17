@@ -8,9 +8,13 @@ class List < ActiveRecord::Base
   # Validations
   validates :title, :user, presence: true
 
+  def task_count
+    self.tasks.count
+  end
+
   # Customise as_json
   def as_json(options = nil)
-    super(include: { tasks: { methods: :due_to_s, include: :tags } }).merge(options || {})
+    super(methods: :task_count, include: { tasks: { methods: [ :due_to_s ] , include: :tags } }).merge(options || {})
   end
 
 end

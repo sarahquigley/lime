@@ -1,7 +1,6 @@
 Lime.Models.Task = Backbone.Model.extend({
 
   initialize: function(){
-    this.tags = nestCollection(this, 'tags', new Lime.Collections.Tasks(this.get('tags')));
     this.modelName = "task";
   },
 

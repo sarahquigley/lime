@@ -4,7 +4,7 @@
     <div class="app-sidebar-item app-drop-parent">
       <a href="#lists/<%= list.get('id') %>">
         <%= list.get('title') %>
-        <span class="list-task-count"><%= list.get('tasks').length %></span>
+        <span class="list-task-count"><%= list.get('task_count') %></span>
       </a>
 
       <%= menuTemplate({ list: list }) %>

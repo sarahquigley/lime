@@ -24,10 +24,10 @@
       <%= menuTemplate({ task: task }) %>
     </header>
 
-    <% if( task.tags.length > 0 ){ %>
+    <% if( task.has('tags') && task.get('tags').length > 0){ %>
       <div class="task-tags">
-      <% task.tags.each(function(tag){ %>
-        <a href="#"><%= tag.get('name') %></a>
+      <% _.each(task.get('tags'), function(tag){ %>
+        <a href="#"><%= tag.name %></a>
       <% });%>
       </div>
     <% } %>

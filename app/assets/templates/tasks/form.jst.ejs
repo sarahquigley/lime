@@ -19,8 +19,8 @@
 
       <% tags.each(function(tag){ %>
 
-        <% if( task.tags.length > 0 ){ %>
-          <% var selected = task.tags.findWhere({id: tag.get('id')}) ? 'selected' : null %>
+        <% if( task.has('tags') && task.get('tags').length > 0 ){ %>
+          <% var selected = _.findWhere(task.get('tags'), { id: tag.get('id') }) ? 'selected' : null %>
         <% } else { %>
           <% var selected = null %>
         <% }%>
