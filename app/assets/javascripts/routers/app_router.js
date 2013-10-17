@@ -23,6 +23,9 @@ Lime.Routers.App = Backbone.Router.extend({
     this.agenda('today');
   },
 
+  // Agenda based views
+
+  // Filter task by due string
   agenda: function(agenda){
     var filter = function(){
       return this.where({ due_to_s: agenda });
@@ -30,6 +33,7 @@ Lime.Routers.App = Backbone.Router.extend({
     this.addAgenda(this.collections.tasks, filter, agenda);
   },
 
+  // Filter tasks by priority
   priority: function(agenda){
     var filter = function(){
       return this.where({ priority: parseInt(agenda) });
@@ -37,11 +41,7 @@ Lime.Routers.App = Backbone.Router.extend({
     this.addAgenda(this.collections.tasks, filter, agenda);
   },
 
-  tags: function(){
-    this.addSidebar();
-    this.mainContentViews.tagsIndex.render();
-  },
-
+  // Filter tasks by tag
   tag: function(agenda){
     var that = this;
     var filter = function(){
@@ -52,6 +52,14 @@ Lime.Routers.App = Backbone.Router.extend({
     this.addAgenda(this.collections.tasks, filter, agenda);
   },
 
+
+  // Tags index
+  tags: function(){
+    this.addSidebar();
+    this.mainContentViews.tagsIndex.render();
+  },
+
+  // Feature list + its tasks
   listShow: function(id){
     this.addSidebar();
     var model = this.collections.lists.get(id);
@@ -61,6 +69,9 @@ Lime.Routers.App = Backbone.Router.extend({
     this.resetMainView(mainView);
     $mainContent.html(mainView.render().$el);
   },
+
+
+  // Helper methods
 
   addAgenda: function(collection, filter, title){
     this.addSidebar();
