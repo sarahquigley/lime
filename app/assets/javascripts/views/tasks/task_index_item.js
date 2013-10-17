@@ -2,6 +2,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
 
   initialize: function(options){
     var that = this;
+    this.parent = this.options.parent;
     var events = ['add', 'change', 'remove', 'sync'];
     _(events).each(function(event){
       that.listenTo(that.model, event, that.render);
@@ -97,10 +98,13 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
 
   // Delete the model
   delete: function(event){
+    var that = this;
     event.preventDefault();
     this.model.destroy({
       success: function(){
-        console.log('Task deleted.')
+        console.log('Task deleted.');
+        var newTaskCount = that.parent.get('task_count') - 1;
+        that.parent.set('task_count', newTaskCount);
       }
     })
   }

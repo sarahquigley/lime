@@ -5,12 +5,10 @@ Lime.Views.ListIndexItem = Backbone.View.extend({
 
   initialize: function(){
     var that = this;
-    this.collection = that.model.tasks;
     var events = ['add', 'change', 'remove'];
 
     _(events).each(function (event){
       that.listenTo(that.model, event, that.render);
-      that.listenTo(that.collection, event, that.render);
      });
   },
 
@@ -57,7 +55,6 @@ Lime.Views.ListIndexItem = Backbone.View.extend({
     event.preventDefault();
     this.switchView();
   },
-
 
   /* These functions change the event model, and save those changes to the DB */
 

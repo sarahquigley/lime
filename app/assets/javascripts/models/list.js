@@ -7,7 +7,7 @@ Lime.Models.List = Backbone.Model.extend({
   },
 
   initialize: function(){
-    this.tasks = nestCollection(this, 'tasks', new Lime.Collections.Tasks(this.get('tasks')));
+    //this.tasks = nestCollection(this, 'tasks', new Lime.Collections.Tasks(this.get('tasks')));
     this.modelName = "list";
   }
 
