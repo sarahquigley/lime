@@ -11,7 +11,7 @@ Lime.Routers.App = Backbone.Router.extend({
   routes: {
     '': 'index',
     'agenda': 'index',
-    'agenda/thisweek' : 'thisWeek',
+//    'agenda/thisweek' : 'thisWeek',
     'agenda/:agenda': 'agenda',
     'priority/:priority' : 'priority',
     'tags' : 'tags',
@@ -75,27 +75,27 @@ Lime.Routers.App = Backbone.Router.extend({
     $mainContent.html(mainView.render().$el);
   },
 
-  // This Week
-  thisWeek: function(){
-    this.addSidebar();
-
-    var that = this;
-    var agendas = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-
-    $mainContent.empty();
-    _.each(agendas, function(agenda){
-      var filter = function(){
-        return this.where({ due_to_s: agenda });
-      }
-      var section =  new Lime.Views.TasksAgenda({
-        collection: that.collections.tasks,
-        filter: filter,
-        title: agenda
-      });
-      $mainContent.append(section.render().$el);
-    });
-
-  },
+  // // This Week
+  // thisWeek: function(){
+  //   this.addSidebar();
+  //
+  //   var that = this;
+  //   var agendas = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  //
+  //   $mainContent.empty();
+  //   _.each(agendas, function(agenda){
+  //     var filter = function(){
+  //       return this.where({ due_to_s: agenda });
+  //     }
+  //     var section =  new Lime.Views.TasksAgenda({
+  //       collection: that.collections.tasks,
+  //       filter: filter,
+  //       title: agenda
+  //     });
+  //     $mainContent.append(section.render().$el);
+  //   });
+  //
+  // },
 
   /* Helper methods */
 
@@ -110,9 +110,9 @@ Lime.Routers.App = Backbone.Router.extend({
     $mainContent.html(mainView.render().$el);
   },
 
-  addGroups: function(groups, filter){
-
-  }
+  // addGroups: function(groups, filter){
+  //
+  // },
 
   addSidebar: function(){
     this.sidebarViews.agendaNav.render();
