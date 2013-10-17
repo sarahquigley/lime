@@ -26,6 +26,7 @@
 
     button:hover, .app-drop-item:hover{
       background: $accent-color-lmid;
+      border-radius: 5px;
     }
 
     .app-drop-item:hover{
@@ -104,19 +105,4 @@
     }
 
 }
-
-//.tag.dropped{
-//  background: white;
-//
-//  .app-drop-button{
-//      background: $accent-color-lmid;
-//      color: $accent-color-light;
-//    }
-//
-//    .app-drop-button:hover{
-//      background: $accent-color-dmid;
-//    }
-//
-//}
-
 

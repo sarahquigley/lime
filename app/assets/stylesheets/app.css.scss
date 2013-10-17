@@ -87,6 +87,35 @@
 
 }
 
+#app-sidebar{
+  #meta > li{
+    width: 20px;
+    padding: 6px;
+
+    &:hover{
+     background: none;
+    }
+  }
+
+   #meta.dropped{
+     background: none;
+   }
+
+   .tags-btn{
+     float: left;
+   }
+
+   .priority-menu.app-drop-menu{
+     float: right;
+     .app-drop-button{
+       background: $accent-color-lmid;
+       &:hover{
+         background: $accent-color-dmid;
+       }
+     }
+   }
+}
+
 /* Lists only */
 
 #app-sidebar{
