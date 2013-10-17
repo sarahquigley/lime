@@ -28,7 +28,7 @@ Lime.Routers.App = Backbone.Router.extend({
       collection: this.collections.tasks.collectionWhere({ due_to_s: agenda }),
       title: agenda
     });
-    $mainContent.append(mainView.render().$el);
+    $mainContent.html(mainView.render().$el);
     this.resetMainView(mainView);
     mainView.render();
   },
@@ -40,7 +40,7 @@ Lime.Routers.App = Backbone.Router.extend({
       title: 'Priority ' + agenda
     });
     this.resetMainView(mainView);
-    $mainContent.append(mainView.render().$el);
+    $mainContent.html(mainView.render().$el);
   },
 
   tags: function(){
@@ -51,13 +51,11 @@ Lime.Routers.App = Backbone.Router.extend({
   listShow: function(id){
     this.addSidebar();
     var model = this.collections.lists.get(id);
-    var collection = this.collections.tasks.collectionWhere({ list_id: parseInt(id) })
     var mainView = new Lime.Views.ListShow({
-      model: model,
-      collection: collection
+      model: model
     });
     this.resetMainView(mainView);
-    $mainContent.append(mainView.render().$el);
+    $mainContent.html(mainView.render().$el);
   },
 
   addSidebar: function(){

@@ -19,8 +19,8 @@
 
       <% tags.each(function(tag){ %>
 
-        <% if( task.has('tags') && !( Object.prototype.toString.call(task.get('tags')) === "[object Array]" )){ %>
-          <% var selected = task.get('tags').findWhere({id: tag.get('id')}) ? 'selected' : null %>
+        <% if( task.tags.length > 0 ){ %>
+          <% var selected = task.tags.findWhere({id: tag.get('id')}) ? 'selected' : null %>
         <% } else { %>
           <% var selected = null %>
         <% }%>

@@ -2,9 +2,11 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
 
   initialize: function(options){
     var that = this;
+    this.collection = this.model.tags;
     var events = ['add', 'change', 'remove', 'sync'];
     _(events).each(function(event){
       that.listenTo(that.model, event, that.render);
+      that.listenTo(that.collection, event, that.render);
     });
   },
 
@@ -71,8 +73,6 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
     this.model.save({}, {
       success: function(model, response){
         console.log('Task updated');
-        // This is bad
-        that.model.set('tags', new Lime.Collections.Tags(response.tags));
       }
     });
   },
@@ -82,10 +82,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
     var that = this;
     event.preventDefault();
     var attribute = $(event.target).attr('data-toggle');
-    this.model.toggleAttribute(attribute, function(model, response){
-      // Bad again
-      that.model.set('tags', new Lime.Collections.Tags(response.tags));
-    });
+    this.model.toggleAttribute(attribute);
   },
 
   // Set due date for tomorrow

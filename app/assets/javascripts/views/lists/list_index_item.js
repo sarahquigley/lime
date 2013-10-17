@@ -5,17 +5,13 @@ Lime.Views.ListIndexItem = Backbone.View.extend({
 
   initialize: function(){
     var that = this;
-    // this.collection = that.model.get('tasks');
+    this.collection = that.model.tasks;
     var events = ['add', 'change', 'remove'];
 
     _(events).each(function (event){
       that.listenTo(that.model, event, that.render);
-
-      // if(!( Object.prototype.toString.call(that.collection) === "[object Array]" )){
-        that.listenTo(that.collection, event, that.render);
-      // }
-
-    });
+      that.listenTo(that.collection, event, that.render);
+     });
   },
 
   events: {

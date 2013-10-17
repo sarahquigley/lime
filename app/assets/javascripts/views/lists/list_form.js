@@ -3,13 +3,8 @@
 
 Lime.Views.ListForm = Backbone.View.extend({
 
-  options: function(){
-    return {
-      model: new Lime.Models.List()
-    };
-  },
-
-  initialize: function(options){
+  initialize: function(){
+    this.model = new Lime.Models.List();
   },
 
   events: {
@@ -38,8 +33,6 @@ Lime.Views.ListForm = Backbone.View.extend({
       wait: true,
       success: function(model){
         console.log('List created.');
-        // There must be a better way to do this (in model)
-        model.set('tasks', new Lime.Collections.Tasks());
         that.model = new Lime.Models.List();
         Backbone.history.navigate(model.url(), {trigger: true});
       },

@@ -1,16 +1,7 @@
 Lime.Models.Task = Backbone.Model.extend({
 
-   defaults: function(){
-    return {
-      tags: new Lime.Collections.Tags()
-    }
-  },
-
-  initialize: function(taskData){
-    Lime.Models.Task.__super__.initialize.apply(this, arguments)
-    var tagsData = taskData ? taskData.tags : {};
-
-    this.set("tags", new Lime.Collections.Tags(tagsData));
+  initialize: function(){
+    this.tags = nestCollection(this, 'tags', new Lime.Collections.Tasks(this.get('tags')));
     this.modelName = "task";
   },
 
@@ -32,8 +23,8 @@ Lime.Models.Task = Backbone.Model.extend({
     } , {
       success: function(model, response){
         console.log('Due date set for ' + newDueDate + '.');
-        /// badd
-        that.set('tags', new Lime.Collections.Tags(response.tags));
+        // /// badd
+        // that.set('tags', new Lime.Collections.Tags(response.tags));
       }
     });
   },
