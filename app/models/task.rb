@@ -27,11 +27,11 @@ class Task < ActiveRecord::Base
   def due_to_s
     return nil if self.due == nil
     if overdue?
-      return "Overdue"
+      return "overdue"
     elsif today?
-      return "Today"
+      return "today"
     elsif tomorrow?
-      return "Tomorrow"
+      return "tomorrow"
     elsif this_week?
       return self.due.strftime('%A')
     elsif this_year?
