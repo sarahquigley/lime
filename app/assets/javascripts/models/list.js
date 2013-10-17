@@ -1,14 +1,18 @@
 Lime.Models.List = Backbone.Model.extend({
 
-   defaults: function(){
-    return {
-      tasks: new Lime.Collections.Tasks()
-    }
+  initialize: function(){
+    this.modelName = "list";
+    this.hasMany.tasks = Lime.Live.Collections.tasks ? Lime.Live.Collections.tasks : 0;
   },
 
-  initialize: function(){
-    //this.tasks = nestCollection(this, 'tasks', new Lime.Collections.Tasks(this.get('tasks')));
-    this.modelName = "list";
+  hasMany: {
+    tasks: null
+  },
+
+  tasks: function(){
+    if(this.hasMany.tasks){
+      return this.hasMany.tasks.where({list_id: this.get('id')});
+    }
   }
 
 });

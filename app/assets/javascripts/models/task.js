@@ -2,6 +2,33 @@ Lime.Models.Task = Backbone.Model.extend({
 
   initialize: function(){
     this.modelName = "task";
+    this.belongsTo.list = Lime.Live.Collections.lists ? Lime.Live.Collections.lists : null;
+    this.hasMany.tags = Lime.Live.Collections.tags ? Lime.Live.Collections.tags : null;
+  },
+
+  belongsTo: {
+    list: null
+  },
+
+  list: function(){
+    if(this.belongsTo.list){
+      return this.belongsTo.list.where({id: this.get('list_id')})
+    }
+  },
+
+  hasMany: {
+    tags: null
+  },
+
+  tags: function(){
+    if(this.hasMany.tags){
+      var that = this;
+      if(this.has('tags')){
+        return this.hasMany.tags.filter(function(tag){
+          return _.contains(_.pluck(that.get('tags'), 'id'), tag.get('id'));
+        });
+      }
+    }
   },
 
   doItToday: function(){
@@ -22,8 +49,6 @@ Lime.Models.Task = Backbone.Model.extend({
     } , {
       success: function(model, response){
         console.log('Due date set for ' + newDueDate + '.');
-        // /// badd
-        // that.set('tags', new Lime.Collections.Tags(response.tags));
       }
     });
   },
