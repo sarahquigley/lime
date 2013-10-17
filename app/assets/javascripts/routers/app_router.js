@@ -20,7 +20,7 @@ Lime.Routers.App = Backbone.Router.extend({
 
 
   index: function(){
-    this.agenda('Today');
+    this.agenda('today');
   },
 
   agenda: function(agenda){
