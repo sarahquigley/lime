@@ -24,15 +24,17 @@ Lime.Routers.App = Backbone.Router.extend({
   },
 
   agenda: function(agenda){
-    var collection = this.collections.tasks.collectionWhere({ due_to_s: agenda });
-    var title = agenda;
-    this.addAgenda(collection, title);
+    var filter = function(){
+      return this.where({ due_to_s: agenda });
+    }
+    this.addAgenda(this.collections.tasks, filter, agenda);
   },
 
   priority: function(agenda){
-    var collection = this.collections.tasks.collectionWhere({ priority: parseInt(agenda) });
-    var title = 'Priority ' + agenda;
-    this.addAgenda(collection, title);
+    var filter = function(){
+      return this.where({ priority: parseInt(agenda) });
+    }
+    this.addAgenda(this.collections.tasks, filter, agenda);
   },
 
   tags: function(){
@@ -42,12 +44,12 @@ Lime.Routers.App = Backbone.Router.extend({
 
   tag: function(agenda){
     var that = this;
-    var collection = that.collections.tasks.filter( function(task){
-      return task.has('tags') && _.findWhere( task.get('tags'), { name: agenda } );
-    });
-    collection = new Lime.Collections.Tasks(collection);
-    var title = agenda;
-    this.addAgenda(collection, title);
+    var filter = function(){
+      return this.filter( function(task){
+        return task.has('tags') && _.findWhere( task.get('tags'), { name: agenda } );
+      });
+    }
+    this.addAgenda(this.collections.tasks, filter, agenda);
   },
 
   listShow: function(id){
@@ -60,10 +62,11 @@ Lime.Routers.App = Backbone.Router.extend({
     $mainContent.html(mainView.render().$el);
   },
 
-  addAgenda: function(collection, title){
+  addAgenda: function(collection, filter, title){
     this.addSidebar();
     var mainView = new Lime.Views.TasksAgenda({
       collection: collection,
+      filter: filter,
       title: title
     });
     this.resetMainView(mainView);

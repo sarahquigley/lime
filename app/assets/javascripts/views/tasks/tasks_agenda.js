@@ -1,7 +1,15 @@
 Lime.Views.TasksAgenda = Backbone.View.extend({
 
   initialize: function(options){
+    var that = this;
     this.nestedViews = [];
+    this.collection.filtered = this.options.filter;
+    this.title = this.options.title;
+
+    var events = ['add', 'change', 'remove', 'sync'];
+    _(events).each(function(event){
+      that.listenTo(that.collection, event, that.render);
+    });
   },
 
   el: '<div></div>',
@@ -13,7 +21,7 @@ Lime.Views.TasksAgenda = Backbone.View.extend({
     // Insert template & rendered collection
     this.$el.empty();
     this.$el.append(this.template({
-      title: this.options.title
+      title: this.title
     }));
 
     this.$el.append(this.renderCollection());
@@ -29,7 +37,7 @@ Lime.Views.TasksAgenda = Backbone.View.extend({
     var $ul = $('<ul id="tasks">');
 
     // Add <li> items for every model in the collection
-    this.collection.each(function(model){
+    _.each(this.collection.filtered(), function(model){
       var taskIndexItemView = new Lime.Views.TaskIndexItem({
         model: model
       });
