@@ -26,11 +26,11 @@ Lime.Views.AgendaNav = Backbone.View.extend({
       var search = $(event.target).val();
       var type = search[0];
       var term = search.slice(1);
-      if( search[0] == '@'){
+      if( type == '@'){
         Backbone.history.navigate('tags/' + term, { trigger: true });
-      } else if (search[0] == '!'){
+      } else if (type == '!'){
         Backbone.history.navigate('priority/' + term, { trigger: true });
-      } else if (search[0] == '&'){
+      } else if (type == '&'){
         Backbone.history.navigate('agenda/' + term, { trigger: true });
       }
     }

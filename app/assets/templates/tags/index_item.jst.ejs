@@ -1,5 +1,5 @@
 <div class="tag-show app-drop-parent">
-  <a href="#"><%= tag.get('name') %></a>
+  <a href="#tags/<%= tag.get('name') %>"><%= tag.get('name') %></a>
   <span class="tag-task-count"><%= tag.get('task_count') %></span>
 
   <%= menuTemplate({ tag: tag }) %>

@@ -27,7 +27,7 @@
     <% if( task.has('tags') && task.get('tags').length > 0){ %>
       <div class="task-tags">
       <% _.each(task.get('tags'), function(tag){ %>
-        <a href="#"><%= tag.name %></a>
+        <a href="#tags/<%= tag.name %>"><%= tag.name %></a>
       <% });%>
       </div>
     <% } %>
