@@ -8,7 +8,8 @@ Lime.Views.AgendaNav = Backbone.View.extend({
   },
 
   events: {
-    "keypress .search" : "search"
+    "keypress .search" : "search",
+    "click #meta .app-drop-button": "dropMenu"
   },
 
   el: '#app-sidebar > #app-agendas',
@@ -19,6 +20,10 @@ Lime.Views.AgendaNav = Backbone.View.extend({
     this.$el.html(this.template({
     }));
     return this;
+  },
+
+  dropMenu: function(event){
+    $(event.target).closest('.app-drop-parent').toggleClass('dropped');
   },
 
   search: function(event){

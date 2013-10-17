@@ -3,6 +3,11 @@ class TasksController < ApplicationController
   before_filter :authenticate_user!
   respond_to :json
 
+  def index
+    @tasks = Task.all
+    render json: @tasks
+  end
+
   def create
     @list = List.find(params[:list_id])
     @task = @list.tasks.build(params[:task])

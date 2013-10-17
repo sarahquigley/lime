@@ -11,6 +11,7 @@
   font-size: 15px;
 
   menu{
+    border-radius: 5px;
     display: none;
     position: absolute;
     margin-top: 3px;
@@ -18,13 +19,17 @@
     width: 175px;
     z-index: 1;
 
-    button{
+    button, .app-drop-item{
       padding: 10px;
       width: 100%;
     }
 
-    button:hover{
+    button:hover, .app-drop-item:hover{
       background: $accent-color-lmid;
+    }
+
+    .app-drop-item:hover{
+      width: 155px;
     }
   }
 }

@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<ul id="meta" class="app-sidebar-section">
+<ul id="meta" class="app-sidebar-section app-drop-parent clearfix">
 
     <li class="app-sidebar-item">
 
@@ -14,6 +14,19 @@
         @
       </a>
 
+    </li>
+
+    <li class="list-menu app-drop-menu">
+      <div class="app-drop-button"><i class="icon-exclamation"></i></div>
+      <menu>
+
+        <% _.each([1, 2, 3, 4, 5], function(num){ %>
+          <div class="app-drop-item">
+            <a href="#priority/<%= num %>">Priority <%= num %></a>
+          </div>
+        <% }) %>
+
+      </menu>
     </li>
 
 </ul>
