@@ -18,12 +18,12 @@ Lime.Routers.App = Backbone.Router.extend({
     'lists/:id' : 'listShow'
   },
 
-
+  // Home route
   index: function(){
     this.agenda('today');
   },
 
-  // Agenda based views
+  /* Agenda based views */
 
   // Filter task by due string
   agenda: function(agenda){
@@ -62,16 +62,20 @@ Lime.Routers.App = Backbone.Router.extend({
   // Feature list + its tasks
   listShow: function(id){
     this.addSidebar();
-    var model = this.collections.lists.get(id);
+    var filter = function(){
+      return this.where({ list_id: parseInt(id) });
+    }
     var mainView = new Lime.Views.ListShow({
-      model: model
+      model: this.collections.lists.get(id),
+      collection: this.collections.tasks,
+      filter: filter
     });
     this.resetMainView(mainView);
     $mainContent.html(mainView.render().$el);
   },
 
 
-  // Helper methods
+  /* Helper methods */
 
   addAgenda: function(collection, filter, title){
     this.addSidebar();

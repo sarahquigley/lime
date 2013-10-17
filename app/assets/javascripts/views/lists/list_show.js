@@ -2,9 +2,10 @@ Lime.Views.ListShow = Backbone.View.extend({
 
   initialize: function(){
     var that = this;
-    this.collection = new Lime.Collections.Tasks(this.model.get('tasks'));
     this.newTask = new Lime.Models.Task();
     this.nestedViews = [];
+    this.collection.filtered = this.options.filter;
+    console.log(this.collection.filtered())
 
     var events = ['add', 'change', 'remove', 'sync'];
     _(events).each(function(event){
@@ -55,7 +56,7 @@ Lime.Views.ListShow = Backbone.View.extend({
     var $ul = $('<ul id="tasks">');
 
     // Add <li> items for every model in the collection
-    this.collection.each(function(model){
+    _.each(this.collection.filtered(), function(model){
       var taskIndexItemView = new Lime.Views.TaskIndexItem({
         model: model,
         parent: that.model,
