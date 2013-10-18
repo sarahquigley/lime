@@ -25,7 +25,8 @@ Lime.Views.ListShow = Backbone.View.extend({
   templates: {
     show: JST['lists/show'],
     showMenu: JST['lists/show_menu'],
-    form: JST['tasks/form']
+    form: JST['tasks/form'],
+    ntd: JST['app/nothing_to_do']
   },
 
   render: function(){   // Refactor into methods
@@ -55,17 +56,21 @@ Lime.Views.ListShow = Backbone.View.extend({
     var $ul = $('<ul id="tasks">');
 
     // Add <li> items for every model in the collection
-    _.each(this.collection.filtered(), function(model){
-      var taskIndexItemView = new Lime.Views.TaskIndexItem({
-        model: model,
-        parent: that.model,
-        tags: Lime.Live.Collections.tags
+    if(this.collection.filtered().length == 0){
+      return this.templates.ntd({});
+    } else {
+      _.each(this.collection.filtered(), function(model){
+        var taskIndexItemView = new Lime.Views.TaskIndexItem({
+          model: model,
+          parent: that.model,
+          tags: Lime.Live.Collections.tags
+        });
+        that.nestedViews.push(taskIndexItemView);
+        $ul.append(taskIndexItemView.render().$el);
       });
-      that.nestedViews.push(taskIndexItemView);
-      $ul.append(taskIndexItemView.render().$el);
-    });
 
-    return $ul;
+      return $ul;
+    }
   },
 
   // Drop Menu (needs click outside collapse)

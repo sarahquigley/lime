@@ -14,13 +14,16 @@ Lime.Views.TasksAgenda = Backbone.View.extend({
 
   el: '<div></div>',
 
-  template: JST['agenda/show'],
+  templates: {
+    show: JST['agenda/show'],
+    ntd: JST['app/nothing_to_do']
+  },
 
   render: function(){   // Refactor into methods
     this.resetNestedViews();
     // Insert template & rendered collection
     this.$el.empty();
-    this.$el.append(this.template({
+    this.$el.append(this.templates.show({
       title: this.title
     }));
 
@@ -37,15 +40,19 @@ Lime.Views.TasksAgenda = Backbone.View.extend({
     var $ul = $('<ul id="tasks">');
 
     // Add <li> items for every model in the collection
-    _.each(this.collection.filtered(), function(model){
-      var taskIndexItemView = new Lime.Views.TaskIndexItem({
-        model: model
+    if(this.collection.filtered().length == 0){
+      return this.templates.ntd({});
+    } else {
+      _.each(this.collection.filtered(), function(model){
+        var taskIndexItemView = new Lime.Views.TaskIndexItem({
+          model: model
+        });
+        that.nestedViews.push(taskIndexItemView);
+        $ul.append(taskIndexItemView.render().$el);
       });
-      that.nestedViews.push(taskIndexItemView);
-      $ul.append(taskIndexItemView.render().$el);
-    });
 
-    return $ul;
+      return $ul;
+    }
   }
 
 })

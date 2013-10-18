@@ -296,3 +296,23 @@
 .tag-show:hover .tag-task-count{
   background: $accent-color-lmid;
 }
+
+
+/****************************************************
+              Nothing to do
+*****************************************************/
+
+#nothing-to-do *{
+  color: $accent-color-dmid;
+  font-size: 13px;
+  float: left;
+  text-align: center;
+  line-height: 20px;
+  height: 20px;
+  padding: 10px 5px 10px 0;
+}
+
+#nothing-to-do{
+  border-bottom: $border-light;
+  margin-bottom: 10px;
+}
