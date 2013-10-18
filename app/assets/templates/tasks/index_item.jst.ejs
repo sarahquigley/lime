@@ -17,10 +17,10 @@
           <%= task.get('title') %>
         </h3>
         <% if(task.get('due')){ %>
-        <span class="task-due"><%= task.get('due_to_s') %></span>
+        <span class="task-due"><a href="#agenda/<%= task.get('due_to_s') %>"><%= task.get('due_to_s') %></a></span>
         <% }; %>
         <% if(task.get('priority')){ %>
-        <span class="task-due"><%= task.get('priority') %></span>
+        <span class="task-due"><a href="#priority/<%= task.get('priority') %>"><%= task.get('priority') %></a></span>
         <% }; %>
       </div>
       <%= menuTemplate({ task: task }) %>
