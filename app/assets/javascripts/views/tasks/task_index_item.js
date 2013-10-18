@@ -11,7 +11,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
   },
 
   events: {
-    "click .task input.toggle": "toggle",
+    "click .task-show input.toggle": "toggle",
     "click .task-menu .app-drop-button": "dropMenu",
     "click .task-menu button.edit-task": "edit",
     "click .task-title h3": "edit",
