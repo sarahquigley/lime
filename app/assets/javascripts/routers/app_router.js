@@ -39,7 +39,7 @@ Lime.Routers.App = Backbone.Router.extend({
     var filter = function(){
       return this.where({ priority: parseInt(agenda) });
     }
-    this.addAgenda(this.collections.tasks, filter, agenda);
+    this.addAgenda(this.collections.tasks, filter, 'priority ' + agenda);
   },
 
   // Filter tasks by tag
