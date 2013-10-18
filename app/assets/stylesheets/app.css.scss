@@ -182,8 +182,17 @@
 }
 
 .task-title h3{
-  width: 563px;
+  float: left;
+  padding-right: 5px;
+}
+
+.task-title .title-container{
   display: inline-block;
+  width: 563px;
+}
+
+.completed .task-title h3{
+  text-decoration: line-through;
 }
 
 .task-description{
@@ -215,6 +224,7 @@
   padding: 2px 4px;
   border-radius: 5px;
   background: $accent-color-light;
+  float: left;
 }
 
 .task-title:hover{

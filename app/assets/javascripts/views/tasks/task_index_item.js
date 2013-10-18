@@ -7,18 +7,19 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
     _(events).each(function(event){
       that.listenTo(that.model, event, that.render);
     });
+
   },
 
   events: {
-    "click .task > input.toggle" : "toggle",
+    "click .task input.toggle": "toggle",
     "click .task-menu .app-drop-button": "dropMenu",
-    "click .task-menu button.edit-task" : "edit",
+    "click .task-menu button.edit-task": "edit",
     "click .task-title h3": "edit",
     "submit .task-form": "update",
-    "click .task-menu button.toggle" : "toggle",
-    "click .task-menu button.do-it-today-task" : "doItToday",
-    "click .task-menu button.postpone-task" : "postpone",
-    "click .task-menu button.delete-task" : "delete"
+    "click .task-menu button.toggle": "toggle",
+    "click .task-menu button.do-it-today-task": "doItToday",
+    "click .task-menu button.postpone-task": "postpone",
+    "click .task-menu button.delete-task": "delete"
   },
 
   el: '<li class="task clearfix">',

@@ -1,4 +1,4 @@
-<div class="task-show clearfix">
+<div class="task-show clearfix <% if(task.get('completed')){ %>completed<% } %>">
 
   <input
     class="toggle-task-completed toggle"
@@ -12,15 +12,17 @@
   <article class="task-body clearfix" >
 
     <header class="task-title app-drop-parent">
-      <h3>
-        <%= task.get('title') %>
+      <div class="title-container clearfix">
+        <h3>
+          <%= task.get('title') %>
+        </h3>
         <% if(task.get('due')){ %>
         <span class="task-due"><%= task.get('due_to_s') %></span>
         <% }; %>
         <% if(task.get('priority')){ %>
         <span class="task-due"><%= task.get('priority') %></span>
         <% }; %>
-      </h3>
+      </div>
       <%= menuTemplate({ task: task }) %>
     </header>
 
