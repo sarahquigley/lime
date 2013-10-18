@@ -103,8 +103,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend({
     this.model.destroy({
       success: function(){
         console.log('Task deleted.');
-        var newTaskCount = that.parent.get('task_count') - 1;
-        that.parent.set('task_count', newTaskCount);
+        that.parent.trigger('change');
       }
     })
   }

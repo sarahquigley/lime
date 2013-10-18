@@ -94,8 +94,7 @@ Lime.Views.ListShow = Backbone.View.extend({
       success: function(model, response){
         console.log('Task created.');
         that.collection.url = '/tasks';
-        var newTaskCount = that.model.get('task_count') + 1;
-        that.model.set('task_count', newTaskCount);
+        that.model.trigger('change');
         that.newTask = new Lime.Models.Task();
       },
       errors: function(model, errors){
