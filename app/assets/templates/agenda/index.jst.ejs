@@ -1,13 +1,32 @@
-<% var agendas = ["Overdue", "Today", "Tomorrow"]%>
+<% var agendas = ["overdue", "today", "tomorrow"]%>
 
-<ul class="app-sidebar-section">
+<div id="search-form" class="app-form">
+  <div class="field">
+    <input class="search" type="text" name="search">
+  </div>
+</div>
 
-    <li class="app-sidebar-item">
+<ul id="meta" class="app-sidebar-section app-drop-parent clearfix">
+
+    <li class="tags-btn app-sidebar-item">
 
       <a href="#tags">
         @
       </a>
 
+    </li>
+
+    <li class="priority-menu app-drop-menu">
+      <div class="app-drop-button"><i class="icon-exclamation"></i></div>
+      <menu>
+
+        <% _.each([1, 2, 3, 4, 5], function(num){ %>
+          <div class="app-drop-item">
+            <a href="#priority/<%= num %>">Priority <%= num %></a>
+          </div>
+        <% }) %>
+
+      </menu>
     </li>
 
 </ul>

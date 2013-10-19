@@ -13,7 +13,7 @@ Lime::Application.routes.draw do
   end
 
   # Task routes
-  resources :tasks, only: [:update, :destroy]
+  resources :tasks, only: [:index, :update, :destroy]
 
   # Tags
   resources :tags, only: [:index, :create, :update, :destroy]

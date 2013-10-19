@@ -1,67 +1,45 @@
+// Purpose: Renders index of User's Lists
+// Where? Sidebar (no Parent View)
+
 Lime.Views.ListsIndex = Backbone.View.extend({
 
   initialize: function(){
+    this.nestedViews = [];
     var that = this;
     var events = ['add', 'change', 'remove'];
     _(events).each(function (event){
-      that.listenTo(that.collection, event, that.render)
+      that.listenTo(that.collection, event, that.render);
     });
   },
 
-  events: {
-    "click .app-drop-button": "dropMenu",
-    "click .list-menu button.edit-list" : "edit",
-    "click .list-menu button.toggle" : "toggle",
-    "click .list-menu button.delete-list" : "delete"
-  },
-
-  el: '<div id="lists-container" class="sidebar-section">',
-
-  template: JST['lists/index'],
-
-  menuTemplate: JST['lists/menu'],
+  el: '#app-sidebar > #lists-container',
 
   render: function(){
-    this.$el.html(this.template({
-      lists: this.collection,
-      menuTemplate: this.menuTemplate
-    }));
+    this.resetNestedViews();
+
+    // Insert rendered collection
+    this.$el.empty();
+    this.$el.append(this.renderedCollection());
+
     return this;
   },
 
-  dropMenu: function(event){
-    $(event.target).closest('.app-drop-parent').toggleClass('dropped');
-  },
+  renderedCollection: function(){
+    var that = this;
 
-  edit: function(){
-    event.preventDefault();
-    var listFormView = new Lime.Views.ListForm({model: this.eventModel(event)});
-    $(event.target).parents('.list').html(listFormView.render().$el);
-  },
+    // Create <ul> to contain <li> items for every model in the collection
+    var $ul = $('<ul id="lists" class="app-sidebar-section">');
 
-  // Toggles
+    // Add <li> items for every model in the collection
+    this.collection.each(function(model){
+      var listIndexItemView = new Lime.Views.ListIndexItem({
+        model: model
+      });
+      that.nestedViews.push(listIndexItemView);
+      $ul.append(listIndexItemView.render().$el);
+    });
 
-  toggle: function(event){
-    event.preventDefault();
-    var attribute = $(event.target).attr('data-toggle');
-    this.eventModel(event).toggleAttribute(attribute);
-  },
-
-
-  delete: function(event){
-    event.preventDefault();
-    var eventModel = this.eventModel(event);
-    eventModel.destroy({
-      success: function(){
-        console.log('List deleted.');
-        Backbone.history.navigate('', {trigger: true})
-      }
-    })
-  },
-
-  eventModel: function(event){
-    var eventModelId = $(event.target).parents('.list').attr('data-list-id');
-    return this.collection.get(eventModelId);
+    return $ul;
   }
 
 });

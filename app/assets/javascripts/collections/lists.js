@@ -1,8 +1,9 @@
 Lime.Collections.Lists = Backbone.Collection.extend({
 
   initialize: function(){
-    this.sortAttribute = "title";
   },
+
+  comparator: "title",
 
   model: Lime.Models.List,
   url: "/lists"

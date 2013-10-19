@@ -1,0 +1,46 @@
+<div class="task-show clearfix <% if(task.get('completed')){ %>completed<% } %>">
+
+  <input
+    class="toggle-task-completed toggle"
+    type="checkbox"
+    name="toggle-task-completed"
+    data-toggle="completed"
+    <% if(task.get('completed')){ %>
+      checked
+    <% } %>>
+
+  <article class="task-body clearfix" >
+
+    <header class="task-title app-drop-parent">
+      <div class="title-container clearfix">
+        <h3>
+          <%= task.get('title') %>
+        </h3>
+        <% if(task.get('due')){ %>
+        <span class="task-due"><a href="#agenda/<%= task.get('due_to_s') %>"><%= task.get('due_to_s') %></a></span>
+        <% }; %>
+        <% if(task.get('priority')){ %>
+        <span class="task-due"><a href="#priority/<%= task.get('priority') %>"><%= task.get('priority') %></a></span>
+        <% }; %>
+      </div>
+      <%= menuTemplate({ task: task }) %>
+    </header>
+
+    <% if( task.has('tags') && task.get('tags').length > 0){ %>
+      <div class="task-tags">
+      <% _.each(task.get('tags'), function(tag){ %>
+        <a href="#tags/<%= tag.name %>"><%= tag.name %></a>
+      <% });%>
+      </div>
+    <% } %>
+
+    <p class="task-description"><%= task.get('description') %></p>
+
+  </article>
+
+</div>
+
+<div class="task-edit clearfix hidden">
+  <%= formTemplate({ task: task, tags: tags })%>
+</div>
+

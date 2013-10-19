@@ -12,6 +12,11 @@ _.extend(Backbone.View.prototype, {
         }
       })
     }
+  },
+
+  resetNestedViews: function(){
+    _.each(this.nestedViews, function(view){ view.close() });
+    this.nestedViews = [];
   }
 
 });
@@ -19,17 +24,6 @@ _.extend(Backbone.View.prototype, {
 // Extend Backbone collection protype
 
 _.extend(Backbone.Collection.prototype, {
-
-  comparator: function(model1, model2){
-    model1 = model1.get(this.sortAttribute);
-    model2 = model2.get(this.sortAttribute);
-    return model1 > model2 ?  1 : model1 < model2 ? -1 : 0;
-  },
-
-  sortCollection: function(attribute){
-    this.sortAttribute = attribute;
-    this.sort();
-  },
 
   collectionWhere: function(options){
     var newCollection = this.clone();
@@ -48,8 +42,8 @@ _.extend(Backbone.Model.prototype, {
     options[this.modelName] = {};
     options[this.modelName][attribute] = !this.get(attribute);
     this.save(options, {
-      success: function(){
-        console.log('Toggled task ' + attribute + '.');
+      success: function(model, response){
+        console.log('Toggled ' + attribute + '.');
       }
     });
   },

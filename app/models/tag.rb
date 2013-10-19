@@ -7,15 +7,6 @@ class Tag < ActiveRecord::Base
   has_many :tasks, through: :taggings
 
   # Validations
-  validates :name, presence: true
-
-  # Task count
-  def task_count
-    self.tasks.count
-  end
-
-  def as_json(options = nil)
-    super(methods: :task_count).merge(options || {})
-  end
+  validates :name, presence: true, uniqueness: true
 
 end

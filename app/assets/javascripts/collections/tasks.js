@@ -1,7 +1,12 @@
 Lime.Collections.Tasks = Backbone.Collection.extend({
 
   initialize: function(){
-    this.sortAttribute = "title";
+  },
+
+  comparator: "title",
+
+  filtered: function(){
+    return this.models();
   },
 
   model: Lime.Models.Task,

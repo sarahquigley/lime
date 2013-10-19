@@ -1,0 +1,18 @@
+<% var id= list.get('id'); %>
+
+  <div class="list-show">
+    <div class="app-sidebar-item app-drop-parent">
+      <a href="#lists/<%= list.get('id') %>">
+        <%= list.get('title') %>
+        <span class="list-task-count"><%= list.tasks().length %></span>
+      </a>
+
+      <%= menuTemplate({ list: list }) %>
+    </div>
+  </div>
+
+  <div class="list-edit hidden">
+    <%= formTemplate({list: list})%>
+  </div>
+
+</li>

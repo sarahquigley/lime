@@ -1,16 +1,34 @@
 Lime.Models.Task = Backbone.Model.extend({
 
-   defaults: function(){
-    return {
-      tags: new Lime.Collections.Tags()
+  initialize: function(){
+    this.modelName = "task";
+    this.belongsTo.list = Lime.Live.Collections.lists ? Lime.Live.Collections.lists : null;
+    this.hasMany.tags = Lime.Live.Collections.tags ? Lime.Live.Collections.tags : null;
+  },
+
+  belongsTo: {
+    list: null
+  },
+
+  list: function(){
+    if(this.belongsTo.list){
+      return this.belongsTo.list.where({id: this.get('list_id')})
     }
   },
 
-  initialize: function(taskData){
-    Lime.Models.Task.__super__.initialize.apply(this, arguments)
-    var tagsData = taskData ? taskData.tags : {};
-    this.set("tags", new Lime.Collections.Tags(tagsData));
-    this.modelName = "task";
+  hasMany: {
+    tags: null
+  },
+
+  tags: function(){
+    if(this.hasMany.tags){
+      var that = this;
+      if(this.has('tags')){
+        return this.hasMany.tags.filter(function(tag){
+          return _.contains(_.pluck(that.get('tags'), 'id'), tag.get('id'));
+        });
+      }
+    }
   },
 
   doItToday: function(){
@@ -24,12 +42,13 @@ Lime.Models.Task = Backbone.Model.extend({
   },
 
   setDue: function(newDueDate){
+    var that = this;
     this.save({
-      due: newDate,
+      due: newDueDate,
       task: { due: newDueDate }
     } , {
-      success: function(){
-        console.log('Due date set for ' + newDate + '.')
+      success: function(model, response){
+        console.log('Due date set for ' + newDueDate + '.');
       }
     });
   },

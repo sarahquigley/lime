@@ -1,62 +1,84 @@
+// Purpose: Renders index of User's Tags
+// Where? Main Content(no Parent View)
+
 Lime.Views.TagsIndex = Backbone.View.extend({
 
   initialize: function(){
     this.nestedViews = [];
     var that = this;
-    var events = ['add', 'remove', 'change'];
+    var events = ['add', 'remove', 'change', 'sync'];
     _(events).each(function(event){
-      that.listenTo(that.collection, event, that.render)
+      that.listenTo(that.collection, event, that.render);
+      that.listenTo(that.model, event, that.render);  // NEEDED??
     });
   },
 
   events: {
-    "click .tag-menu .app-drop-button": "dropMenu",
-    "click .tag-menu .edit-tag" : "edit",
-    "click .tag-menu .delete-tag" : "delete"
+    "submit .tag-form": "submit"
   },
 
-  el: $('<section id="app-content">'),
+  el: '#app-content',
 
-  template: JST['tags/index'],
-  menuTemplate: JST['tags/menu'],
+  templates: {
+    index: JST['tags/index'],
+    form: JST['tags/form'],
+  },
 
-  render: function(){
-    this.$el.html(this.template({
-      tags: this.collection,
-      menuTemplate: this.menuTemplate
+  render: function(){   // Refactor into methods
+    this.resetNestedViews();
+
+    // Insert template & rendered collection
+    this.$el.empty();
+    this.$el.append(this.templates.index({}));
+    this.$el.append(this.renderCollection());
+
+    // Append form
+    this.$el.append(this.templates.form({
+      tag: this.model
     }));
-    var tagFormView = new Lime.Views.TagForm({
-        collection: this.collection
-    });
-    this.nestedViews = [tagFormView];
-    this.$el.append(tagFormView.render().$el);
+
     return this;
   },
 
-  // Drop Menu (needs click outside collapse)
+  // Helper method, called by render
+  renderCollection: function(){
+    var that = this;
 
-  dropMenu: function(event){
-    $(event.target).closest('.app-drop-parent').toggleClass('dropped');
+    // Create <ul> to contain <li> items for every model in the collection
+    var $ul = $('<ul id="tags">');
+
+    // Add <li> items for every model in the collection
+    this.collection.each(function(model){
+      //model.tasks = Lime.Live.Collections.tasks;
+      var tagIndexItemView = new Lime.Views.TagIndexItem({
+        model: model
+      });
+      that.nestedViews.push(tagIndexItemView);
+      $ul.append(tagIndexItemView.render().$el);
+    });
+
+    return $ul;
   },
 
-  edit: function(event){
-    event.preventDefault();
-    var tagFormView = new Lime.Views.TagForm({ model: this.eventModel(event) });
-    $(event.target).parents('.tag').html(tagFormView.render().$el);
-  },
 
-  delete: function(event){
+
+  // Submit new tags
+  submit: function(event){
+    var that = this;
     event.preventDefault();
-    this.eventModel(event).destroy({
-      success: function(){
-        console.log('Tag destroyed');
+    var attrs = $(event.target).serializeJSON();
+    this.model.set(attrs);
+
+    this.collection.create(this.model, {
+      wait: true,
+      success: function(model, response){
+        console.log('Tag created.');
+        that.model = new Lime.Models.Tag();
+      },
+      error: function(model, errors, response){
+        console.log('Error');
       }
     });
-  },
-
-  eventModel: function(event){
-    var eventModelId = $(event.target).parents('.tag').attr('data-tag-id');
-    return this.collection.get(eventModelId);
   }
 
 })

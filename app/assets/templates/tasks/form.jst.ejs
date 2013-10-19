@@ -1,28 +1,38 @@
-<form id="task-form" class="app-form">
+<form class="task-form app-form clearfix">
 
-  <div id="task-title-field" class="field">
+  <div class="task-title-field field">
     <input type="text" name="task[title]" value="<%= task.get("title") %>">
   </div>
 
-  <div id="task-due-date-field" class="field">
+  <div class="task-due-date-field field">
     <input type="date" name="task[due]" value="<%= task.get("due") %>">
   </div>
 
-  <div id="task-description-field" class="field">
+  <div class="task-description-field field">
     <textarea name="task[description]"><%= task.get("description") %></textarea>
   </div>
 
-  <div id="task-tags-field" class="field">
+  <div class="task-tags-field field">
     <select data-placeholder="@" class="chosen-select" name='task[tag_ids][]' multiple tabindex="4">
+
       <option value=""></option>
+
       <% tags.each(function(tag){ %>
-        <% var selected = task.get('tags').findWhere({id: tag.get('id')}) ? 'selected' : null %>
+
+        <% if( task.has('tags') && task.get('tags').length > 0 ){ %>
+          <% var selected = _.findWhere(task.get('tags'), { id: tag.get('id') }) ? 'selected' : null %>
+        <% } else { %>
+          <% var selected = null %>
+        <% }%>
+
         <option value="<%= tag.get('id') %>" <%= selected %>><%= tag.get('name') %></option>
+
       <% }); %>
+
     </select>
   </div>
 
-  <div id="task-priority-field" class="field">
+  <div class="task-priority-field field">
     <select name='task[priority]'>
       <option value="">!</option>
       <% _.each([1, 2, 3, 4, 5], function(priority){ %>
@@ -33,12 +43,12 @@
   </div>
 
 
-  <div id="task-submit-button" class="submit">
+  <div class="task-submit-button submit">
     <input type="submit" value="Add task">
   </div>
 
 </form>
 
 <script>
-  $(".chosen-select").chosen()
+  $(".chosen-select").chosen();
 </script>
