@@ -9,53 +9,47 @@ Lime.Views.TaskGroup = Backbone.View.extend({
       that.listenTo(that.model, event, that.render);
       that.listenTo(that.collection, event, that.render);
     });
-    //that.listenTo(that.collection, 'sort', that.render);
-
-    var group = function(collection){
-      return collection;
-    }
-    this.title = this.options.title ? this.options.title : "";
-    this.display = this.options.display ? this.options.display : true;
-    this.group = this.options.group ? this.options.group : group;
+    that.listenTo(that.collection, 'sort', that.render);
+    
+    this.group = this.options.group;
+    this.collection.group = this.group.group;
   },
 
   events: {
-
   },
 
   el: '<section class="group">',
 
   templates: {
-    inbox : JST['app/inbox'],
+    group : JST['app/group'],
+    form: JST['tasks/form'],
     ntd: JST['app/nothing_to_do']
   },
 
   render: function(){
-    var that = this;
+    this.resetNestedViews();
+    
+    this.$el.empty();
+    this.$el.html(this.templates.group({
+      group: this.group
+    }));
+    this.$el.append(this.renderCollection());
 
-    var renderedInbox = that.templates.inbox({
-      inbox: inbox
-    });
-    $inbox.append(renderedInbox);
-    var collection = that.collection.filtered();
-    var group = inbox.group(collection);
-    $inbox.append(that.renderCollection(group));
-    $inboxes.append($inbox);
-
-    return $inboxes;
+    return this;
   },
 
   // Helper method, called by render
-  renderCollection: function(collection){
+  renderCollection: function(){
     var that = this;
+
     // Create <ul> to contain <li> items for every model in the collection
     var $ul = $('<ul id="tasks">');
 
     // Add <li> items for every model in the collection
-    if(collection.length == 0){
+    if(this.collection.group().length == 0){
       return this.templates.ntd({});
     } else {
-      _.each(collection, function(model){
+      _.each(this.collection.group(), function(model){
         var taskIndexItemView = new Lime.Views.TaskIndexItem({
           model: model,
           parent: that.model,
@@ -66,7 +60,6 @@ Lime.Views.TaskGroup = Backbone.View.extend({
       });
       return $ul;
     }
-  },
-
+  }
 
 })

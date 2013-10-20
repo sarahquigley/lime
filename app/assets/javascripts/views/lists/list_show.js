@@ -24,46 +24,12 @@ Lime.Views.ListShow = Backbone.View.extend({
 
   templates: {
     show: JST['lists/show'],
-    inbox: JST['app/inbox'],
     showMenu: JST['lists/show_menu'],
     form: JST['tasks/form'],
-    ntd: JST['app/nothing_to_do']
-  },
-
-  inbox: {
-
-    main: {
-      title: null,
-      display: true,
-      group: function(collection){
-        return _.filter(collection, function(task){
-          return !task.get('completed') && !task.get('archived');
-        });
-      }
-    },
-
-    completed: {
-      title: "completed",
-      display: true,
-      group: function(collection){
-        return _.filter(collection, function(task){
-          return task.get('completed') && !task.get('archived');
-        });
-      }
-    },
-
-    archived: {
-      title: "archived",
-      display: false,
-      group: function(collection){
-        return _.filter(collection, function(task){
-          return task.get('archived');
-        });
-      }
-    },
   },
 
   render: function(){   // Refactor into methods
+    var that = this;
     this.resetNestedViews();
 
     // Insert template & rendered collection
@@ -72,55 +38,23 @@ Lime.Views.ListShow = Backbone.View.extend({
       list: this.model,
       showMenuTemplate: this.templates.showMenu
     }));
+  
+    _.each(this.collection.groups, function(group){
+      var taskGroupView = new Lime.Views.TaskGroup({
+        collection: that.collection,
+        model: that.model,
+        group: group
+      });
+      that.nestedViews.push(taskGroupView);
+      that.$el.append(taskGroupView.render().$el);
+    });
 
-    this.$el.append(this.renderInbox());
     this.$el.append(this.templates.form({
       task: this.newTask,
       tags: Lime.Live.Collections.tags
     }))
 
     return this;
-  },
-
-  renderInbox: function(){
-    var that = this;
-    var $inboxes = $('<div id="inboxes">');
-
-    _.each(this.inbox, function(inbox){
-      var $inbox = $('<section class="inbox">');
-      var renderedInbox = that.templates.inbox({
-        inbox: inbox
-      });
-      $inbox.append(renderedInbox);
-      var collection = that.collection.filtered();
-      var group = inbox.group(collection);
-      $inbox.append(that.renderCollection(group));
-      $inboxes.append($inbox);
-    });
-    return $inboxes;
-  },
-
-  // Helper method, called by render
-  renderCollection: function(collection){
-    var that = this;
-    // Create <ul> to contain <li> items for every model in the collection
-    var $ul = $('<ul id="tasks">');
-
-    // Add <li> items for every model in the collection
-    if(collection.length == 0){
-      return this.templates.ntd({});
-    } else {
-      _.each(collection, function(model){
-        var taskIndexItemView = new Lime.Views.TaskIndexItem({
-          model: model,
-          parent: that.model,
-          tags: Lime.Live.Collections.tags
-        });
-        that.nestedViews.push(taskIndexItemView);
-        $ul.append(taskIndexItemView.render().$el);
-      });
-      return $ul;
-    }
   },
 
   // Drop Menu (needs click outside collapse)
