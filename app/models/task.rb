@@ -86,5 +86,4 @@ class Task < ActiveRecord::Base
     super(methods: :due_to_s, include: :tags ).merge(options || {})
   end
 
-
 end
