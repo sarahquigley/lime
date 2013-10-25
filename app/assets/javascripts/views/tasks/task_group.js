@@ -21,7 +21,7 @@ Lime.Views.TaskGroup = Backbone.View.extend({
   el: '<section class="group">',
 
   templates: {
-    group : JST['app/group'],
+    group : JST['tasks/group'],
     form: JST['tasks/form'],
     ntd: JST['app/nothing_to_do']
   },
