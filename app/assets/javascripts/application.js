@@ -20,6 +20,7 @@
 //= require my_backbone
 //= require lime
 //= require_tree ../templates
+//= require_tree ./mixins
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views

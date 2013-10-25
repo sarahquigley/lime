@@ -2,6 +2,7 @@ window.Lime = {
 
   Models: {},
   Collections: {},
+  Mixins: {},
   Views: {},
   Routers: {},
   Live: {

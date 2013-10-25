@@ -1,4 +1,4 @@
-<div class="task-show clearfix <% if(task.get('completed')){ %>completed<% } %>">
+<div class="task-show show clearfix <% if(task.get('completed')){ %>completed<% } %>">
 
   <input
     class="toggle-task-completed toggle"
@@ -40,7 +40,7 @@
 
 </div>
 
-<div class="task-edit clearfix hidden">
+<div class="task-edit edit clearfix hidden">
   <%= formTemplate({ task: task, tags: tags })%>
 </div>
 
