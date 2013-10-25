@@ -1,6 +1,6 @@
 <% var id= list.get('id'); %>
 
-  <div class="list-show">
+  <div class="list-show show">
     <div class="app-sidebar-item app-drop-parent">
       <a href="#lists/<%= list.get('id') %>">
         <%= list.get('title') %>
@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div class="list-edit hidden">
+  <div class="list-edit edit hidden">
     <%= formTemplate({list: list})%>
   </div>
 

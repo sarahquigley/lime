@@ -1,5 +1,5 @@
 Lime.Views.TaskIndexItem = Backbone.View.extend(
-  _.extend({}, Lime.Mixins.Updatable, Lime.Mixins.Deletable, {
+  _.extend({}, Lime.Mixins.Updatable, Lime.Mixins.Deletable, Lime.Mixins.UI, {
 
     initialize: function(options){
       var that = this;
@@ -40,14 +40,6 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
       return this;
     },
 
-    /* These functions alter the way the view is displayed */
-
-    // Drops down then task item menus
-
-    dropMenu: function(event){
-      $(event.target).closest('.app-drop-parent').toggleClass('dropped');
-    },
-
     /* These functions change the event model, and save those changes to the DB */
 
     // Set due date for tomorrow
@@ -60,7 +52,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
     postpone: function(event){
       event.preventDefault();
       this.model.postpone();
-    },
+    }
 
 }));
 

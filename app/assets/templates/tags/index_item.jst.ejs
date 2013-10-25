@@ -1,10 +1,10 @@
-<div class="tag-show app-drop-parent">
+<div class="tag-show show app-drop-parent">
   <a href="#tags/<%= tag.get('name') %>"><%= tag.get('name') %></a>
   <span class="tag-task-count"><%= tag.tasks().length %></span>
 
   <%= menuTemplate({ tag: tag }) %>
 </div>
 
-<div class="tag-edit hidden">
+<div class="tag-edit edit hidden">
   <%= formTemplate({ tag: tag }) %>
 </div>

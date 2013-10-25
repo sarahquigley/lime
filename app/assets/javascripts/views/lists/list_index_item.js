@@ -1,7 +1,8 @@
 // Purpose: Displays individual Lists
 // Where? Sidebar (Parent View: ListsIndexView)
 
-Lime.Views.ListIndexItem = Backbone.View.extend({
+Lime.Views.ListIndexItem = Backbone.View.extend(
+  _.extend({}, Lime.Mixins.Updatable, Lime.Mixins.UI, {
 
   initialize: function(){
     var that = this;
@@ -15,7 +16,7 @@ Lime.Views.ListIndexItem = Backbone.View.extend({
   events: {
     "click .app-drop-button": "dropMenu",
     "click .list-menu button.edit-list" : "edit",
-    "click .list-menu button.toggle" : "toggle",
+    "click .list-menu button.toggle" : "toggleAttribute",
     "click .list-menu button.delete-list" : "delete",
     "submit #list-form": "update"
   },
@@ -37,50 +38,7 @@ Lime.Views.ListIndexItem = Backbone.View.extend({
     return this;
   },
 
-  /* These functions alter the way the view is displayed */
-
-  // Drops down then list item menus
-  dropMenu: function(event){
-    $(event.target).closest('.app-drop-parent').toggleClass('dropped');
-  },
-
-  // Toggles between displaying the list item / displaying a form for editing the list item
-  switchView: function(){
-    this.$el.children('.list-show').toggleClass('hidden');
-    this.$el.children('.list-edit').toggleClass('hidden');
-  },
-
-  // Switches to display the edit form for the list item when edit button (in menu) is clicked
-  edit: function(event){
-    event.preventDefault();
-    this.switchView();
-  },
-
   /* These functions change the event model, and save those changes to the DB */
-
-  // Update the model on form submission
-  update: function(event){
-    var that = this;
-    event.preventDefault();
-    var attrs = $(event.target).serializeJSON();
-    this.model.set(attrs);
-
-    var that = this;
-    this.model.save({}, {
-      success: function(model, response){
-        console.log('List updated');
-        //model.set('tasks', new Lime.Collections.Tags(response.tasks));
-        that.switchView();
-      }
-    });
-  },
-
-  // Toggle individual attributes of the model
-  toggle: function(event){
-    event.preventDefault();
-    var attribute = $(event.target).attr('data-toggle');
-    this.model.toggleAttribute(attribute);
-  },
 
   // Delete the model
   delete: function(event){
@@ -89,7 +47,7 @@ Lime.Views.ListIndexItem = Backbone.View.extend({
         console.log('List deleted.');
         Backbone.history.navigate('', {trigger: true})
       }
-    })
+    });
   }
 
-});
+}));

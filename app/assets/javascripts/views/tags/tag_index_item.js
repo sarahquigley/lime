@@ -1,7 +1,8 @@
 // Purpose: Displays individual Tags
 // Where? Main Content (Parent View: TagsIndexView)
 
-Lime.Views.TagIndexItem = Backbone.View.extend({
+Lime.Views.TagIndexItem = Backbone.View.extend(
+  _.extend({}, Lime.Mixins.Updatable, Lime.Mixins.Deletable, Lime.Mixins.UI, {
 
   initialize: function(){
     var that = this;
@@ -33,52 +34,6 @@ Lime.Views.TagIndexItem = Backbone.View.extend({
       formTemplate: this.templates.form
     }));
     return this;
-  },
-
-  /* These functions alter the way the view is displayed */
-
-  // Drops down then tag item menus
-  dropMenu: function(event){
-    $(event.target).closest('.app-drop-parent').toggleClass('dropped');
-  },
-
-  // Toggles between displaying the tag item / displaying a form for editing the tag item
-  switchView: function(){
-    this.$el.children('.tag-show').toggleClass('hidden');
-    this.$el.children('.tag-edit').toggleClass('hidden');
-  },
-
-  // Switches to display the edit form for the tag item when edit button (in menu) is clicked
-  edit: function(event){
-    event.preventDefault();
-    this.switchView();
-  },
-
-  /* These functions change the event model, and save those changes to the DB */
-
-  // Update the model on form submission
-  update: function(event){
-    var that = this;
-    event.preventDefault();
-    var attrs = $(event.target).serializeJSON();
-    this.model.set(attrs);
-
-    this.model.save({}, {
-      success: function(model){
-        console.log('Tag updated.');
-        that.switchView();    // May not be needed
-      }
-    });
-  },
-
-  // Delete the model
-  delete: function(event){
-    event.preventDefault();
-    this.model.destroy({
-      success: function(){
-        console.log('Tag destroyed');
-      }
-    });
   }
 
-})
+}));

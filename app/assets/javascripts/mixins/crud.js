@@ -32,7 +32,6 @@ Lime.Mixins.Updatable = {
     var attrs = $(event.target).serializeJSON();
     this.model.set(attrs);
 
-    var that = this;
     this.model.save({}, {
       success: function(model, response){
         console.log(model.modelName + ' updated');
@@ -52,7 +51,9 @@ Lime.Mixins.Deletable = {
     this.model.destroy({
       success: function(model, response){
         console.log(model.modelName + ' deleted.');
-        that.parent.trigger('change');
+        if(that.parent){
+          that.parent.trigger('change');
+        }
       }
     })
   }
