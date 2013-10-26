@@ -75,7 +75,7 @@ Lime.Mixins.Deletable = {
     this.model.destroy({
       success: function(model, response){
         console.log(model.modelName + ' deleted.');
-        if(typeof callback === 'function'){ callback(); }
+        if(typeof callback === 'function'){ callback(model, response); }
       }
     })
   }

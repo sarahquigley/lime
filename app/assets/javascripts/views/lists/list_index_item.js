@@ -42,8 +42,10 @@ Lime.Views.ListIndexItem = Backbone.View.extend(
 
   // Delete the model
   deleteModel: function(event){
-    this.delete(event, function(){
-      Backbone.history.navigate('', {trigger: true})
+    this.delete(event, function(model){
+      if( ('lists/' + model.get('id')) === Backbone.history.fragment ){
+        Backbone.history.navigate('', {trigger: true})
+      }
     });
   }
 
