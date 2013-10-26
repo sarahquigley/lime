@@ -1,7 +1,9 @@
 // Purpose: Renders index of User's Tags
 // Where? Main Content(no Parent View)
 
-Lime.Views.TagsIndex = Backbone.View.extend({
+Lime.Views.TagsIndex = Backbone.View.extend(
+  
+  _.extend({}, Lime.Mixins.Creatable, {
 
   initialize: function(){
     this.nestedViews = [];
@@ -9,7 +11,6 @@ Lime.Views.TagsIndex = Backbone.View.extend({
     var events = ['add', 'remove', 'change', 'sync'];
     _(events).each(function(event){
       that.listenTo(that.collection, event, that.render);
-      that.listenTo(that.model, event, that.render);  // NEEDED??
     });
   },
 
@@ -60,25 +61,16 @@ Lime.Views.TagsIndex = Backbone.View.extend({
     return $ul;
   },
 
-
-
   // Submit new tags
-  submit: function(event){
-    var that = this;
-    event.preventDefault();
-    var attrs = $(event.target).serializeJSON();
-    this.model.set(attrs);
 
-    this.collection.create(this.model, {
-      wait: true,
-      success: function(model, response){
-        console.log('Tag created.');
+  submit: function(event){
+    event.preventDefault();
+    var that = this;
+    this.create(event, {
+      success: function(){
         that.model = new Lime.Models.Tag();
-      },
-      error: function(model, errors, response){
-        console.log('Error');
       }
     });
   }
 
-})
+}));

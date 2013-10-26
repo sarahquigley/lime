@@ -2,7 +2,7 @@
 // Where? Sidebar (Parent View: ListsIndexView)
 
 Lime.Views.ListIndexItem = Backbone.View.extend(
-  _.extend({}, Lime.Mixins.Updatable, Lime.Mixins.UI, {
+  _.extend({}, Lime.Mixins.Updatable, Lime.Mixins.Deletable , Lime.Mixins.UI, {
 
   initialize: function(){
     var that = this;
@@ -17,7 +17,7 @@ Lime.Views.ListIndexItem = Backbone.View.extend(
     "click .app-drop-button": "dropMenu",
     "click .list-menu button.edit-list" : "edit",
     "click .list-menu button.toggle" : "toggleAttribute",
-    "click .list-menu button.delete-list" : "delete",
+    "click .list-menu button.delete-list" : "deleteModel",
     "submit #list-form": "update"
   },
 
@@ -41,12 +41,9 @@ Lime.Views.ListIndexItem = Backbone.View.extend(
   /* These functions change the event model, and save those changes to the DB */
 
   // Delete the model
-  delete: function(event){
-    this.model.destroy({
-      success: function(){
-        console.log('List deleted.');
-        Backbone.history.navigate('', {trigger: true})
-      }
+  deleteModel: function(event){
+    this.delete(event, function(){
+      Backbone.history.navigate('', {trigger: true})
     });
   }
 

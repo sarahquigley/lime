@@ -1,5 +1,30 @@
 Lime.Mixins.Creatable = {
 
+  create: function(event, options){
+    var attrs = $(event.target).serializeJSON();
+    this.model.set(attrs);
+
+    if(typeof options.beforeCreate === 'function'){
+      options.beforeCreate();
+    }
+
+    this.collection.create(this.model, {
+      wait: true,
+      success: function(model, response){
+        console.log(model.modelName + ' created.');
+        if(typeof options.success === 'function'){
+          options.success(model, response);
+        }
+      },
+      error: function(model, errors, response){
+        console.log('Error');
+        if(typeof options.error === 'function'){
+          options.error(model, errors, response);
+        }
+      }
+    });
+  }
+
 };
 
 
@@ -45,15 +70,12 @@ Lime.Mixins.Updatable = {
 Lime.Mixins.Deletable = {
 
   // Delete the model
-  delete: function(event){
-    var that = this;
+  delete: function(event, callback){
     event.preventDefault();
     this.model.destroy({
       success: function(model, response){
         console.log(model.modelName + ' deleted.');
-        if(that.parent){
-          that.parent.trigger('change');
-        }
+        if(typeof callback === 'function'){ callback(); }
       }
     })
   }

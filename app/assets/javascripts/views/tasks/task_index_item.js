@@ -4,6 +4,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
     initialize: function(options){
       var that = this;
       this.parent = this.options.parent;
+
       var events = ['add', 'change', 'remove', 'sync'];
       _(events).each(function(event){
         that.listenTo(that.model, event, that.render);
@@ -19,7 +20,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
       "click .task-menu button.toggle": "toggleAttribute",
       "click .task-menu button.do-it-today-task": "doItToday",
       "click .task-menu button.postpone-task": "postpone",
-      "click .task-menu button.delete-task": "delete"
+      "click .task-menu button.delete-task": "deleteModel"
     },
 
     el: '<li class="task clearfix">',
@@ -52,6 +53,14 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
     postpone: function(event){
       event.preventDefault();
       this.model.postpone();
+    },
+
+    // Delete the model
+    deleteModel: function(event){
+      var that = this;
+      this.delete(event, function(){
+        that.parent.trigger('change');
+      });
     }
 
 }));

@@ -24,7 +24,7 @@ window.Lime = {
     var sidebarViews = this.Live.Views.Sidebar = {
       agendaNav: new Lime.Views.AgendaNav(),
       listsIndex: new Lime.Views.ListsIndex({ collection: collections.lists }),
-      listForm: new Lime.Views.ListForm({ collection: collections.lists })
+      listForm: new Lime.Views.ListForm({ collection: collections.lists, model: new Lime.Models.List() })
     }
 
     // Main Content

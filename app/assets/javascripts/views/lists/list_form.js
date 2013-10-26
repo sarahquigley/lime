@@ -1,45 +1,39 @@
 // Purpose: Renders form for creating new Lists
 // Where? Sidebar (no Parent View)
 
-Lime.Views.ListForm = Backbone.View.extend({
+Lime.Views.ListForm = Backbone.View.extend(
 
-  initialize: function(){
-    this.model = new Lime.Models.List();
-  },
+  _.extend({}, Lime.Mixins.Creatable, {
 
-  events: {
-    'submit #list-form': 'submit'
-  },
+    initialize: function(){
+    },
 
-  el: '#app-sidebar > #lists-form-container',
+    events: {
+      'submit #list-form': 'submit'
+    },
 
-  template: JST['lists/form'],
+    el: '#app-sidebar > #lists-form-container',
 
-  render: function(){
-    this.$el.html(this.template({
-      list: this.model
-    }));
-    return this;
-  },
+    template: JST['lists/form'],
 
-  // Submits new Lists and resets the model on submission
-  submit: function(event){
-    var that = this;
-    event.preventDefault();
-    var attrs = $(event.target).serializeJSON();
-    this.model.set(attrs);
+    render: function(){
+      this.$el.html(this.template({
+        list: this.model
+      }));
+      return this;
+    },
 
-    this.collection.create(this.model, {
-      wait: true,
-      success: function(model){
-        console.log('List created.');
-        that.model = new Lime.Models.List();
-        Backbone.history.navigate(model.url(), {trigger: true});
-      },
-      error: function(model, errors){
-        console.log('Error');
-      }
-    });
-  }
+    // Submit new list
 
-});
+    submit: function(event){
+      event.preventDefault();
+      var that = this;
+      this.create(event, {
+        success: function(model, response){
+          that.model = new Lime.Models.List();
+          Backbone.history.navigate(model.url(), {trigger: true});
+        }
+      });
+    }
+
+}));
