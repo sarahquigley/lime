@@ -23,67 +23,67 @@ class Task < ActiveRecord::Base
     self.list_position = last_pos_occupied + 1
   end
 
-  # Due Date for Display
-  def due_to_s
-    return nil if self.due == nil
-    if overdue?
-      return "overdue"
-    elsif today?
-      return "today"
-    elsif tomorrow?
-      return "tomorrow"
-    elsif this_week?
-      return self.due.strftime('%A')
-    elsif this_year?
-      return self.due.strftime('%e %b %Y')
-    else
-      return self.due.strftime('%e %b')
-    end
-  end
-
-  # Due Date Boolean Helpers
-  def no_due_date?
-    self.due == nil
-  end
-
-  def overdue?
-    days_from_today < 0
-  end
-
-  def today?
-    days_from_today == 0
-  end
-
-  def tomorrow?
-    days_from_today == 1
-  end
-
-  def this_week?
-    days_from_today < 8
-  end
-
-  def this_year?
-    self.due.year != Date.today.year
-  end
-
-  def days_from_today
-    self.due - Date.today
-  end
-
-  # Meta Data
-  def meta
-    meta = {
-      no_due_date: no_due_date?,
-      overdue: this.overdue?,
-      today: this.today?,
-      tomorrow: this.tomorrow?,
-      this_week: this_week?
-    }
-  end
+#  # Due Date for Display
+#  def due_to_s
+#    return nil if self.due == nil
+#    if overdue?
+#      return "overdue"
+#    elsif today?
+#      return "today"
+#    elsif tomorrow?
+#      return "tomorrow"
+#    elsif this_week?
+#      return self.due.strftime('%A')
+#    elsif this_year?
+#      return self.due.strftime('%e %b %Y')
+#    else
+#      return self.due.strftime('%e %b')
+#    end
+#  end
+#
+#  # Due Date Boolean Helpers
+#  def no_due_date?
+#    self.due == nil
+#  end
+#
+#  def overdue?
+#    days_from_today < 0
+#  end
+#
+#  def today?
+#    days_from_today == 0
+#  end
+#
+#  def tomorrow?
+#    days_from_today == 1
+#  end
+#
+#  def this_week?
+#    days_from_today < 8
+#  end
+#
+#  def this_year?
+#    self.due.year != Date.today.year
+#  end
+#
+#  def days_from_today
+#    self.due - Date.today
+#  end
+#
+#  # Meta Data
+#  def meta
+#    meta = {
+#      no_due_date: no_due_date?,
+#      overdue: this.overdue?,
+#      today: this.today?,
+#      tomorrow: this.tomorrow?,
+#      this_week: this_week?
+#    }
+#  end
 
   # Customise as_json
   def as_json(options = nil)
-    super(methods: :due_to_s, include: :tags ).merge(options || {})
+    super(include: :tags ).merge(options || {})
   end
 
 end

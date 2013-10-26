@@ -27,7 +27,7 @@ Lime.Views.AgendaNav = Backbone.View.extend(
       if(event.keyCode == 13){
         var search = $(event.target).val();
         var type = search[0];
-        var term = search.slice(1);
+        var term = search.slice(1).toLowerCase();
         if( type == '@'){
           Backbone.history.navigate('tags/' + term, { trigger: true });
         } else if (type == '!'){

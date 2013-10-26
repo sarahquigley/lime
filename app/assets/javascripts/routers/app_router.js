@@ -28,8 +28,11 @@ Lime.Routers.App = Backbone.Router.extend({
 
   // Filter task by due string
   agenda: function(agenda){
+    var agenda = agenda.toLowerCase();
     var filter = function(){
-      return this.where({ due_to_s: agenda });
+      return this.filter(function(task){
+        return task.dueStr() === agenda;
+      });
     }
     this.addAgenda(this.collections.tasks, filter, agenda);
   },

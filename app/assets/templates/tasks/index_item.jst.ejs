@@ -17,7 +17,7 @@
           <%= task.get('title') %>
         </h3>
         <% if(task.get('due')){ %>
-        <span class="task-due"><a href="#agenda/<%= task.get('due_to_s') %>"><%= task.get('due_to_s') %></a></span>
+        <span class="task-due"><a href="#agenda/<%= task.dueStr() %>"><%= task.dueStr() %></a></span>
         <% }; %>
         <% if(task.get('priority')){ %>
         <span class="task-due"><a href="#priority/<%= task.get('priority') %>"><%= task.get('priority') %></a></span>

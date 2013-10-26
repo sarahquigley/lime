@@ -6,7 +6,10 @@ moment.lang('en', {
     lastWeek : '[overdue]',
     nextWeek : 'dddd',
     sameElse : function(){
-      if(this.isSame(new Date(), 'year')){
+      var today = new Date();
+      if(this.isBefore(today)){
+        return '[overdue]';
+      } else if (this.isSame(today, 'year')){
         return 'MMM D';
       } else {
         return 'll'

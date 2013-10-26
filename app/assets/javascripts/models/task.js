@@ -4,7 +4,6 @@ Lime.Models.Task = Backbone.Model.extend({
     this.modelName = "task";
     this.belongsTo.list = Lime.Live.Collections.lists ? Lime.Live.Collections.lists : null;
     this.hasMany.tags = Lime.Live.Collections.tags ? Lime.Live.Collections.tags : null;
-    console.log(this.get('title') + this.get('due') + this.dueStr());
   },
 
   belongsTo: {
@@ -34,7 +33,8 @@ Lime.Models.Task = Backbone.Model.extend({
   
   dueStr: function(){
     if(this.get('due')){
-      return moment(this.get('due')).calendar();
+      var dueStr = moment(this.get('due')).calendar();
+      return dueStr.toLowerCase();
     } else {
       return null;
     }

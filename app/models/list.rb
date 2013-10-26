@@ -10,7 +10,7 @@ class List < ActiveRecord::Base
 
   # Customise as_json
   def as_json(options = nil)
-    super(include: { tasks: { methods: [ :due_to_s ] , include: :tags } }).merge(options || {})
+    super(include: { tasks: { include: :tags } }).merge(options || {})
   end
 
 end

@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :tags, dependent: :destroy, inverse_of: :user
 
   def as_json(options = nil)
-    super(include: [ :lists , :tags, { tasks: { methods: [ :due_to_s ] , include: :tags } } ]).merge(options || {})
+    super(include: [ :lists , :tags, { tasks: { include: :tags } } ]).merge(options || {})
   end
 
 end
