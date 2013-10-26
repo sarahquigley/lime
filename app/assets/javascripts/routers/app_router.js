@@ -53,7 +53,7 @@ Lime.Routers.App = Backbone.Router.extend({
         return task.has('tags') && _.findWhere( task.get('tags'), { name: agenda } );
       });
     }
-    this.addAgenda(this.collections.tasks, filter, agenda);
+    this.addAgenda(this.collections.tasks, filter, '@' + agenda);
   },
 
 
