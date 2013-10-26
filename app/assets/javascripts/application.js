@@ -15,6 +15,8 @@
 //= require jquery_ujs
 //= require jquery.serializeJSON.min
 //= require chosen.jquery.min.js
+//= require moment.min
+//= require moment_config
 //= require underscore
 //= require backbone
 //= require my_backbone
