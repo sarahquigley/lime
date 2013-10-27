@@ -62,4 +62,16 @@ Lime.Models.Task = Backbone.Model.extend({
     });
   },
 
+  moveTask: function(otherListId){
+    var that = this;
+    this.save({
+      list_id: otherListId,
+      task: { list_id: otherListId }
+    } , {
+      success: function(model, response){
+        console.log('Task moved to other list.');
+      }
+    });
+  },
+
 });

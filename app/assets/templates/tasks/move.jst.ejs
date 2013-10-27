@@ -1,0 +1,40 @@
+<div id="move-task" class="lightbox-bg">
+
+  <div class="lightbox centered">
+    <h3>Move to another list</h3>
+      
+    <form class="move-task-form app-form clearfix">
+
+      <div class="task-list-field field">
+        <select data-placeholder="@" class="chosen-select" name='task[tag_ids][]' tabindex="4">
+
+          <% lists.each(function(list){ %>
+
+            <% var selected = task.get('list_id') === list.get('id') ? 'selected' : null %>
+
+            <option value="<%= list.get('id') %>" <%= selected %>><%= list.get('title') %></option>
+
+          <% }); %>
+
+        </select>
+      </div>
+
+      <div class="task-submit-button submit">
+        <input type="submit" value="Move task">
+      </div>
+
+      <div class="task-submit-button submit">
+        <input type="submit" value="Cancel move">
+      </div>
+
+    </form>
+
+  </div>
+
+
+</div>
+
+
+<script>
+  $(".chosen-select").chosen();
+</script>

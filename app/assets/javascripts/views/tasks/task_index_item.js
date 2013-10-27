@@ -20,6 +20,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
       "click .task-menu button.toggle": "toggleAttribute",
       "click .task-menu button.do-it-today-task": "doItToday",
       "click .task-menu button.postpone-task": "postpone",
+      "click .task-menu button.move-task": "openTaskMover",
       "click .task-menu button.delete-task": "deleteModel"
     },
 
@@ -28,7 +29,8 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
     templates:{
       index_item: JST['tasks/index_item'],
       menu: JST['tasks/menu'],
-      form: JST['tasks/form']
+      form: JST['tasks/form'],
+      move: JST['tasks/move']
     },
 
     render: function(){
@@ -53,6 +55,13 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
     postpone: function(event){
       event.preventDefault();
       this.model.postpone();
+    },
+
+    openTaskMover: function(event){
+     $('body').append(this.templates.move({
+       task: this.model,
+       lists: Lime.Live.Collections.lists
+     }));
     },
 
     // Delete the model
