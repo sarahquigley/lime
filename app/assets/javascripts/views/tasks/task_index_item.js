@@ -21,6 +21,8 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
       "click .task-menu button.do-it-today-task": "doItToday",
       "click .task-menu button.postpone-task": "postpone",
       "click .task-menu button.move-task": "openTaskMover",
+      "submit .move-task-form": "update",
+      "click .move-task-form .cancel": "cancelMove",
       "click .task-menu button.delete-task": "deleteModel"
     },
 

@@ -6,7 +6,7 @@
     <form class="move-task-form app-form clearfix">
 
       <div class="task-list-field field">
-        <select data-placeholder="@" class="chosen-select" name='task[tag_ids][]' tabindex="4">
+        <select data-placeholder="@" class="chosen-select" name='task[list_id]' tabindex="4">
 
           <% lists.each(function(list){ %>
 
@@ -19,18 +19,17 @@
         </select>
       </div>
 
-      <div class="task-submit-button submit">
+      <div class="move-task-submit submit">
         <input type="submit" value="Move task">
       </div>
 
-      <div class="task-submit-button submit">
-        <input type="submit" value="Cancel move">
+      <div class="cancel-move-task cancel">
+        <button class="button cancel">Cancel</button>
       </div>
 
     </form>
 
   </div>
-
 
 </div>
 
