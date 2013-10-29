@@ -1,28 +1,34 @@
-Lime.Views.TaskIndexItem = Backbone.View.extend(
+Lime.Views.MoveTaskForm = Backbone.View.extend(
 
   _.extend({}, Lime.Mixins.Updatable, Lime.Mixins.UI, {
 
   initialize: function(options){
+    this.parent = this.options.parent;
   },
+
+  el: '<div id="move-task">',
 
   events: {
-    "submit .move-task-form": "update",
-    "click .move-task-form .cancel": "cancelMove",
+    "submit .move-task-form": "updateModel",
+    "click .move-task-form .cancel": "closeLightbox",
   },
 
-  template: JST['tasks/move_task'],
+  template: JST['tasks/move'],
 
   render: function(){
     this.$el.html(this.template({
       task: this.model,
       lists: Lime.Live.Collections.lists
-    });
+    }));
     return this;
   },
 
-  cancelMove: function(event){
-    event.preventDefault();
+  updateModel: function(event){
+    var that = this;
+    this.update(event, function(){
+      that.close();
+      that.parent.trigger('change');
+    });
   }
-
 
 }));

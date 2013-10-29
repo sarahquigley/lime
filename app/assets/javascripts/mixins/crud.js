@@ -51,7 +51,7 @@ Lime.Mixins.Updatable = {
   },
 
   // Update the model on form submission
-  update: function(event){
+  update: function(event, callback){
     var that = this;
     event.preventDefault();
     var attrs = $(event.target).serializeJSON();
@@ -60,6 +60,7 @@ Lime.Mixins.Updatable = {
     this.model.save({}, {
       success: function(model, response){
         console.log(model.modelName + ' updated');
+        if(typeof callback === 'function'){ callback(model, response); }
       }
     });
   }

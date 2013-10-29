@@ -1,36 +1,34 @@
-<div id="move-task" class="lightbox-bg">
+<div class="lightbox-bg">
+<div class="lightbox centered">
+  <h3>Move to another list</h3>
+    
+  <form class="move-task-form app-form clearfix">
 
-  <div class="lightbox centered">
-    <h3>Move to another list</h3>
-      
-    <form class="move-task-form app-form clearfix">
+    <div class="task-list-field field">
+      <select data-placeholder="@" class="chosen-select" name='task[list_id]' tabindex="4">
 
-      <div class="task-list-field field">
-        <select data-placeholder="@" class="chosen-select" name='task[list_id]' tabindex="4">
+        <% lists.each(function(list){ %>
 
-          <% lists.each(function(list){ %>
+          <% var selected = task.get('list_id') === list.get('id') ? 'selected' : null %>
 
-            <% var selected = task.get('list_id') === list.get('id') ? 'selected' : null %>
+          <option value="<%= list.get('id') %>" <%= selected %>><%= list.get('title') %></option>
 
-            <option value="<%= list.get('id') %>" <%= selected %>><%= list.get('title') %></option>
+        <% }); %>
 
-          <% }); %>
+      </select>
+    </div>
 
-        </select>
-      </div>
+    <div class="move-task-submit submit">
+      <input type="submit" value="Move task">
+    </div>
 
-      <div class="move-task-submit submit">
-        <input type="submit" value="Move task">
-      </div>
+    <div class="cancel-move-task cancel">
+      <button class="button cancel">Cancel</button>
+    </div>
 
-      <div class="cancel-move-task cancel">
-        <button class="button cancel">Cancel</button>
-      </div>
+  </form>
 
-    </form>
-
-  </div>
-
+</div>
 </div>
 
 
