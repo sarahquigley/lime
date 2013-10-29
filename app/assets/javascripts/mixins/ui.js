@@ -7,8 +7,10 @@ Lime.Mixins.UI = {
 
   // Close lightboxes
   closeLightbox: function(event){
-    event.preventDefault();
-    this.close();
+    if(event.target === event.currentTarget){
+      event.preventDefault();
+      this.close();
+    }
   }
 }
 

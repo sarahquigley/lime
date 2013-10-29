@@ -11,6 +11,7 @@ Lime.Views.MoveTaskForm = Backbone.View.extend(
   events: {
     "submit .move-task-form": "updateModel",
     "click .move-task-form .cancel": "closeLightbox",
+    "click .lightbox-bg" : "closeLightbox"
   },
 
   template: JST['tasks/move'],
