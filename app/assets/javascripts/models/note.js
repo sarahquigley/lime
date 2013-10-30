@@ -11,7 +11,7 @@ Lime.Models.Notes = Backbone.Model.extend({
 
   task: function(){
     if(this.belongsTo.task){
-      return this.belongsTo.task.where(id: this.get('task_id'));
+      return this.belongsTo.task.where({id: this.get('task_id')});
     }
   }
 

@@ -23,7 +23,8 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
       "click .task-menu button.move-task": "openMoveTaskForm",
       "submit .move-task-form": "update",
       "click .move-task-form .cancel": "cancelMove",
-      "click .task-menu button.delete-task": "deleteModel"
+      "click .task-menu button.delete-task": "deleteModel",
+      "click .task-show .task-notes" : "openNotesIndex"
     },
 
     el: '<li class="task clearfix">',
@@ -66,6 +67,15 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
       });
       
       $('body').append(moveTaskFormView.render().$el);
+    },
+
+    openNotesIndex: function(event){
+      var notesIndexView = new Lime.Views.NotesIndex({
+        model: this.model,
+        collection: Lime.Live.Collections.notes
+      });
+      
+      $('body').append(notesIndexView.render().$el);
     },
 
     // Delete the model

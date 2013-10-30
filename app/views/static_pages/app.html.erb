@@ -16,8 +16,8 @@
 $(document).ready(function(){
   var currentUserData = <%= current_user.to_json.html_safe %>;
   var listsData = currentUserData.lists;
-  var tasksdata = currentuserdata.tasks;
-  var notesData = currentuserdata.notes;
+  var tasksData = currentUserData.tasks;
+  var notesData = currentUserData.notes;
   var tagsData = currentUserData.tags;
 
   Lime.initialize(listsData, tasksData, notesData, tagsData);

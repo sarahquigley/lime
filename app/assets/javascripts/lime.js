@@ -16,7 +16,7 @@ window.Lime = {
     var collections = this.Live.Collections = {
       lists: new Lime.Collections.Lists(listsData),
       tasks: new Lime.Collections.Tasks(tasksData),
-      tasks: new Lime.Collections.Notes(notesData),
+      notes: new Lime.Collections.Notes(notesData),
       tags: new Lime.Collections.Tags(tagsData)
     }
 

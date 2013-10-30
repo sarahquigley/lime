@@ -4,7 +4,7 @@ Lime.Models.Task = Backbone.Model.extend({
     this.modelName = "task";
     this.belongsTo.list = Lime.Live.Collections.lists ? Lime.Live.Collections.lists : null;
     this.hasMany.tags = Lime.Live.Collections.tags ? Lime.Live.Collections.tags : null;
-    this.hasMany.tags = Lime.Live.Collections.notes ? Lime.Live.Collections.notes : null;
+    this.hasMany.notes = Lime.Live.Collections.notes ? Lime.Live.Collections.notes : null;
   },
 
   belongsTo: {
@@ -13,7 +13,7 @@ Lime.Models.Task = Backbone.Model.extend({
 
   list: function(){
     if(this.belongsTo.list){
-      return this.belongsTo.list.where({id: this.get('list_id')})
+      return this.belongsTo.list.where({id: this.get('list_id')});
     }
   },
 
@@ -35,7 +35,7 @@ Lime.Models.Task = Backbone.Model.extend({
 
   notes: function(){
     if(this.hasMany.notes){
-      this.notes.where(task_id: this.get('id');
+      return this.hasMany.notes.where({task_id: this.get('id')});
     }
   },
   

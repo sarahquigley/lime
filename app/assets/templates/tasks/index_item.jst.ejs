@@ -22,6 +22,7 @@
         <% if(task.get('priority')){ %>
         <span class="task-due"><a href="#priority/<%= task.get('priority') %>"><%= task.get('priority') %></a></span>
         <% }; %>
+        <span class="task-notes"><i class="icon-comment"></i><%= task.notes().length %></span>
       </div>
       <%= menuTemplate({ task: task }) %>
     </header>
