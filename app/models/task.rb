@@ -8,6 +8,7 @@ class Task < ActiveRecord::Base
   belongs_to :list, inverse_of: :tasks
   has_many :taggings, inverse_of: :tag
   has_many :tags, through: :taggings
+  has_many :notes, inverse_of: :task
 
   # Validations
   validates :list, :list_position, :title, presence: true
