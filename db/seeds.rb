@@ -53,6 +53,11 @@ vaders_taggings = Tagging.create([
   { tag: Tag.find(4), task: Task.find(5) },
 ])
 
-
+vaders_notes = Note.create([
+  { task: Task.first, body: 'His powers are growing stronger. This is worrying.' },
+  { task: Task.first, body: 'Should I really kill my own son? This question has been plagueing me. I fear I must, and it will kill the last residue of humanity within me.' },
+  { task: Task.find(2), body: 'Perhaps I should consider replacing all Petty Officers with droids.' },
+  { task: Task.find(5), body: 'Sector 9 is in need of translation droids.' }
+])
 
 
