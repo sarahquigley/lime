@@ -16,9 +16,10 @@
 $(document).ready(function(){
   var currentUserData = <%= current_user.to_json.html_safe %>;
   var listsData = currentUserData.lists;
-  var tasksData = currentUserData.tasks;
+  var tasksdata = currentuserdata.tasks;
+  var notesData = currentuserdata.notes;
   var tagsData = currentUserData.tags;
 
-  Lime.initialize(listsData, tasksData, tagsData);
+  Lime.initialize(listsData, tasksData, notesData, tagsData);
 });
 </script>

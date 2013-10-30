@@ -10,12 +10,13 @@ window.Lime = {
     Collections: {}
   },
 
-  initialize: function(listsData, tasksData, tagsData) {
+  initialize: function(listsData, tasksData, notesData, tagsData) {
 
     // Create site-wide collections
     var collections = this.Live.Collections = {
       lists: new Lime.Collections.Lists(listsData),
       tasks: new Lime.Collections.Tasks(tasksData),
+      tasks: new Lime.Collections.Notes(notesData),
       tags: new Lime.Collections.Tags(tagsData)
     }
 
