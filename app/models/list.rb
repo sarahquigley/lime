@@ -3,7 +3,8 @@ class List < ActiveRecord::Base
 
   # Relationships
   belongs_to :user, inverse_of: :lists
-  has_many :tasks, dependent: :destroy
+  has_many :tasks, dependent: :destroy, inverse_of: :list
+  has_many :notes, through: :tasks
 
   # Validations
   validates :title, :user, presence: true

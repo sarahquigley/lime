@@ -6,9 +6,9 @@ class Task < ActiveRecord::Base
 
   # Relationships
   belongs_to :list, inverse_of: :tasks
-  has_many :taggings, inverse_of: :tag
+  has_many :taggings, inverse_of: :task
   has_many :tags, through: :taggings
-  has_many :notes, inverse_of: :task
+  has_many :notes, inverse_of: :task, dependent: :destroy
 
   # Validations
   validates :list, :list_position, :title, presence: true
