@@ -84,7 +84,7 @@ class Task < ActiveRecord::Base
 
   # Customise as_json
   def as_json(options = nil)
-    super(include: :tags ).merge(options || {})
+    super(include: [:tags, :notes]).merge(options || {})
   end
 
 end
