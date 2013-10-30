@@ -18,8 +18,8 @@ Lime.Views.ListShow = Backbone.View.extend(
 
     events: {
       "click .sort-menu .app-drop-button": "dropMenu",
-    "click .sort-menu button.sort-tasks": "sort",
-    "submit .task-form": "submit",
+      "click .sort-menu button.sort-tasks": "sort",
+      "submit .task-form": "submit",
     },
 
     el: '<div>',
@@ -34,7 +34,6 @@ Lime.Views.ListShow = Backbone.View.extend(
       var that = this;
       this.resetNestedViews();
 
-      // Insert template & rendered collection
       this.$el.empty();
       this.$el.html(this.templates.show({
         list: this.model,
