@@ -1,4 +1,4 @@
-Lime.Models.Notes = Backbone.Model.extend({
+Lime.Models.Note = Backbone.Model.extend({
 
   initialize: function(){
     this.modelName = 'note';

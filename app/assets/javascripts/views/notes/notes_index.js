@@ -5,6 +5,7 @@ Lime.Views.NotesIndex = Backbone.View.extend(
   initialize: function(){
     var that = this;
     this.nestedViews = [];
+    this.newNote = new Lime.Models.Note();
 
     var events = ['add', 'change', 'remove', 'sync'];
     _(events).each(function(event){
@@ -30,6 +31,9 @@ Lime.Views.NotesIndex = Backbone.View.extend(
       task: this.model
     }));
     this.$el.find('.lightbox').append(this.renderCollection()); 
+    this.$el.find('.lightbox').append(this.templates.form({
+      note: this.newNote
+    })); 
     return this;
   },
 
@@ -52,9 +56,7 @@ Lime.Views.NotesIndex = Backbone.View.extend(
       return $ul;
 
     } else {
-      
       return this.templates.nny({});
-
     }
   }
 

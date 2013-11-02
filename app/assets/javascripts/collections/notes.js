@@ -6,7 +6,7 @@ Lime.Collections.Notes = Backbone.Collection.extend({
   comparator: 'created_at',
   
   url: '/notes',
-  model: Lime.Models.Notes,
+  model: Lime.Models.Note,
 
   filtered: function(){
     return this.models();

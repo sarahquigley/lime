@@ -25,7 +25,8 @@ Lime.Views.NoteIndexItem = Backbone.View.extend(
 
   render: function(){
     this.$el.html(this.templates.indexItem({
-      note: this.model
+      note: this.model,
+      formTemplate: this.templates.form
     }));
     return this;
   }
