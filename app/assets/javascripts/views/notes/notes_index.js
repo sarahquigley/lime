@@ -14,7 +14,8 @@ Lime.Views.NotesIndex = Backbone.View.extend(
   },
 
   events: {
-    "click .lightbox-bg" : "closeLightbox"
+    "click .lightbox-bg" : "closeLightbox",
+    "submit .note-form" : "submit"
   },
 
   el: '<div id="notes-container">',
@@ -58,6 +59,28 @@ Lime.Views.NotesIndex = Backbone.View.extend(
     } else {
       return this.templates.nny({});
     }
+  },
+
+  // Submit new note
+  submit: function(event){
+    var that = this;
+    event.preventDefault();
+    var attrs = $(event.target).serializeJSON();
+    this.newNote.set(attrs);
+
+    this.collection.url = '/tasks/' + this.model.get('id') + '/notes';
+    this.collection.create(this.newNote, {
+      wait: true,
+      success: function(model, response){
+        console.log('Note created.');
+        that.collection.url = '/notes';
+        that.model.trigger('change');
+        that.newNote = new Lime.Models.Note();
+      },
+      errors: function(model, errors){
+        console.log(errors);
+      }
+    });
   }
 
 }));
