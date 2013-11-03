@@ -1,9 +1,17 @@
-<div class="note-show">
+<div class="note-show show">
 
   <article class="note-body">
     
     <header class="note-header">
       <time class="note-created-at"><%= note.get('created_at') %> </time>
+      <div class="note-menu">
+        <button class="edit-note">
+          <i class="icon-pencil"></i>
+        </button>
+        <button class="delete-note">
+          <i class="icon-trash"></i>
+        </button>
+      </div>
     </header>
 
     <p><%= note.get('body') %></p>

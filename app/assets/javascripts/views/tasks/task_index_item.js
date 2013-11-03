@@ -37,6 +37,7 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
     },
 
     render: function(){
+      console.log('render');
       this.$el.html(this.templates.index_item({
         task: this.model,
         menuTemplate: this.templates.menu,

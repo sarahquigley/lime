@@ -10,6 +10,7 @@ Lime.Views.NotesIndex = Backbone.View.extend(
     var events = ['add', 'change', 'remove', 'sync'];
     _(events).each(function(event){
       that.listenTo(that.collection, event, that.render);
+      that.listenTo(that.model, event, that.render);
     });
   },
 

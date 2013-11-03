@@ -23,7 +23,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     
     if @note.update_attributes(params[:note])
-      render json: @task
+      render json: @note
     else
       render json: { errors: @note.errors.full_messages }, status: 422
     end

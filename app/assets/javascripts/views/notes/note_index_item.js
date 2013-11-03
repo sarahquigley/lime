@@ -14,6 +14,9 @@ Lime.Views.NoteIndexItem = Backbone.View.extend(
   },
 
   events: {
+    "click .note-menu .edit-note" : "toggleEdit",
+    "click .note-menu .delete-note" : "deleteModel",
+    "submit .edit .note-form" : "update"
   },
 
   el: '<li class="note">',
@@ -29,6 +32,14 @@ Lime.Views.NoteIndexItem = Backbone.View.extend(
       formTemplate: this.templates.form
     }));
     return this;
+  },
+
+  // Delete the model
+  deleteModel: function(event){
+    var that = this;
+    this.delete(event, function(){
+      that.parent.trigger('change');
+    });
   }
 
 }));
