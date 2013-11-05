@@ -13,7 +13,7 @@ Lime.Views.AgendaNav = Backbone.View.extend(
       "click #meta .app-drop-button": "dropMenu"
     },
 
-    el: '#app-sidebar > #app-agendas',
+    el: '#sidebar > #agendas',
 
     template: JST['agenda/index'],
 

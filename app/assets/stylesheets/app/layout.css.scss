@@ -1,0 +1,46 @@
+/****************************************************
+              SITE CONTAINER
+*****************************************************/
+
+#manage{
+  width: 900px;
+  margin: auto;
+}
+
+
+/****************************************************
+              APP HEADER
+*****************************************************/
+
+#manage{
+
+    > header{
+        padding: 25px 0;
+
+
+        > #logo{
+            float:left;
+            width: 76px;
+            height: 76px;
+            padding-left: 40px;
+            background: url(logo_med.png) no-repeat 0 0;
+            background-size: 75px;
+            font: 40px $logo-font;
+            color: $accent-color-dark;
+            line-height: 90px;
+        }
+
+        > nav{
+            float: right;
+
+            li{
+                font-size: 12px;
+                float: left;
+                padding-left: 20px;
+            }
+        }
+    }
+
+}
+
+

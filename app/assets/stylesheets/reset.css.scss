@@ -1,0 +1,38 @@
+/****************************************************
+              RESET STYLES
+*****************************************************/
+
+html, body, header, section, article, nav, menu, h1, h2, h3, h4, div, span, ul, li, a, button, p,
+input, input:focus, textarea, textarea:focus, select, select:focus {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 0;
+  font-size: 100%;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: normal;
+  color: $body-text-color;
+  background: none;
+  text-align: left;
+}
+
+html, body{
+    height: 100%;
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+select, select:focus{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-border-radius: 0px;
+}
+
+

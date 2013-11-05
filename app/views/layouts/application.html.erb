@@ -12,13 +12,13 @@
 
 <body>
 
-  <div id='site-content' class="clearfix">
+  <div id="manage" class="clearfix">
 
-    <header id="app-header" class="clearfix">
+    <header class="clearfix">
 
-      <h1 id="app-logo">Lime</h1>
+      <h1 id="logo">Lime</h1>
 
-      <nav id="app-header-nav">
+      <nav>
         <ul>
           <% unless user_signed_in? %>
             <li><%= link_to 'Sign Up', new_user_registration_url %></li>

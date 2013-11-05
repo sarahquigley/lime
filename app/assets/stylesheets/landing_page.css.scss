@@ -1,0 +1,23 @@
+/****************************************************
+              LANDING PAGE
+              seen by logged out users
+*****************************************************/
+
+#screenshot{
+  border: solid grey 20px;
+  border-radius: 20px;
+  width: 860px;
+}
+
+#tag-line{
+  background: $accent-color-lmid;
+  text-align: center;
+  font-size: 60px;
+  font-family: $logo-font;
+  padding: 20px;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 80%;
+}
+

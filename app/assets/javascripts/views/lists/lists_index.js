@@ -12,7 +12,7 @@ Lime.Views.ListsIndex = Backbone.View.extend({
     });
   },
 
-  el: '#app-sidebar > #lists-container',
+  el: '#sidebar > #lists-container',
 
   render: function(){
     this.resetNestedViews();
@@ -28,7 +28,7 @@ Lime.Views.ListsIndex = Backbone.View.extend({
     var that = this;
 
     // Create <ul> to contain <li> items for every model in the collection
-    var $ul = $('<ul id="lists" class="app-sidebar-section">');
+    var $ul = $('<ul id="lists">');
 
     // Add <li> items for every model in the collection
     this.collection.each(function(model){

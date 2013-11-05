@@ -1,7 +1,11 @@
 @import "chosen.css";
 @import "variables.css.scss";
+@import "reset.css.scss";
 @import "defaults.css.scss";
-@import "app.css.scss";
-@import "menus.css.scss";
-@import "forms.css.scss";
-@import "lightbox.css.scss";
+@import "app/layout.css.scss";
+@import "landing_page.css.scss";
+@import "app/sidebar.css.scss";
+@import "app/main_content.css.scss";
+@import "ui/menus.css.scss";
+@import "ui/forms.css.scss";
+@import "ui/lightbox.css.scss";

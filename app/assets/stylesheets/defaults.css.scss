@@ -1,32 +1,6 @@
 /****************************************************
-              RESET STYLES
+              SHARED CLASSES
 *****************************************************/
-
-html, body, header, section, article, nav, menu, h1, h2, h3, h4, div, ul, li, a, button, p,
-input, input:focus, textarea, textarea:focus, select, select:focus {
-  margin: 0;
-  border: 0;
-  padding: 0;
-  outline: 0;
-  font-size: 100%;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: normal;
-  color: $body-text-color;
-  background: none;
-  text-align: left;
-}
-
-html, body{
-    height: 100%;
-}
-
-ul{
-  list-style: none;
-}
-
-a{
-  text-decoration: none;
-}
 
 .clearfix:after{
   clear: both;
@@ -34,13 +8,43 @@ a{
   content: "";
 }
 
-select, select:focus{
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-border-radius: 0px;
-}
-
 .hidden{
   display: none;
 }
+
+
+/****************************************************
+              APP WIDE TAG STYLES
+*****************************************************/
+
+#app{
+    
+    h1, h2, h3, h4, h5, h6{
+      text-transform: capitalize;
+    }
+
+    h1{
+      font-size: 40px;
+    }
+    
+    h2{
+      font-size: 23px;
+    }
+
+    h3{
+      font-size: 18px;
+    }
+
+    h4{
+      font-size: 15px;
+    }
+
+    h5, h6{
+      font-size: 12px;
+    }
+
+    h6{
+    }
+
+}
+
