@@ -1,5 +1,5 @@
 /****************************************************
-              SITE CONTAINER
+              MANAGE CONTAINER
 *****************************************************/
 
 #manage{
@@ -9,7 +9,7 @@
 
 
 /****************************************************
-              APP HEADER
+              MANAGE HEADER
 *****************************************************/
 
 #manage{
@@ -17,6 +17,7 @@
     > header{
         padding: 25px 0;
 
+/* Logo */
 
         > #logo{
             float:left;
@@ -29,6 +30,8 @@
             color: $accent-color-dark;
             line-height: 90px;
         }
+
+/* Menu */
 
         > nav{
             float: right;

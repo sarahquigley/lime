@@ -1,4 +1,112 @@
 /****************************************************
+              DROP DOWN
+*****************************************************/
+
+/* Basic menu styles */
+
+.ddm{
+    width: 20px;
+    float: right;
+    position: relative;
+    font-size: 15px;
+
+    .ddbutton{
+        width: 20px;
+        height: 20px;
+        color: white;
+        text-align: center;
+        line-height: 20px;
+        border-radius: 8px;
+
+    }
+
+    menu{
+        border-radius: 5px;
+        display: none;
+        position: absolute;
+        margin-top: 3px;
+        background: $accent-color-light;
+        width: 175px;
+        z-index: 1;
+    }
+    
+    button, .dditem{
+        padding: 10px;
+        width: 100%;
+
+        &:hover{
+            background: $accent-color-lmid;
+            border-radius: 5px;
+        }
+    }
+
+    .dditem:hover{
+        width: 155px;
+    }
+}
+
+/* ddbutton hover effects */
+
+.ddmp:hover .ddbutton{
+  background: $accent-color-lmid;
+}
+
+.ddm .ddbutton:hover{
+    background: $accent-color-dmid;
+    color: $accent-color-light;
+}
+
+/* Dropped Styles */
+
+.ddmp.dropped{
+    menu{
+        display: block;
+    }
+
+    .ddbutton{
+        background: $accent-color-lmid;
+        color: $accent-color-light;
+
+        &:hover{
+            background: $accent-color-dmid;
+            color: $accent-color-light;
+        }
+    }
+}
+
+/* Style 01 */
+// Has grey background on parent when hovered / menu dropped
+
+.ddmpv01:hover{
+    background: $border-color-light;
+}
+
+.ddmpv01.dropped{
+    background: $border-color-light;
+}
+
+/* Style 02 */
+// Has grey coloured button and no background on parent when hovered / menu dropped
+
+.ddmpv02{
+    .ddbutton{
+        background: $border-color-light;
+    }
+}
+
+/****************************************************
+          BASIC DROPDOWN, STYLED IN CONTEXT
+*****************************************************/
+
+.app-content-header.ddmp {
+  h2{
+    display: inline-block;
+    width: 580px;
+  }
+}
+
+
+/****************************************************
               BASIC-DROPDOWN
 *****************************************************/
 

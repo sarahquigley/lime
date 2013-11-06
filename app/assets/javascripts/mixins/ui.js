@@ -2,7 +2,9 @@ Lime.Mixins.UI = {
 
   // Drops down menu
   dropMenu: function(event){
-    $(event.target).closest('.app-drop-parent').toggleClass('dropped');
+    console.log('moo');
+    console.log($(event.target).closest('.ddmp'));
+    $(event.target).closest('.ddmp').toggleClass('dropped');
   },
 
   // Close lightboxes

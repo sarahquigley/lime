@@ -1,7 +1,7 @@
 <% var id= list.get('id'); %>
 
-  <div class="list-show show">
-    <div class="app-sidebar-item app-drop-parent">
+  <div class="show">
+    <div class="app-sidebar-item ddmp ddmpv01">
       <a href="#lists/<%= list.get('id') %>">
         <%= list.get('title') %>
         <span class="list-task-count"><%= list.tasks().length %></span>
@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <div class="list-edit edit hidden">
+  <div class="edit hidden">
     <%= formTemplate({list: list})%>
   </div>
 

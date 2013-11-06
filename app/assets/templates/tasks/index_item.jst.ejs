@@ -1,4 +1,4 @@
-<div class="task-show show clearfix <% if(task.get('completed')){ %>completed<% } %>">
+<div class="show clearfix <% if(task.get('completed')){ %>completed<% } %>">
 
   <input
     class="toggle-task-completed toggle"
@@ -11,7 +11,7 @@
 
   <article class="task-body clearfix" >
 
-    <header class="task-title app-drop-parent">
+    <header class="task-title ddmp ddmpv01">
       <div class="title-container clearfix">
         <h3>
           <%= task.get('title') %>
@@ -41,7 +41,7 @@
 
 </div>
 
-<div class="task-edit edit clearfix hidden">
+<div class="edit clearfix hidden">
   <%= formTemplate({ task: task, tags: tags })%>
 </div>
 

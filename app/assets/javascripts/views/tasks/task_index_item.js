@@ -12,19 +12,19 @@ Lime.Views.TaskIndexItem = Backbone.View.extend(
     },
 
     events: {
-      "click .task-show input.toggle": "toggleAttribute",
-      "click .task-menu .app-drop-button": "dropMenu",
-      "click .task-menu button.edit-task": "edit",
+      "click .show input.toggle": "toggleAttribute",
+      "click .show .task-notes" : "openNotesIndex",
       "click .task-title h3": "edit",
+      //"click .ddm .ddbutton": "dropMenu",
+      "click .ddm .edit": "edit",
+      "click .ddm .toggle": "toggleAttribute",
+      "click .ddm .do-it-today": "doItToday",
+      "click .ddm .postpone": "postpone",
+      "click .ddm .move": "openMoveTaskForm",
+      "click .ddm .delete": "deleteModel",
       "submit .task-form": "update",
-      "click .task-menu button.toggle": "toggleAttribute",
-      "click .task-menu button.do-it-today-task": "doItToday",
-      "click .task-menu button.postpone-task": "postpone",
-      "click .task-menu button.move-task": "openMoveTaskForm",
-      "submit .move-task-form": "update",
       "click .move-task-form .cancel": "cancelMove",
-      "click .task-menu button.delete-task": "deleteModel",
-      "click .task-show .task-notes" : "openNotesIndex"
+      "submit .move-task-form": "update"
     },
 
     el: '<li class="task clearfix">',

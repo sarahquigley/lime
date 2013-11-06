@@ -14,11 +14,11 @@ Lime.Views.ListIndexItem = Backbone.View.extend(
   },
 
   events: {
-    "click .app-drop-button": "dropMenu",
-    "click .list-menu button.edit-list" : "edit",
-    "click .list-menu button.toggle" : "toggleAttribute",
-    "click .list-menu button.delete-list" : "deleteModel",
-    "submit #list-form": "update"
+    "click .ddm .ddbutton": "dropMenu",
+    "click .ddm .edit" : "edit",
+    "click .ddm .toggle" : "toggleAttribute",
+    "click .ddm .delete" : "deleteModel",
+    "submit .list-form": "update"
   },
 
   el: '<li class="list">',

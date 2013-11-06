@@ -17,8 +17,8 @@ Lime.Views.ListShow = Backbone.View.extend(
     },
 
     events: {
-      "click .sort-menu .app-drop-button": "dropMenu",
-      "click .sort-menu button.sort-tasks": "sort",
+      "click .ddm .ddbutton": "dropMenu",
+      "click .ddm .sort": "sort",
       "submit .task-form": "submit",
     },
 
@@ -56,6 +56,14 @@ Lime.Views.ListShow = Backbone.View.extend(
       }))
 
       return this;
+    },
+    
+    // Sort
+    sort: function(event){
+      event.preventDefault();
+      var sortAttribute = $(event.target).attr("data-sort");
+      this.collection.comparator = sortAttribute;
+      this.collection.sort();
     },
 
     // Submit new task

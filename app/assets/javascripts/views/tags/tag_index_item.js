@@ -13,9 +13,9 @@ Lime.Views.TagIndexItem = Backbone.View.extend(
   },
 
   events: {
-    "click .tag-menu .app-drop-button": "dropMenu",
-    "click .tag-menu .edit-tag" : "edit",
-    "click .tag-menu .delete-tag" : "delete",
+    "click .ddm .ddbutton": "dropMenu",
+    "click .ddm .edit" : "edit",
+    "click .ddm .delete" : "delete",
     "submit .tag-form": "update"
   },
 
