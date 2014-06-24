@@ -1,10 +1,11 @@
-<div class="tag-show show ddmp ddmpv01">
-  <a href="#tags/<%= tag.get('name') %>"><%= tag.get('name') %></a>
-  <span class="tag-task-count"><%= tag.tasks().length %></span>
+<div class="show ddmp ddmpv01">
+  <a href="#tags/<%= tag.get('name') %>"><%= tag.get('name') %>
+    <span class="hghlt01"><%= tag.tasks().length %></span>
+  </a>
 
   <%= menuTemplate({ tag: tag }) %>
 </div>
 
-<div class="tag-edit edit hidden">
+<div class="edit hidden">
   <%= formTemplate({ tag: tag }) %>
 </div>

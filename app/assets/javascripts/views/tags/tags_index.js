@@ -18,7 +18,7 @@ Lime.Views.TagsIndex = Backbone.View.extend(
     "submit .tag-form": "submit"
   },
 
-  el: '#app-content',
+  el: '#content',
 
   templates: {
     index: JST['tags/index'],

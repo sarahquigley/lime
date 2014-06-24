@@ -46,4 +46,20 @@
 
 }
 
+/****************************************************
+              BASIC MANAGE LAYOUT
+*****************************************************/
 
+#manage{
+    #content{
+        float: left;
+        width: 625px;
+        padding-left: 50px;
+    }
+
+    #sidebar{
+        float: left;
+        width: 225px;
+
+    }
+}

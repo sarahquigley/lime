@@ -2,16 +2,9 @@
               APP CONTENT
 *****************************************************/
 
-
-#app-content{
-  float: left;
-  width: 625px;
-  padding-left: 50px;
-}
-
 /* Content Header */
 
-.app-content-header{
+.content-header{
   padding-bottom: 10px;
 
   h2{
@@ -24,105 +17,100 @@
               Tasks
 *****************************************************/
 
-.task-body {
-  width: 595px;
-  padding-left: 30px;
-  margin-bottom: 10px;
-  border-bottom: $border-light;
-}
+.task{
+    .body{
+        width: 595px;
+        padding-left: 30px;
+        margin-bottom: 10px;
+        border-bottom: $border-light;
+    }
 
-.toggle-task-completed, .toggle-task-completed:focus{
-  width: 14px;
-  margin: 10px 5px;
-  float: left;
-}
+    .completed-check, .completed-check{
+        width: 14px;
+        margin: 10px 5px;
+        float: left;
+    }
 
-.task-title{
-  width: 587px;
-  line-height: 15px;
-  font-size: 15px;
-  padding: 10px 5px 10px 3px;
-  border-bottom: $border-light;
-}
+    .title{
+        width: 587px;
+        line-height: 15px;
+        font-size: 15px;
+        padding: 10px 5px 10px 3px;
+        border-bottom: $border-light;
 
-.task-title h3{
-  float: left;
-}
+        h4{
+            float:left;
+        }
 
-.task-title .title-container{
-  display: inline-block;
-  width: 563px;
-}
+        .title-container{
+            float: left;
+            width: 563px;
+        }
 
-.task-description{
-  font-size: 12px;
-  padding: 10px 3px;
-}
+        &:hover .hghlt01{
+            background: $accent-color-lmid;
+        }
+    }
 
-.task-tags a{
-  font-size: 11px;
-  color: $accent-color-dmid;
-  border-right: $border-light;
-  padding-right: 5px;
-}
+    .description{
+        font-size: 12px;
+        padding: 10px 3px;
+    }
 
-.task-tags a:last-child{
-  border: 0;
-}
+    .tags {
+        border-bottom: 1px dashed $border-color-light;
 
-.task-tags {
-  border-bottom: 1px dashed $border-color-light;
-}
+        a{
+            font-size: 11px;
+            color: $accent-color-dmid;
+            border-right: $border-light;
+            padding-right: 5px;
 
-.task-tags a:hover{
-  color: $accent-color-dark;
-}
+            &:last-child{
+                border: 0;
+            }
 
-.task-due{
-  font-size: 10px;
-  padding: 2px 4px;
-  margin: 0 5px;
-  border-radius: 5px;
-  background: $accent-color-light;
-  float: left;
-  text-transform: capitalize;
-}
+            &:hover{
+                color: $accent-color-dark;
+            }
 
-.task-title:hover{
-  background: $accent-color-light;
-}
+        }
+    }
 
-.task-title:hover .task-due{
-  background: $accent-color-lmid;
+    .hghlt01{
+        float: left;
+        text-transform: capitalize;
+    }
+
 }
 
 .completed{
 
-  .task-title.dropped{
+  .title.dropped{
     background: #F7F7F7;
   }
 
-  .task-title, .task-title.dropped{
+  .title, .title.dropped{
     &:hover{
       background: #F7F7F7;
       .task-due{
         background: #E3E6E5;
       }
     }
-    h3{
+    h4{
       text-decoration: line-through;
     }
 
-    .app-drop-menu menu{
+    .ddm menu{
       background: #F7F7F7;
     }
   }
 
-  .task-due{
+  .due{
     background: $border-color-light;
   }
 
-  .task-tags a{
+  .tags a{
     color: $border-color-light;;
   }
 
@@ -137,29 +125,17 @@
 }
 
 .tag{
-  width: 617px;
   line-height: 15px;
   font-size: 15px;
   border-bottom: $border-light;
-}
 
-.tag-task-count{
-  font-size: 10px;
-  padding: 2px 4px;
-  border-radius: 5px;
-  background: $accent-color-light;
-}
+  >.show, >.edit{
+      padding: 10px 5px 10px 3px;
+  }
 
-.tag-show, .tag-edit{
-  padding: 10px 5px 10px 3px;
-}
-
-.tag-show:hover{
-  background: $accent-color-light;
-}
-
-.tag-show:hover .tag-task-count{
-  background: $accent-color-lmid;
+  >.show:hover .hghlt01{
+      background: $accent-color-lmid;
+  }
 }
 
 

@@ -1,7 +1,7 @@
 <div class="show clearfix <% if(task.get('completed')){ %>completed<% } %>">
 
   <input
-    class="toggle-task-completed toggle"
+    class="completed-check toggle"
     type="checkbox"
     name="toggle-task-completed"
     data-toggle="completed"
@@ -9,33 +9,33 @@
       checked
     <% } %>>
 
-  <article class="task-body clearfix" >
+  <article class="body clearfix" >
 
-    <header class="task-title ddmp ddmpv01">
+    <header class="title ddmp ddmpv01 clearfix">
       <div class="title-container clearfix">
-        <h3>
+        <h4>
           <%= task.get('title') %>
-        </h3>
+        </h4>
         <% if(task.get('due')){ %>
-        <span class="task-due"><a href="#agenda/<%= task.dueStr() %>"><%= task.dueStr() %></a></span>
+        <span class="hghlt01 due"><a href="#agenda/<%= task.dueStr() %>"><%= task.dueStr() %></a></span>
         <% }; %>
         <% if(task.get('priority')){ %>
-        <span class="task-due"><a href="#priority/<%= task.get('priority') %>"><%= task.get('priority') %></a></span>
+        <span class="hghlt01 priority"><a href="#priority/<%= task.get('priority') %>"><%= task.get('priority') %></a></span>
         <% }; %>
-        <span class="task-notes"><i class="icon-comment"></i><%= task.notes().length %></span>
+        <span class="notes"><i class="icon-comment"></i><%= task.notes().length %></span>
       </div>
       <%= menuTemplate({ task: task }) %>
     </header>
 
     <% if( task.has('tags') && task.get('tags').length > 0){ %>
-      <div class="task-tags">
+      <div class="tags">
       <% _.each(task.get('tags'), function(tag){ %>
         <a href="#tags/<%= tag.name %>"><%= tag.name %></a>
       <% });%>
       </div>
     <% } %>
 
-    <p class="task-description"><%= task.get('description') %></p>
+    <p class="description"><%= task.get('description') %></p>
 
   </article>
 

@@ -4,7 +4,7 @@ Lime.Routers.App = Backbone.Router.extend({
     this.collections = collections;
     this.sidebarViews = sidebarViews;
     this.mainContentViews = mainContentViews;
-    $mainContent = $('#app-content');
+    $mainContent = $('#content');
     this.mainView = null;
   },
 

@@ -10,7 +10,7 @@ Lime.Views.AgendaNav = Backbone.View.extend(
 
     events: {
       "keypress .search" : "search",
-      "click #meta .app-drop-button": "dropMenu"
+      "click .ddm .ddbutton": "dropMenu"
     },
 
     el: '#sidebar > #agendas',

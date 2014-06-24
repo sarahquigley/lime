@@ -2,29 +2,24 @@
               APP SIDEBAR
 *****************************************************/
 
-
 /* General Styles */
 
 #sidebar{
-  float: left;
-  width: 225px;
+    ul{
+        border-bottom: $border-light;
+        margin-bottom: 10px;
+    }
 
-  ul{
-    border-bottom: $border-light;
-    margin-bottom: 10px;
-  }
+    .app-sidebar-item{
+        width: 215px;
+        padding: 5px;
+        font-size: 15px;
+        text-transform: capitalize;
 
-  .app-sidebar-item{
-    width: 215px;
-    padding: 5px;
-    font-size: 15px;
-    text-transform: capitalize;
-  }
-
-  .app-sidebar-item:hover{
-    background: $accent-color-light;
-  }
-
+        &:hover{
+            background: $accent-color-light;
+        }
+    }
 }
 
 #sidebar{
@@ -37,33 +32,14 @@
     }
   }
 
-   #meta.dropped{
-     background: none;
-   }
-
    .tags-btn{
      float: left;
-   }
-
-   .priority-menu.app-drop-menu{
-     float: right;
-     .app-drop-button{
-       background: $accent-color-lmid;
-       &:hover{
-         background: $accent-color-dmid;
-       }
-     }
    }
 }
 
 /* Lists only */
 
 #sidebar{
-
-  .list > a{
-    display: inline-block;
-    width: 88%;
-  }
 
   .list-task-count{
     font-size: 12px;

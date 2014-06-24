@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<ul id="meta" class="app-drop-parent clearfix">
+<ul id="meta" class="ddmp ddmpv02 clearfix">
 
     <li class="tags-btn app-sidebar-item">
 
@@ -16,17 +16,15 @@
 
     </li>
 
-    <li class="priority-menu app-drop-menu">
-      <div class="app-drop-button"><i class="icon-exclamation"></i></div>
-      <menu>
+    <li class="ddm">
+      <div class="ddbutton"><i class="icon-exclamation"></i></div>
+      <nav>
 
         <% _.each([1, 2, 3, 4, 5], function(num){ %>
-          <div class="app-drop-item">
-            <a href="#priority/<%= num %>">Priority <%= num %></a>
-          </div>
+        <a href="#priority/<%= num %>">Priority <%= num %></a>
         <% }) %>
 
-      </menu>
+      </nav>
     </li>
 
 </ul>
