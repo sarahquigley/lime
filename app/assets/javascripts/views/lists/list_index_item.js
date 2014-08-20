@@ -18,7 +18,7 @@ Lime.Views.ListIndexItem = Backbone.View.extend(
     "click .list-menu button.edit-list" : "edit",
     "click .list-menu button.toggle" : "toggleAttribute",
     "click .list-menu button.delete-list" : "deleteModel",
-    "submit #list-form": "update"
+    "submit .edit-list-form": "update"
   },
 
   el: '<li class="list">',
@@ -32,6 +32,7 @@ Lime.Views.ListIndexItem = Backbone.View.extend(
   render: function(){
     this.$el.html(this.templates.indexItem({
       list: this.model,
+      cssClass: "edit-list-form",
       menuTemplate: this.templates.menu,
       formTemplate: this.templates.form
     }));

@@ -16,7 +16,7 @@ Lime.Views.NoteIndexItem = Backbone.View.extend(
   events: {
     "click .note-menu .edit-note" : "toggleEdit",
     "click .note-menu .delete-note" : "deleteModel",
-    "submit .edit .note-form" : "update"
+    "submit .edit-note-form" : "update"
   },
 
   el: '<li class="note">',
@@ -29,6 +29,7 @@ Lime.Views.NoteIndexItem = Backbone.View.extend(
   render: function(){
     this.$el.html(this.templates.indexItem({
       note: this.model,
+      cssClass: "edit-note-form",
       formTemplate: this.templates.form
     }));
     return this;

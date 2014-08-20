@@ -1,11 +1,11 @@
-<form class="note-form app-form">
+<form class="note-form <%= cssClass %> app-form">
 
   <div class="note-body-field field">
-    <input type="text" name="note[body]" value="<%= note.get("body") %>">
+    <input type="text" name="note[body]" placeholder="Write a note" value="<%= note.get("body") %>">
   </div>
 
   <div class="note-submit-button submit">
-    <input type="submit" value="Submit Note">
+    <input type="submit" value="Save Note">
   </div>
 
 </form>

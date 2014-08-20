@@ -1,11 +1,11 @@
-<form id="list-form" class="app-form">
+<form id="list-form" class="<%= cssClass %> app-form">
 
   <div id="list-title-field" class="field">
-    <input type="text" name="list[title]" value="<%= list.get('title') %>">
+    <input type="text" name="list[title]" placeholder="List title" value="<%= list.get('title') %>">
   </div>
 
   <div id="list-submit-button" class="submit">
-    <input type="submit" value="Add list">
+    <input type="submit" value="Save list">
   </div>
 
 </form>

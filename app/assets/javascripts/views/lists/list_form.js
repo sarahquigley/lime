@@ -9,7 +9,7 @@ Lime.Views.ListForm = Backbone.View.extend(
     },
 
     events: {
-      'submit #list-form': 'submit'
+      'submit .new-list-form': 'submit'
     },
 
     el: '#app-sidebar > #lists-form-container',
@@ -18,6 +18,7 @@ Lime.Views.ListForm = Backbone.View.extend(
 
     render: function(){
       this.$el.html(this.template({
+        cssClass: "new-list-form",
         list: this.model
       }));
       return this;

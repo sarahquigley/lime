@@ -16,7 +16,7 @@ Lime.Views.NotesIndex = Backbone.View.extend(
 
   events: {
     "click .lightbox-bg" : "closeLightbox",
-    "submit .note-form" : "submit"
+    "submit .new-note-form" : "submit"
   },
 
   el: '<div id="notes-container">',
@@ -34,7 +34,8 @@ Lime.Views.NotesIndex = Backbone.View.extend(
     }));
     this.$el.find('.lightbox').append(this.renderCollection()); 
     this.$el.find('.lightbox').append(this.templates.form({
-      note: this.newNote
+      note: this.newNote,
+      cssClass: 'new-note-form'
     })); 
     return this;
   },

@@ -19,7 +19,7 @@ Lime.Views.ListShow = Backbone.View.extend(
     events: {
       "click .sort-menu .app-drop-button": "dropMenu",
       "click .sort-menu button.sort-tasks": "sort",
-      "submit .task-form": "submit",
+      "submit .new-task-form": "submit",
     },
 
     el: '<div>',
@@ -52,10 +52,19 @@ Lime.Views.ListShow = Backbone.View.extend(
 
       this.$el.append(this.templates.form({
         task: this.newTask,
+        cssClass: "new-task-form",
         tags: Lime.Live.Collections.tags
       }))
 
       return this;
+    },
+
+      // Sort
+    sort: function(event){
+      event.preventDefault();
+      var sortAttribute = $(event.target).attr("data-sort");
+      this.collection.comparator = sortAttribute;
+      this.collection.sort();
     },
 
     // Submit new task

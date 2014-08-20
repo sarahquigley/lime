@@ -1,7 +1,7 @@
-<form class="task-form app-form clearfix">
+<form class="task-form <%= cssClass %> app-form clearfix">
 
   <div class="task-title-field field">
-    <input type="text" name="task[title]" value="<%= task.get("title") %>">
+    <input type="text" name="task[title]" placeholder="Task title" value="<%= task.get("title") %>">
   </div>
 
   <div class="task-due-date-field field">
@@ -9,7 +9,7 @@
   </div>
 
   <div class="task-description-field field">
-    <textarea name="task[description]"><%= task.get("description") %></textarea>
+    <textarea name="task[description]" placeholder="Task description"><%= task.get("description") %></textarea>
   </div>
 
   <div class="task-tags-field field">
@@ -44,7 +44,7 @@
 
 
   <div class="task-submit-button submit">
-    <input type="submit" value="Add task">
+    <input type="submit" value="Save task">
   </div>
 
 </form>
