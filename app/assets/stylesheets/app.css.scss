@@ -150,6 +150,10 @@
 .app-content-header{
   padding-bottom: 10px;
 
+  span{
+    font-style: italic;
+  }
+
   h2{
     font-size: 23px;
     text-transform: capitalize;
@@ -157,14 +161,17 @@
 }
 
 /****************************************************
-              Tasks
+              Tasks / Notes
 *****************************************************/
 
-.task-body {
-  width: 595px;
-  padding-left: 30px;
+.task-body, .note-body{
   margin-bottom: 10px;
   border-bottom: $border-light;
+}
+
+.task-body{
+  width: 595px;
+  padding-left: 30px;
 }
 
 .toggle-task-completed, .toggle-task-completed:focus{
@@ -190,7 +197,7 @@
   width: 563px;
 }
 
-.task-description{
+.task-description, .note-text{
   font-size: 12px;
   padding: 10px 3px;
 }
@@ -214,7 +221,7 @@
   color: $accent-color-dark;
 }
 
-.task-due{
+.task-meta, .note-meta{
   font-size: 10px;
   padding: 2px 4px;
   margin: 0 5px;
@@ -228,7 +235,7 @@
   background: $accent-color-light;
 }
 
-.task-title:hover .task-due{
+.task-title:hover .task-meta{
   background: $accent-color-lmid;
 }
 
@@ -241,7 +248,7 @@
   .task-title, .task-title.dropped{
     &:hover{
       background: #F7F7F7;
-      .task-due{
+      .task-meta{
         background: #E3E6E5;
       }
     }
@@ -254,7 +261,7 @@
     }
   }
 
-  .task-due{
+  .task-meta{
     background: $border-color-light;
   }
 
@@ -262,6 +269,11 @@
     color: $border-color-light;;
   }
 
+}
+
+.note-menu{
+  float: right;
+  color: $border-color-light;
 }
 
 /****************************************************

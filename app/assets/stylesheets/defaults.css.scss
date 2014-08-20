@@ -14,6 +14,7 @@ input, input:focus, textarea, textarea:focus, select, select:focus {
   color: $body-text-color;
   background: none;
   text-align: left;
+  //box-sizing: border-box;
 }
 
 html, body{
