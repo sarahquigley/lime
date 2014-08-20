@@ -45,5 +45,3 @@ gem 'backbone-on-rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-gem 'debugger'
