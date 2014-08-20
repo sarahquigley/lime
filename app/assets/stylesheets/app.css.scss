@@ -274,6 +274,10 @@
 .note-menu{
   float: right;
   color: $border-color-light;
+
+  *:hover{
+    cursor: pointer;
+  }
 }
 
 /****************************************************
@@ -328,4 +332,25 @@
 #nothing-to-do{
   border-bottom: $border-light;
   margin-bottom: 10px;
+}
+
+
+/****************************************************
+             Group hidden 
+*****************************************************/
+
+.group-hidden{
+  width: 100;
+  button{
+    color: $accent-color-dmid;
+    font-size: 12px;
+    font-style: italic;
+    padding: 10px 0;
+    width: 100%;
+    text-align: center;
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
 }

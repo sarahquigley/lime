@@ -16,6 +16,7 @@ Lime.Views.TaskGroup = Backbone.View.extend({
   },
 
   events: {
+    'click .toggle-group' : 'toggleGroup'
   },
 
   el: '<section class="group">',
@@ -23,7 +24,8 @@ Lime.Views.TaskGroup = Backbone.View.extend({
   templates: {
     group : JST['tasks/group'],
     form: JST['tasks/form'],
-    ntd: JST['app/nothing_to_do']
+    ntd: JST['app/nothing_to_do'],
+    groupHidden: JST['tasks/group_hidden'],
   },
 
   render: function(){
@@ -33,7 +35,14 @@ Lime.Views.TaskGroup = Backbone.View.extend({
     this.$el.html(this.templates.group({
       group: this.group
     }));
-    this.$el.append(this.renderCollection());
+    this.$el.children('.group-show').append(this.renderCollection());
+
+    if(!this.group.display){
+      this.$el.children('.group-show').addClass("hidden");
+      this.$el.append(this.templates.groupHidden({
+        group: this.group
+      }));
+    }
 
     return this;
   },
@@ -60,6 +69,11 @@ Lime.Views.TaskGroup = Backbone.View.extend({
       });
       return $ul;
     }
+  },
+
+  toggleGroup: function(event){
+    $(event.target).parent().siblings('.group-show').removeClass('hidden');
+    $(event.target).parent().addClass('hidden');
   }
 
 })
