@@ -2,31 +2,34 @@ Lime.Models.Task = Backbone.Model.extend({
 
   initialize: function(){
     this.modelName = "task";
-    this.belongsTo.list = Lime.Live.Collections.lists ? Lime.Live.Collections.lists : null;
-    this.hasMany.tags = Lime.Live.Collections.tags ? Lime.Live.Collections.tags : null;
-    this.hasMany.notes = Lime.Live.Collections.notes ? Lime.Live.Collections.notes : null;
   },
 
   belongsTo: {
-    list: null
+    list: function(){
+      return Lime.Live.Collections.lists ? Lime.Live.Collections.lists : null;
+    }
   },
 
   list: function(){
-    if(this.belongsTo.list){
-      return this.belongsTo.list.where({id: this.get('list_id')});
+    if(this.belongsTo.list()){
+      return this.belongsTo.list().where({id: this.get('list_id')});
     }
   },
 
   hasMany: {
-    tags: null,
-    notes: null
+    tags: function(){
+      return Lime.Live.Collections.tags ? Lime.Live.Collections.tags : null;
+    },
+    notes: function(){
+      return Lime.Live.Collections.notes ? Lime.Live.Collections.notes : null;
+    }
   },
 
   tags: function(){
-    if(this.hasMany.tags){
+    if(this.hasMany.tags()){
       var that = this;
       if(this.has('tags')){
-        return this.hasMany.tags.filter(function(tag){
+        return this.hasMany.tags().filter(function(tag){
           return _.contains(_.pluck(that.get('tags'), 'id'), tag.get('id'));
         });
       }
@@ -34,8 +37,8 @@ Lime.Models.Task = Backbone.Model.extend({
   },
 
   notes: function(){
-    if(this.hasMany.notes){
-      return this.hasMany.notes.where({task_id: this.get('id')});
+    if(this.hasMany.notes()){
+      return this.hasMany.notes().where({task_id: this.get('id')});
     }
   },
   

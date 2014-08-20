@@ -41,7 +41,7 @@ Lime.Views.NotesIndex = Backbone.View.extend(
   },
 
   renderCollection: function(){
-    if(this.model.notes().length > 0){
+    if(this.model.has('notes')){
 
       $ul = $('<ul id="notes">');
 

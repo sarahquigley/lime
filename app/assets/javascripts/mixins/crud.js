@@ -61,6 +61,7 @@ Lime.Mixins.Updatable = {
       success: function(model, response){
         console.log(model.modelName + ' updated');
         if(typeof callback === 'function'){ callback(model, response); }
+        model.trigger("change");
       }
     });
   }

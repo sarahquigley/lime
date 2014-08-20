@@ -1,9 +1,9 @@
 <div class="note-show show">
 
-  <article class="note-body">
+  <article class="note-body clearfix">
     
-    <header class="note-header">
-      <time class="note-created-at"><%= note.get('created_at') %> </time>
+    <header class="note-header clearfix">
+      <time class="note-meta"><%= note.updatedAtStr() %> </time>
       <div class="note-menu">
         <button class="edit-note">
           <i class="icon-pencil"></i>
@@ -14,7 +14,9 @@
       </div>
     </header>
 
-    <p><%= note.get('body') %></p>
+    <div class="note-text">
+      <p><%= note.get('body') %></p>
+    </div>
 
   </article>
 
