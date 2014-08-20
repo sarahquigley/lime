@@ -53,7 +53,7 @@ Lime.Routers.App = Backbone.Router.extend({
         return task.has('tags') && _.findWhere( task.get('tags'), { name: agenda } );
       });
     }
-    this.addAgenda(this.collections.tasks, filter, '@' + agenda);
+    this.addAgenda(this.collections.tasks, filter, '#' + agenda);
   },
 
 
@@ -78,29 +78,6 @@ Lime.Routers.App = Backbone.Router.extend({
     $mainContent.html(mainView.render().$el);
   },
 
-  // // This Week
-  // thisWeek: function(){
-  //   this.addSidebar();
-  //
-  //   var that = this;
-  //   var agendas = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  //
-  //   $mainContent.empty();
-  //   _.each(agendas, function(agenda){
-  //     var filter = function(){
-  //       return this.where({ due_to_s: agenda });
-  //     }
-  //     var section =  new Lime.Views.TasksAgenda({
-  //       collection: that.collections.tasks,
-  //       filter: filter,
-  //       title: agenda
-  //     });
-  //     $mainContent.append(section.render().$el);
-  //   });
-  //
-  // },
-
-  /* Helper methods */
 
   addAgenda: function(collection, filter, title){
     this.addSidebar();
@@ -112,10 +89,6 @@ Lime.Routers.App = Backbone.Router.extend({
     this.resetMainView(mainView);
     $mainContent.html(mainView.render().$el);
   },
-
-  // addGroups: function(groups, filter){
-  //
-  // },
 
   addSidebar: function(){
     this.sidebarViews.agendaNav.render();
