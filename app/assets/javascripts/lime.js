@@ -38,6 +38,10 @@ window.Lime = {
     Backbone.history.start();
     console.log('Welcome to Lime.');
 
+    $(document).click(function(){
+      $('.app-drop-parent').removeClass('dropped');
+    });
+
   }
 
 };

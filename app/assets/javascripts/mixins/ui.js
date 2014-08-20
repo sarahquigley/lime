@@ -2,7 +2,18 @@ Lime.Mixins.UI = {
 
   // Drops down menu
   dropMenu: function(event){
-    $(event.target).closest('.app-drop-parent').toggleClass('dropped');
+    event.stopPropagation();
+    var dropped = $(event.target).closest('.app-drop-parent').hasClass('dropped');
+    
+    $('.app-drop-parent').removeClass('dropped');
+    if(!dropped){
+      $(event.target).closest('.app-drop-parent').addClass('dropped');
+    }
+      
+  },
+
+  closeMenu: function(event){
+    $('.app-drop-parent').removeClass('dropped');
   },
 
   // Close lightboxes

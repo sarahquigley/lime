@@ -100,7 +100,7 @@ Lime.Routers.App = Backbone.Router.extend({
     if(this.mainView){
       this.mainView.close();
     }
-    this.mainView = view
+    this.mainView = view;
   }
 
 });
